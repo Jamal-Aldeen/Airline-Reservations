@@ -75,11 +75,10 @@ header {
 }
 
 .hero {
-    background: url('/api/placeholder/1200/500') no-repeat center center;
-    background-size: cover;
-    color: white;
-    padding: 5rem 2rem;
     position: relative;
+    padding: 5rem 2rem;
+    color: white;
+    overflow: hidden; /* Ensure the overlay doesn't overflow */
 }
 
 .hero::before {
@@ -89,13 +88,26 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1;
+    background-image: url('/resources/images/airplane.jpg'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Place the image behind the content */
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    z-index: 0; /* Place the overlay above the image but below the content */
 }
 
 .hero-container {
     position: relative;
-    z-index: 2;
+    z-index: 1; /* Ensure content is above the overlay */
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
