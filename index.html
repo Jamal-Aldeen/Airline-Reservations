@@ -1,655 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TravelHub - Global Flight Network</title>
-    <style>
-        :root {
-            --primary: #1a5f7a;
-            --secondary: #57c5b6;
-            --accent: #ff9e45;
-            --light: #f9f9f9;
-            --dark: #333;
-            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        
-        header {
-            background: var(--gradient);
-            padding: 1rem 2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo svg {
-            margin-right: 10px;
-            height: 28px;
-            width: 28px;
-        }
-        
-        .contact-header {
-            display: flex;
-            align-items: center;
-            color: white;
-            font-weight: 600;
-            text-decoration: none;
-        }
-        
-        .contact-header svg {
-            margin-right: 8px;
-            height: 20px;
-            width: 20px;
-        }
-        
-        .hero {
-            background: url('/api/placeholder/1200/500') no-repeat center center;
-            background-size: cover;
-            color: white;
-            padding: 5rem 2rem;
-            position: relative;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
-        }
-        
-        .hero-container {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            font-weight: 800;
-        }
-        
-        .hero-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        
-        .hero-features li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-        
-        .hero-features svg {
-            margin-right: 10px;
-            color: var(--accent);
-            height: 24px;
-            width: 24px;
-        }
-        
-        .special-offer {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .special-offer p {
-            color: var(--dark);
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-        
-        .special-offer a {
-            background-color: var(--primary);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            transition: all 0.3s ease;
-            font-size: 1.1rem;
-        }
-        
-        .special-offer a:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .special-offer a svg {
-            margin-right: 10px;
-            height: 24px;
-            width: 24px;
-        }
-        
-        .features {
-            padding: 5rem 2rem;
-            background-color: white;
-        }
-        
-        .features-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .feature-card {
-            text-align: center;
-            padding: 2rem;
-            border-radius: 10px;
-            background-color: var(--light);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .feature-card img {
-            height: 80px;
-            margin-bottom: 1.5rem;
-        }
-        
-        .feature-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        .airlines {
-            padding: 5rem 2rem;
-            background-color: var(--light);
-        }
-        
-        .airlines-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .airlines-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .airlines-header h2 {
-            color: var(--primary);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .airlines-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .airline-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 2rem;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .airline-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .airline-number {
-            background-color: var(--secondary);
-            color: white;
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            margin-right: 1.5rem;
-            flex-shrink: 0;
-        }
-        
-        .airline-card h3 {
-            font-size: 1.2rem;
-            color: var(--dark);
-        }
-        
-        .about {
-            padding: 5rem 2rem;
-            background-color: white;
-        }
-        
-        .about-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .about-header {
-            margin-bottom: 2rem;
-        }
-        
-        .about-header h2 {
-            color: var(--primary);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .about-header hr {
-            width: 100px;
-            height: 4px;
-            background-color: var(--accent);
-            border: none;
-            margin: 0 auto;
-        }
-        
-        .about p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-        
-        .support {
-            padding: 5rem 2rem;
-            background-color: var(--light);
-        }
-        
-        .support-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .support-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-        
-        .support-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .support-card h2 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-        
-        .support-card p {
-            line-height: 1.8;
-        }
-        
-        .disclaimer {
-            padding: 3rem 2rem;
-            background-color: #f1f1f1;
-        }
-        
-        .disclaimer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .disclaimer p {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        .disclaimer a {
-            color: var(--primary);
-            text-decoration: underline;
-        }
-        
-        .footer-links {
-            padding: 3rem 2rem;
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .links {
-            margin-bottom: 1.5rem;
-        }
-        
-        .links a {
-            color: white;
-            text-decoration: none;
-            margin: 0 1rem;
-            transition: color 0.3s ease;
-        }
-        
-        .links a:hover {
-            color: var(--accent);
-        }
-        
-        .links span {
-            color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .cta-floating {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: var(--accent);
-            color: var(--dark);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            z-index: 100;
-        }
-        
-        .cta-floating h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .cta-floating p {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            font-weight: 700;
-        }
-        
-        .cta-floating img {
-            height: 30px;
-            margin-right: 10px;
-        }
-        
-        @media (max-width: 768px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .special-offer {
-                margin-top: 2rem;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="resources/css/styles.css">
 </head>
-
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <a href="#" class="logo">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M2 12h20"></path>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                 </svg>
-                TravelHub
-            </a>
-            <a href="#" class="contact-header">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
-                </svg>
-                24/7 Support: (888) 555-7890
-            </a>
+                <span>TravelHub</span>
+            </div>
+            <div class="nav-links">
+                <a href="#destinations">Destinations</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <button class="contact-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    (888) 555-7890
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Journey Begins With Perfect Flight</h1>
+                <p>Experience seamless travel planning with our 24/7 premium flight booking service</p>
+                <div class="features-list">
+                    <div class="feature">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <span>Best Price Guarantee</span>
+                    </div>
+                    <div class="feature">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <span>Premium Support</span>
+                    </div>
+                    <div class="feature">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <span>Easy Cancellation</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-card">
+                <div class="offer-badge">Limited Time Offer</div>
+                <h2>15% Off International Flights</h2>
+                <p>Book before March 15th</p>
+                <button class="cta-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    Call For Exclusive Rates
+                </button>
+            </div>
         </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <h1>Global Flight Center</h1>
-                    <ul class="hero-features">
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                            Premium Reservations
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                            Easy Itinerary Changes
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                            Hassle-free Cancellations
-                        </li>
-                        <li>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                            Express Refund Processing
-                        </li>
-                    </ul>
-                </div>
-                <div class="special-offer">
-                    <p>Limited Time: 15% Off All International Flights until March 15th</p>
-                    <a href="#">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
+    <section id="destinations" class="airlines">
+        <div class="container">
+            <h2>Our Partner Airlines</h2>
+            <div class="airlines-grid">
+                <div class="airline-card">
+                    <div class="airline-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 2L11 13"></path>
+                            <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
                         </svg>
-                        Call For Exclusive Rates
-                    </a>
+                    </div>
+                    <h3>Air Alaska</h3>
+                    <span class="partner-number">Partner 01</span>
+                </div>
+                <div class="airline-card">
+                    <div class="airline-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 2L11 13"></path>
+                            <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+                        </svg>
+                    </div>
+                    <h3>American Airlines</h3>
+                    <span class="partner-number">Partner 02</span>
+                </div>
+                <div class="airline-card">
+                    <div class="airline-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 2L11 13"></path>
+                            <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+                        </svg>
+                    </div>
+                    <h3>British Airways</h3>
+                    <span class="partner-number">Partner 03</span>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Features Section -->
-        <section class="features">
-            <div class="features-container">
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <img src="/api/placeholder/80/80" alt="Best Price">
-                        <h3>Best Price Guarantee</h3>
-                        <p>We match or beat any competitor's price on identical itineraries</p>
-                    </div>
-                    <div class="feature-card">
-                        <img src="/api/placeholder/80/80" alt="Premium Support">
-                        <h3>Premium Customer Support</h3>
-                        <p>Expert travel advisors available 24/7 to assist with any request</p>
-                    </div>
-                    <div class="feature-card">
-                        <img src="/api/placeholder/80/80" alt="Secure Booking">
-                        <h3>Secure Transactions</h3>
-                        <p>Industry-leading encryption and privacy protection for all bookings</p>
-                    </div>
+    <section id="services" class="features">
+        <div class="container">
+            <h2>Why Choose TravelHub</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>24/7 Support</h3>
+                    <p>Expert travel advisors available around the clock</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Best Price Guarantee</h3>
+                    <p>We match or beat any competitor's price</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Secure Booking</h3>
+                    <p>Industry-leading encryption for all transactions</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Airlines Section -->
-        <section class="airlines">
-            <div class="airlines-container">
-                <div class="airlines-header">
-                    <h2>PARTNER AIRLINES</h2>
-                    <p>Access exclusive rates with our premium airline partners</p>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M2 12h20"></path>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                        <span>TravelHub</span>
+                    </div>
+                    <p>Your trusted partner in global travel since 2020</p>
                 </div>
-                <div class="airlines-grid">
-                    <div class="airline-card">
-                        <div class="airline-number">01</div>
-                        <h3>Air Alaska</h3>
-                    </div>
-                    <div class="airline-card">
-                        <div class="airline-number">02</div>
-                        <h3>American Airlines</h3>
-                    </div>
-                    <div class="airline-card">
-                        <div class="airline-number">03</div>
-                        <h3>British Airways</h3>
-                    </div>
-                    <div class="airline-card">
-                        <div class="airline-number">04</div>
-                        <h3>Delta Airlines</h3>
-                    </div>
-                    <div class="airline-card">
-                        <div class="airline-number">05</div>
-                        <h3>Southwest Airlines</h3>
-                    </div>
-                    <div class="airline-card">
-                        <div class="airline-number">06</div>
-                        <h3>United Airlines</h3>
-                    </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#about">About Us</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#faq">FAQs</a>
                 </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="about">
-            <div class="about-container">
-                <div class="about-header">
-                    <h2>About TravelHub</h2>
-                    <hr>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#refund">Refund Policy</a>
                 </div>
-                <p>
-                    TravelHub offers a dedicated team of flight specialists available 
-                    24 hours a day, 7 days a week to assist with all your travel needs. 
-                    Our experts can help with booking new flights, modifying existing itineraries, 
-                    processing cancellations, and securing refunds. We pride ourselves on 
-                    making your travel experience seamless and enjoyable. With decades of 
-                    combined experience in the travel industry, our advisors can navigate 
-                    complex airline policies to ensure you get the best possible outcome. 
-                    Contact us today to experience the difference!
-                </p>
-            </div>
-        </section>
-
-        <!-- Support Section -->
-        <section class="support">
-            <div class="support-container">
-                <div class="support-grid">
-                    <div class="support-card">
-                        <h2>24/7 GLOBAL ASSISTANCE</h2>
-                        <p>
-                            Our dedicated team is ready to assist you with new bookings, 
-                            modifications, cancellations, and refund requests at any hour. 
-                            Our experienced travel advisors have direct access to airline 
-                            reservation systems, allowing us to provide immediate assistance 
-                            with <strong>NO WAITING TIMES</strong> for nearly any carrier worldwide.
-                        </p>
-                    </div>
-                    <div class="support-card">
-                        <h2>TRANSPARENT PRICING</h2>
-                        <p>
-                            Access competitive fares for destinations across the globe. Our 
-                            experts provide clear explanations of all airline policies and fees 
-                            before booking, ensuring complete transparency and allowing you to 
-                            make informed decisions with absolute peace of mind.
-                        </p>
-                    </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>24/7 Support Line:</p>
+                    <p class="phone">(888) 555-7890</p>
                 </div>
             </div>
-        </section>
-
-        <!-- Disclaimer Section -->
-        <section class="disclaimer">
-            <div class="disclaimer-container">
-                <p>
-                    TravelHub is an independently owned and operated travel agency that partners with various airlines and travel providers. 
-                    We offer reservation services for numerous transportation and accommodation providers including airlines, coach operators, 
-                    rail services, cruise lines, and hotels. TravelHub does not own, operate, or control these independent service providers 
-                    and is not liable for their actions or omissions. TravelHub connects customers with live travel specialists to facilitate 
-                    flight bookings and related services. We assume no responsibility for these services and make no warranties regarding 
-                    their standard. All bookings are subject to the terms, conditions, and limitations of liability imposed by these travel 
-                    service providers. You acknowledge that your legal recourse is with the specific service provider, not TravelHub. 
-                    Travel conditions can change in any country at any time. It is your responsibility to check the USA Government Travel 
-                    advisories for your intended destination at 
-                    <a href="https://travel.state.gov/content/travel.html" target="_blank" rel="noopener">
-                        https://travel.state.gov/content/travel.html
-                    </a>.
-                </p>
-            </div>
-        </section>
-
-        <!-- Footer Links -->
-        <section class="footer-links">
-            <div class="footer-container">
-                <div class="links">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <span>|</span>
-                    <a href="terms.html">Terms of Service</a>
-                </div>
+            <div class="footer-bottom">
                 <p>&copy; 2025 TravelHub Global Services. All rights reserved</p>
             </div>
-        </section>
-
-        <!-- Floating CTA -->
-        <div class="cta-floating">
-            <h3>ZERO WAIT TIME: CALL NOW</h3>
-            <p>
-                <img src="/api/placeholder/30/30" alt="Phone">
-                (888) 555-7890
-            </p>
         </div>
-    </main>
+    </footer>
 </body>
-
 </html>
