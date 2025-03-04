@@ -127,14 +127,41 @@
       height: 24px;
       fill: var(--accent);
     }
-    .hero-action {
-      margin-top: 20px;
+
+    /************************************************
+     WAIT TIME
+    ************************************************/
+    /* Keyframes for a pulsating effect */
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
+
+    /* Wait Time section container: center everything */
+    .wait-time {
+      text-align: center;
+    }
+    .wait-time span {
+      display: block;
+      font-size: 1.2rem;
+    }
+    .wait-time strong {
+      display: block;
+      margin: 5px 0 15px;
+      font-size: 1.4rem;
+    }
+    .waittime-action p {
+      margin-bottom: 15px;
+    }
+
+    /* The call button with a pulsating animation */
     .call-btn {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       padding: 14px 28px;
+      margin: 20px auto;         /* centers the button horizontally */
       background: transparent;
       border: 2px solid var(--accent);
       border-radius: 50px;
@@ -144,67 +171,29 @@
       transition: background 0.4s ease, color 0.4s ease;
       cursor: pointer;
       text-decoration: none;
+      animation: pulse 2s infinite; /* add the pulsating effect */
     }
     .call-btn:hover {
       background: var(--accent);
       color: var(--base-bg);
     }
 
-    /************************************************
-     WAIT TIME
-    ************************************************/
-/* Wait Time Section */
-/* Keyframes for a pulsating effect */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
-
-/* Update the call button styling */
-.call-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 28px;
-  background: transparent;
-  border: 2px solid var(--accent);
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--accent);
-  transition: background 0.4s ease, color 0.4s ease;
-  cursor: pointer;
-  text-decoration: none;
-  /* Add pulsating animation */
-  animation: pulse 2s infinite;
-}
-
-.call-btn:hover {
-  background: var(--accent);
-  color: var(--base-bg);
-}
-
-
-/* Icon row styling */
-.icon-row {
-  margin-top: 20px;      /* Space above the row */
-  display: inline-flex;  /* Place icons side by side */
-  gap: 15px;            /* Spacing between icons */
-  align-items: center;
-  justify-content: center;
-}
-
-/* Optional: if you want to limit icon sizes */
-.icon-row img {
-    border-radius: 6px;
-
-    background-color: #ffffff3f;
-  width: 95px; 
-  height: 95px; 
-  object-fit: contain; /* or 'cover' if you prefer */
-}
-
+    /* Icon row styling */
+    .icon-row {
+      margin-top: 20px;
+      display: flex;             /* use flex to center horizontally */
+      justify-content: center;   /* horizontally center icons */
+      gap: 15px;
+      align-items: center;
+    }
+    /* Icon styling */
+    .icon-row img {
+      border-radius: 6px;
+      background-color: #ffffff3f;
+      width: 95px;
+      height: 95px;
+      object-fit: contain;
+    }
 
     /************************************************
      AIRLINES
@@ -354,66 +343,66 @@
   <!-- MAIN CONTENT -->
   <main>
     <!-- Reservation Desk (Hero) WITHOUT the call button -->
-<section class="card hero">
-    <h1>Reservation Desk</h1>
-    <ul>
-      <li>
-        <svg viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5 13l4 4L19 7"/>
+  <section class="card hero">
+  <h1>Reservation Desk</h1>
+  <ul>
+    <li>
+      <svg viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5 13l4 4L19 7"/>
         </svg>
         New Bookings
-      </li>
-      <li>
-        <svg viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5 13l4 4L19 7"/>
+    </li>
+    <li>
+      <svg viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5 13l4 4L19 7"/>
         </svg>
         Cancellations
-      </li>
-      <li>
-        <svg viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5 13l4 4L19 7"/>
+    </li>
+    <li>
+      <svg viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5 13l4 4L19 7"/>
         </svg>
         Changes
-      </li>
-      <li>
-        <svg viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M5 13l4 4L19 7"/>
+    </li>
+    <li>
+      <svg viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5 13l4 4L19 7"/>
         </svg>
         Refunds
-      </li>
-    </ul>
-    <!-- We removed the hero-action block with the call button -->
-  </section>
+    </li>
+  </ul>
+</section>
+
   
-<!-- Wait Time section WITH the call button and icons -->
-<section class="card wait-time">
-    <span>Current Wait Time:</span>
-    <strong>Less than 10 seconds</strong>
-    
-    <div class="waittime-action">
-      <p>Special Prices For New Booking until...</p>
-      <a href="tel:8662025229" class="call-btn">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-        </svg>
-        Call Now (866) 202-5229
-      </a>
+    <!-- Wait Time section WITH the call button and icons -->
+    <section class="card wait-time">
+      <span>Current Wait Time:</span>
+      <strong>Less than 10 seconds</strong>
       
-      <!-- New icon row under the button -->
-      <div class="icon-row">
-        <img src="resources/images/price.gif" alt="Icon 1" />
-        <img src="resources/images/helpdesk.gif" alt="Icon 2" />
-        <img src="resources/images/shield.gif" alt="Icon 3" />
+      <div class="waittime-action">
+        <p>Special Prices For New Booking until...</p>
+        
+        <!-- Pulsating Call Button -->
+        <a href="tel:8662025229" class="call-btn">
+          <svg viewBox="0 0 24 24" width="24" height="24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+          </svg>
+          Call Now (866) 202-5229
+        </a>
+        
+        <!-- Icon row under the button -->
+        <div class="icon-row">
+          <img src="resources/images/price.gif" alt="Best Price">
+          <img src="resources/images/helpdesk.gif" alt="Help Desk">
+          <img src="resources/images/shield.gif" alt="Secure">
+        </div>
       </div>
-    </div>
-  </section>
-  
-  
+    </section>
 
     <!-- Airlines Serviced -->
     <section class="card airlines">
