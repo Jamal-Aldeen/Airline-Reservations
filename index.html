@@ -2,487 +2,534 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Neon Airline Reservations - Enjoy effortless bookings, hassle-free cancellations, and flexible flight changes with unbeatable offers.">
-  <title>Neon Airline Reservations</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TravelHub - Airline Reservations</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <style>
-    /* CSS Variables */
+    /* Modern Color Palette & Base Variables */
     :root {
-      --primary: #0077ff;
-      --secondary: #00c6ff;
-      --light: #ffffff;
-      --dark: #333;
-      --gray: #555;
-      --bg: #f7f7f7;
+      --primary: #2d3436;
+      --secondary: #00b894;
+      --accent: #fd79a8;
+      --light: #dfe6e9;
+      --dark: #2d3436;
+      --glass: rgba(255, 255, 255, 0.15);
+      --gradient: linear-gradient(135deg, #6c5ce7 0%, #a8e6cf 100%);
     }
-    /* Global Reset */
-    *, *::before, *::after {
+
+    /* Reset & Base Styles */
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
     }
-    html {
-      scroll-behavior: smooth;
-    }
+    
     body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg);
+      background: var(--light);
       color: var(--dark);
       line-height: 1.6;
       overflow-x: hidden;
     }
-    a {
-      text-decoration: none;
-      color: inherit;
-      transition: color 0.3s ease;
-    }
-    a:hover {
-      color: var(--primary);
-    }
-    img {
-      max-width: 100%;
-      display: block;
-    }
-    /* Accessibility: Skip Link */
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: var(--primary);
-      color: var(--light);
-      padding: 10px 20px;
-      z-index: 1000;
-      transition: top 0.3s ease;
-    }
-    .skip-link:focus {
-      top: 0;
+    
+    /* Modern Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
     }
     
-    /* Fixed Top Navigation with Transparent Background */
-    header {
+    ::-webkit-scrollbar-track {
+      background: var(--light);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--secondary);
+      border-radius: 4px;
+    }
+
+    /* Glassmorphism Header */
+    .header {
       position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.65);
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
       padding: 1rem 2rem;
-      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .phone-number {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-    }
-    header .logo {
-      font-size: 1.8rem;
+      gap: 0.5rem;
+      color: var(--primary);
       font-weight: 600;
-      color: var(--light);
+      text-decoration: none;
     }
-    header nav {
-      display: flex;
-      gap: 1.5rem;
-    }
-    header nav a {
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: var(--light);
-    }
-    
-    /* Hero Section: Diagonal Split with Overlap */
+
+    /* Hero Section with 3D Background Animation */
     .hero {
       position: relative;
       min-height: 100vh;
-      padding-top: 80px; /* to account for fixed nav */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2rem 2rem;
+      background: var(--gradient);
       overflow: hidden;
     }
-    .hero .bg {
+    
+    .hero::before {
+      content: '';
       position: absolute;
-      top: 0;
-      left: -10%;
-      width: 120%;
-      height: 100%;
-      background: url('/resources/images/photo-1436491865332-7a61a109cc05.jpeg') no-repeat center/cover;
-      transform: skewY(-6deg);
-      transform-origin: top left;
-      filter: brightness(0.75);
-    }
-    .hero .content {
-      position: relative;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-      color: var(--light);
-      text-align: center;
-    }
-    .hero .content h1 {
-      font-size: 4.5rem;
-      margin-bottom: 1rem;
-      text-shadow: 3px 3px 8px rgba(0,0,0,0.6);
-    }
-    .hero .content ul {
-      list-style: none;
-      margin: 1rem 0;
-    }
-    .hero .content ul li {
-      font-size: 1.6rem;
-      margin: 0.8rem 0;
-    }
-    .hero .content p {
-      font-size: 1.8rem;
-      margin: 1rem 0 2rem;
-    }
-    .hero .content .btn {
-      background: var(--light);
-      color: var(--primary);
-      padding: 1rem 2.2rem;
-      border-radius: 50px;
-      font-size: 1.2rem;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
-      display: inline-block;
-    }
-    .hero .content .btn:hover {
-      transform: scale(1.05);
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: url('/resources/images/71ef47140fab5931b5d767bb4c3f3406.gif')
+        center/cover no-repeat;
+      opacity: 0.1;
+            z-index: 1;
     }
     
-    /* Section Base Styling with Creative Overlap */
-    section {
-      position: relative;
-      padding: 6rem 2rem;
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
-    section:nth-of-type(odd) {
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    
+    .hero-text h1 {
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+      font-weight: 800;
+      color: white;
+    }
+    
+    .features-list {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+    
+    .features-list li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    
+    .features-list li::before {
+      content: "✓";
+      color: var(--accent);
+    }
+    
+    .special-offer {
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 1.5rem;
+      max-width: 400px;
+    }
+    
+    .special-offer h3 {
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+    
+    .special-offer p {
+      color: white;
+      margin-bottom: 1rem;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: var(--secondary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    
+    .cta-button:hover {
+      background: darken(var(--secondary), 10%);
+    }
+
+    /* Modern Cards for Support Features */
+    .support-features {
+      padding: 4rem 2rem;
+      background: white;
+    }
+    
+    .support-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    
+    .support-card {
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 20px;
+      text-align: center;
+      padding: 2rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .support-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .support-card img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1rem;
+    }
+    
+    .support-card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+    
+    .support-card p {
+      font-size: 0.95rem;
+      color: var(--primary);
+    }
+    
+    /* Airlines Section */
+    .airlines {
+      padding: 4rem 2rem;
       background: var(--light);
     }
-    section:nth-of-type(even) {
-      background: var(--bg);
-    }
-    .section-content {
-      max-width: 1000px;
+    
+    .airlines-container {
+      max-width: 1200px;
       margin: 0 auto;
+    }
+    
+    .airlines-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .airlines-header h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+    
+    .airlines-header p {
+      font-size: 1rem;
+      color: var(--primary);
+    }
+    
+    .airlines-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    
+    .airline-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    
+    .airline-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .airline-card h3 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    
+    .airline-card .number {
+      font-size: 4rem;
+      color: var(--secondary);
+      opacity: 0.1;
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+    }
+    
+    /* 24/7 Support Section */
+    .support {
+      padding: 4rem 2rem;
+      background: var(--gradient);
+      color: white;
+    }
+    
+    .support-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+    }
+    
+    .support-item {
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 2rem;
+    }
+    
+    .support-item h2 {
+      margin-bottom: 1rem;
+      color: white;
+    }
+    
+    .support-item p {
+      color: white;
+      font-size: 0.95rem;
+    }
+    
+    /* Disclaimer Section */
+    .disclaimer {
       padding: 2rem;
       background: var(--light);
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      position: relative;
-      z-index: 1;
-    }
-    /* Creative Heading for Sections */
-    .section-content h2 {
-      font-size: 2.8rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-      position: relative;
-      padding-bottom: 0.5rem;
-    }
-    .section-content h2::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 3px;
-      background: var(--primary);
-      border-radius: 2px;
-    }
-    .section-content p {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-      color: var(--gray);
-    }
-    
-    /* Grid Cards for Services & Info */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-    }
-    .card {
-      background: var(--bg);
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      font-size: 0.85rem;
+      color: var(--dark);
       text-align: center;
-      transition: transform 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    .card img {
-      width: 60px;
-      margin-bottom: 1rem;
-    }
-    .card h3 {
-      font-size: 1.8rem;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-    .card p {
-      font-size: 1rem;
-      color: var(--gray);
     }
     
-    /* Alternating Layouts for Sections */
-    .two-col {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 2rem;
-    }
-    .two-col .text {
-      flex: 1 1 400px;
-    }
-    .two-col .image {
-      flex: 1 1 400px;
-      position: relative;
-    }
-    .two-col .image img {
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.5s ease;
-    }
-    .two-col .image img:hover {
-      transform: scale(1.05);
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 2rem;
+      text-align: center;
     }
     
-    /* Airlines Section: Badge-Style List */
-    #airlines .airline-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      list-style: none;
-      margin-top: 2rem;
-    }
-    #airlines .airline-list li {
-      background: var(--light);
-      padding: 0.6rem 1.2rem;
-      border-radius: 20px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      font-size: 1.1rem;
-      color: var(--primary);
+    .footer a {
+      color: white;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+      margin: 0 0.5rem;
     }
     
-    /* Disclaimer Styling */
-    .disclaimer {
-      border-left: 5px solid var(--primary);
-      padding: 1rem 2rem;
-      font-size: 1rem;
-      color: var(--gray);
-      max-width: 800px;
-      margin: 0 auto;
-      background: var(--light);
-      border-radius: 5px;
+    .footer a:hover {
+      opacity: 1;
     }
     
-    /* Sticky Call-to-Action at Bottom */
-    .cta {
+    /* Floating CTA Button */
+    .cta-floating {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      padding: 1.8rem 1rem;
-      text-align: center;
-      color: var(--light);
-      z-index: 150;
-    }
-    .cta h3 {
-      font-size: 2.2rem;
-      margin-bottom: 0.5rem;
-    }
-    .cta p {
-      font-size: 1.2rem;
-      display: inline-flex;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--secondary);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      display: flex;
       align-items: center;
       gap: 0.5rem;
-    }
-    .cta img {
-      width: 40px;
-    }
-    
-    /* Footer with Inverted Colors */
-    footer {
-      background: #222;
-      color: #aaa;
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-    }
-    footer nav a {
-      margin: 0 1rem;
-      color: #aaa;
-      transition: color 0.3s ease;
-    }
-    footer nav a:hover {
-      color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      z-index: 90;
     }
     
-    /* Responsive Adjustments */
-    @media (max-width: 992px) {
-      .hero .content h1 {
-        font-size: 3.8rem;
-      }
-      .hero .content ul li {
-        font-size: 1.4rem;
-      }
-      .two-col {
-        flex-direction: column;
-      }
+    .cta-floating:hover {
+      transform: translateY(-5px);
     }
-    @media (max-width: 600px) {
-      header {
-        padding: 0.8rem 1rem;
+    
+    .cta-floating img {
+      width: 30px;
+      height: 30px;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
       }
-      header .logo {
-        font-size: 1.5rem;
-      }
-      header nav a {
-        font-size: 1rem;
-      }
-      .hero .content h1 {
-        font-size: 3rem;
-      }
-      .hero .content p {
-        font-size: 1.4rem;
-      }
-      .section-content h2 {
-        font-size: 2.2rem;
-      }
-      .card h3 {
-        font-size: 1.6rem;
+      
+      .airlines-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Skip Link -->
-  <a href="#main-content" class="skip-link">Skip to content</a>
-  
-  <!-- Fixed Top Navigation -->
-  <header>
-    <div class="logo">Neon Airlines</div>
-    <nav>
-      <a href="#hero">Home</a>
-      <a href="#services">Solutions</a>
-      <a href="#airlines">Partners</a>
-      <a href="#about">About</a>
-      <a href="#info">Info</a>
-    </nav>
+  <!-- Header -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="#" class="logo">TravelHub</a>
+      <a href="tel:(866) 202-5229" class="phone-number">
+        <span>24/7 Support: (866) 202-5229</span>
+      </a>
+    </div>
   </header>
-  
-  <!-- Main Content -->
-  <main id="main-content">
+
+  <main>
     <!-- Hero Section -->
-    <section class="hero" id="hero">
-      <div class="bg"></div>
-      <div class="content">
-        <h1>Welcome to Our Reservation Desk</h1>
-        <ul>
-          <li>Effortless New Bookings</li>
-          <li>Hassle-Free Cancellations</li>
-          <li>Flexible Flight Changes</li>
-          <li>Quick Refunds</li>
-        </ul>
-        <p>Enjoy special pricing on new bookings – premium travel with unbeatable offers.</p>
-        <a href="tel:8662025229" class="btn" aria-label="Call Now at (866) 202-5229">Call Now (866) 202-5229</a>
-      </div>
-    </section>
-    
-    <!-- Services Section with Overlapping Card Grid -->
-    <section id="services">
-      <div class="section-content">
-        <h2>Our Travel Solutions</h2>
-        <p>We offer a complete range of services to simplify your journey – from booking to instant support for cancellations and flight changes.</p>
-        <div class="grid">
-          <div class="card">
-            <img src="resources/images/best-price (3).png" alt="Best Price Guarantee Icon">
-            <h3>Best Price Guarantee</h3>
-            <p>Unbeatable fares on your favorite routes.</p>
-          </div>
-          <div class="card">
-            <img src="resources/images/call-center.png" alt="24/7 Support Icon">
-            <h3>Outstanding Support</h3>
-            <p>Immediate assistance available 24/7 with no wait.</p>
-          </div>
-          <div class="card">
-            <img src="resources/images/user.png" alt="Secure Booking Icon">
-            <h3>Secure &amp; Reliable</h3>
-            <p>Your information is protected by top-grade security protocols.</p>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text" data-aos="fade-right">
+          <h1>Airline Reservation Desk</h1>
+          <ul class="features-list">
+            <li>New Bookings</li>
+            <li>Cancellations</li>
+            <li>Changes</li>
+            <li>Refunds</li>
+          </ul>
+          <div class="special-offer" data-aos="fade-up">
+            <h3>Special Offer Until March 15th</h3>
+            <p>15% off on all international flights</p>
+            <a href="tel:(866) 202-5229" class="cta-button">Call Now For Exclusive Rates</a>
           </div>
         </div>
       </div>
     </section>
-    
-    <!-- Airlines Section with Badge List -->
-    <section id="airlines">
-      <div class="section-content">
-        <h2>Our Trusted Airline Partners</h2>
-        <p>Experience travel excellence with our carefully selected global airline partners.</p>
-        <ul class="airline-list">
-          <li>Air Alaska</li>
-          <li>American Airlines</li>
-          <li>British Airways</li>
-          <li>Delta Airlines</li>
-          <li>Southwest Airlines</li>
-          <li>United Airlines</li>
-        </ul>
-      </div>
-    </section>
-    
-    <!-- About Section: Two-Column Layout -->
-    <section id="about">
-      <div class="section-content two-col">
-        <div class="text">
-          <h2>About Us</h2>
-          <p>At <a href="https://kohngaithanyaresort.com/" target="_blank" rel="noopener">Kohngaithanya Resort</a>, our team of travel experts is available around the clock to streamline your bookings. Whether you need to reserve, modify, or cancel a flight, we work to ensure your journey is smooth and unforgettable.</p>
+
+    <!-- Support Features Section -->
+    <section class="support-features">
+      <div class="support-grid">
+        <div class="support-card" data-aos="fade-up">
+          <img src="resources/images//best-price (3).png" alt="Best Price" />
+          <h3>Best Price Guarantee</h3>
+          <p>Flight tickets for all destinations</p>
         </div>
-        <div class="image">
-          <img src="/resources/images/photo-1502906179107-9a5ca87e0a19.jpeg" alt="Airplane in flight">
+        <div class="support-card" data-aos="fade-up" data-aos-delay="100">
+          <img src="resources/images/phone (1).png" alt="Customer Service" />
+          <h3>Excellent Customer Service</h3>
+          <p>Quick changes and cancellations</p>
+        </div>
+        <div class="support-card" data-aos="fade-up" data-aos-delay="200">
+          <img src="resources/images/user.png" alt="Secure Booking" />
+          <h3>Secure Booking</h3>
+          <p>Your Personal Information is secure</p>
         </div>
       </div>
     </section>
-    
-    <!-- Info Section: Two Cards Side-by-Side -->
-    <section id="info">
-      <div class="section-content">
-        <div class="grid">
-          <div class="card">
-            <h3>24/7 Customer Support</h3>
-            <p>Our dedicated agents are available anytime to assist with your bookings, cancellations, or flight changes.</p>
+
+    <!-- Airlines Section -->
+    <section class="airlines">
+      <div class="airlines-container">
+        <div class="airlines-header">
+          <h2>AIRLINES SERVICED</h2>
+          <p>We proudly work with these leading airlines</p>
+        </div>
+        <div class="airlines-grid">
+          <div class="airline-card" data-aos="fade-up">
+            <h3>Air Alaska</h3>
+            <div class="number">01</div>
           </div>
-          <div class="card">
-            <h3>Compare Flight Costs</h3>
-            <p>Discover exclusive discounts and competitive rates worldwide with our comprehensive travel deals guide.</p>
+          <div class="airline-card" data-aos="fade-up" data-aos-delay="100">
+            <h3>American Airlines</h3>
+            <div class="number">02</div>
+          </div>
+          <div class="airline-card" data-aos="fade-up" data-aos-delay="200">
+            <h3>British Airways</h3>
+            <div class="number">03</div>
+          </div>
+          <div class="airline-card" data-aos="fade-up" data-aos-delay="300">
+            <h3>Delta Airlines</h3>
+            <div class="number">04</div>
+          </div>
+          <div class="airline-card" data-aos="fade-up" data-aos-delay="400">
+            <h3>Southwest Airlines</h3>
+            <div class="number">05</div>
+          </div>
+          <div class="airline-card" data-aos="fade-up" data-aos-delay="500">
+            <h3>United Airlines</h3>
+            <div class="number">06</div>
           </div>
         </div>
       </div>
     </section>
-    
+
+    <!-- 24/7 Support Section -->
+    <section class="support">
+      <div class="support-container">
+        <div class="support-item" data-aos="fade-up">
+          <h2>24/7 CUSTOMER SUPPORT</h2>
+          <p>We are delighted to assist you with New Reservations, Cancellations, and Flight Change inquiries. Our knowledgeable customer success agents are available 24 hours a day, 7 days a week to help you with your new or forthcoming flight. There are <strong>NO WAITING TIMES</strong> to book flights with nearly any airline.</p>
+        </div>
+        <div class="support-item" data-aos="fade-up" data-aos-delay="100">
+          <h2>COMPARE FLIGHT COSTS</h2>
+          <p>Get the greatest flight discounts anywhere in the globe. We can assist you in navigating the conditions of each airline prior to booking, allowing you to book the travel you require with peace of mind.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Disclaimer Section -->
-    <section>
-      <div class="section-content disclaimer">
-        <p>Kohngaithanyaresort.com is an independently owned travel service partner. We provide access to a range of flight products on behalf of various service providers. Final terms and conditions are set by the providers. For more details, visit <a href="https://travel.state.gov/content/travel.html" target="_blank" rel="noopener">travel.state.gov</a>.</p>
-      </div>
+    <section class="disclaimer">
+      <p>TravelHub is an independently owned and operated travel agency that partners with various airlines and travel providers. We offer reservation services for numerous transportation and accommodation providers including airlines, coach operators, rail services, cruise lines, and hotels. TravelHub does not own, operate, or control these independent service providers and is not liable for their acts or omissions.</p>
     </section>
+
+    <!-- Floating CTA -->
+    <div class="cta-floating" data-aos="fade-up">
+      <h3>NO WAIT TIME - CALL NOW</h3>
+      <img src="resources/images/24-hours-support.gif" alt="Support" />
+      <span>(866) 202-5229</span>
+    </div>
   </main>
-  
-  <!-- Sticky Call-to-Action -->
-  <section class="cta">
-    <h3>Travel Without the Wait</h3>
-    <p>
-      <img src="/resources/images/phone (1).png" alt="Phone Icon">
-      (866) 202-5229
-    </p>
-  </section>
-  
+
   <!-- Footer -->
-  <footer>
-    <nav>
+  <footer class="footer">
+    <div>
       <a href="privacy.html">Privacy Policy</a>
+      <span>|</span>
       <a href="terms.html">Terms of Service</a>
-    </nav>
-    <p>&copy; 2023 Your Company Name. All rights reserved.</p>
+    </div>
+    <p>&copy; 2025 TravelHub. All rights reserved</p>
   </footer>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+    
+    // Dynamic Header Background Change on Scroll
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+      header.style.background = window.scrollY > 100 ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.1)';
+    });
+  </script>
 </body>
 </html>
