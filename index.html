@@ -5,318 +5,378 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Neon Airline Reservations - Enjoy effortless bookings, hassle-free cancellations, and flexible flight changes with unbeatable offers.">
   <title>Neon Airline Reservations</title>
-  <!-- Using Google Fonts for a modern look -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    /* Global Reset & Base Styles */
+    /* CSS Variables */
+    :root {
+      --primary: #0077ff;
+      --secondary: #00c6ff;
+      --light: #ffffff;
+      --dark: #333;
+      --gray: #555;
+      --bg: #f7f7f7;
+    }
+    /* Global Reset */
     *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Poppins', sans-serif;
-      background: #ffffff;
-      color: #333;
+      background: var(--bg);
+      color: var(--dark);
       line-height: 1.6;
-      font-size: 18px; /* Base font size increased */
+      overflow-x: hidden;
     }
     a {
       text-decoration: none;
       color: inherit;
-      transition: color 0.3s;
+      transition: color 0.3s ease;
     }
     a:hover {
-      color: #0077ff;
+      color: var(--primary);
     }
-    
-    /* Global Image & Icon Fix */
     img {
-      display: block;
       max-width: 100%;
-      height: auto;
+      display: block;
     }
-    img.icon {
-      width: 50px;
-      height: auto;
-    }
-    
-    /* Skip to content link */
+    /* Accessibility: Skip Link */
     .skip-link {
       position: absolute;
       top: -40px;
       left: 0;
-      background: #0077ff;
-      color: #fff;
-      padding: 8px 16px;
-      z-index: 1001;
-      transition: top 0.3s;
+      background: var(--primary);
+      color: var(--light);
+      padding: 10px 20px;
+      z-index: 1000;
+      transition: top 0.3s ease;
     }
     .skip-link:focus {
       top: 0;
     }
     
-    /* HEADER with Background Video (no nav) */
+    /* Fixed Top Navigation with Transparent Background */
     header {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-    }
-    .bg-video {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-    .brand {
-      font-size: 3rem; /* Bigger brand text */
-      font-weight: 600;
-      color: #fff;
-      text-align: center;
-      padding-top: 40vh; /* Vertically center within header */
-    }
-    
-    /* HERO SECTION */
-    .hero {
-      min-height: 100vh;
-      background: url('/resources/images/photo-1436491865332-7a61a109cc05.jpeg') center/cover no-repeat;
-      position: relative;
+      background: rgba(0, 0, 0, 0.65);
+      padding: 1rem 2rem;
+      z-index: 200;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
     }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 123, 255, 0.4);
-      mix-blend-mode: multiply;
-    }
-    .hero-content {
-      position: relative;
-      text-align: center;
-      padding: 30px;
-      max-width: 900px;
-      color: #fff;
-    }
-    .hero-content h1 {
-      font-size: 5.5rem; /* Increased heading size */
-      margin-bottom: 25px;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-    }
-    .hero-content ul {
-      list-style: none;
-      margin: 20px 0;
-    }
-    .hero-content ul li {
+    header .logo {
       font-size: 1.8rem;
-      margin: 12px 0;
+      font-weight: 600;
+      color: var(--light);
     }
-    .hero-content p {
-      font-size: 2.2rem;
-      margin-bottom: 35px;
+    header nav {
+      display: flex;
+      gap: 1.5rem;
     }
-    .hero-content .btn {
-      background: #ffffff;
-      color: #0077ff;
-      padding: 18px 45px;
-      font-size: 1.5rem;
+    header nav a {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--light);
+    }
+    
+    /* Hero Section: Diagonal Split with Overlap */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      padding-top: 80px; /* to account for fixed nav */
+      overflow: hidden;
+    }
+    .hero .bg {
+      position: absolute;
+      top: 0;
+      left: -10%;
+      width: 120%;
+      height: 100%;
+      background: url('/resources/images/photo-1436491865332-7a61a109cc05.jpeg') no-repeat center/cover;
+      transform: skewY(-6deg);
+      transform-origin: top left;
+      filter: brightness(0.75);
+    }
+    .hero .content {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      color: var(--light);
+      text-align: center;
+    }
+    .hero .content h1 {
+      font-size: 4.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 3px 3px 8px rgba(0,0,0,0.6);
+    }
+    .hero .content ul {
+      list-style: none;
+      margin: 1rem 0;
+    }
+    .hero .content ul li {
+      font-size: 1.6rem;
+      margin: 0.8rem 0;
+    }
+    .hero .content p {
+      font-size: 1.8rem;
+      margin: 1rem 0 2rem;
+    }
+    .hero .content .btn {
+      background: var(--light);
+      color: var(--primary);
+      padding: 1rem 2.2rem;
       border-radius: 50px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
+      font-size: 1.2rem;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
       display: inline-block;
     }
-    .hero-content .btn:hover {
+    .hero .content .btn:hover {
       transform: scale(1.05);
     }
     
-    /* FULL-PAGE SECTION BASE STYLES */
-    main .section {
-      min-height: 100vh;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 50px 20px;
-      text-align: center;
-      box-sizing: border-box;
+    /* Section Base Styling with Creative Overlap */
+    section {
+      position: relative;
+      padding: 6rem 2rem;
     }
-    .section h2 {
-      font-size: 3.5rem; /* Bigger headings */
-      margin-bottom: 30px;
-      color: #0077ff;
+    section:nth-of-type(odd) {
+      background: var(--light);
     }
-    .section p {
-      font-size: 1.4rem; /* Slightly larger paragraph text */
-      max-width: 900px;
-      margin-bottom: 30px;
-      color: #555;
+    section:nth-of-type(even) {
+      background: var(--bg);
     }
-    
-    /* GRID & CARD STYLES */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
-      width: 100%;
-      max-width: 1200px;
-      margin-top: 50px;
-    }
-    .card, .block {
-      background: #ffffff;
-      padding: 30px;
+    .section-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: var(--light);
       border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s;
-      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 1;
     }
-    .card:hover, .block:hover {
-      transform: translateY(-5px);
+    /* Creative Heading for Sections */
+    .section-content h2 {
+      font-size: 2.8rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      position: relative;
+      padding-bottom: 0.5rem;
     }
-    .card img {
-      width: 70px;
-      margin-bottom: 20px;
-    }
-    .card h3, .block h3 {
-      font-size: 2.2rem;
-      margin-bottom: 15px;
-      color: #0077ff;
-    }
-    .card p, .block p {
-      font-size: 1.4rem;
-      color: #666;
-    }
-    
-    /* AIRLINES SECTION with Background Image */
-    #airlines {
-      background: url('/resources/images/71ef47140fab5931b5d767bb4c3f3406.gif') center/cover no-repeat;
-    }
-    .airline-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      font-size: 1.5rem;
-      margin-top: 30px;
-      padding: 0;
-    }
-    .airline-list li::before {
-      content: "- ";
-      font-weight: bold;
-      color: #0077ff;
-    }
-    
-    /* ABOUT SECTION: Full-width Image Under Text */
-    .about img {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 30px;
-      transition: transform 0.5s;
-    }
-    .about img:hover {
-      transform: scale(1.05);
-    }
-    
-    /* DISCLAIMER */
-    .disclaimer {
-      background: #fafafa;
-      padding: 25px 35px;
-      font-size: 1.4rem;
-      color: #888;
-      max-width: 900px;
-      border-left: 4px solid #0077ff;
-    }
-    .disclaimer a {
-      color: #0077ff;
-    }
-    
-    /* STICKY CTA SECTION (Fixed at Bottom) */
-    .cta {
-      position: fixed;
+    .section-content h2::after {
+      content: "";
+      position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 100%;
-      max-width: 1100px;
-      background: linear-gradient(135deg, #0077ff, #00c6ff);
-      padding: 50px 60px;
-      border-radius: 10px 10px 0 0;
+      width: 60px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    .section-content p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--gray);
+    }
+    
+    /* Grid Cards for Services & Info */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: var(--bg);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       text-align: center;
-      color: #fff;
-      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 60px;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      font-size: 1rem;
+      color: var(--gray);
+    }
+    
+    /* Alternating Layouts for Sections */
+    .two-col {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+    .two-col .text {
+      flex: 1 1 400px;
+    }
+    .two-col .image {
+      flex: 1 1 400px;
+      position: relative;
+    }
+    .two-col .image img {
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.5s ease;
+    }
+    .two-col .image img:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Airlines Section: Badge-Style List */
+    #airlines .airline-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      list-style: none;
+      margin-top: 2rem;
+    }
+    #airlines .airline-list li {
+      background: var(--light);
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+    
+    /* Disclaimer Styling */
+    .disclaimer {
+      border-left: 5px solid var(--primary);
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--light);
+      border-radius: 5px;
+    }
+    
+    /* Sticky Call-to-Action at Bottom */
+    .cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      padding: 1.8rem 1rem;
+      text-align: center;
+      color: var(--light);
+      z-index: 150;
     }
     .cta h3 {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
     }
     .cta p {
-      font-size: 1.8rem;
-      display: flex;
+      font-size: 1.2rem;
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 15px;
+      gap: 0.5rem;
+    }
+    .cta img {
+      width: 40px;
     }
     
-    /* FOOTER */
+    /* Footer with Inverted Colors */
     footer {
-      background: #333;
+      background: #222;
       color: #aaa;
       text-align: center;
-      padding: 25px 40px;
-      font-size: 1.2rem;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
     }
-    footer .links a {
-      margin: 0 15px;
+    footer nav a {
+      margin: 0 1rem;
       color: #aaa;
-      transition: color 0.3s;
+      transition: color 0.3s ease;
     }
-    footer .links a:hover {
+    footer nav a:hover {
       color: #fff;
     }
     
-    /* RESPONSIVE ADJUSTMENTS */
-    @media (max-width: 768px) {
-      .brand {
-        font-size: 2.5rem;
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+      .hero .content h1 {
+        font-size: 3.8rem;
       }
-      .hero-content h1 {
-        font-size: 4rem;
+      .hero .content ul li {
+        font-size: 1.4rem;
       }
-      .hero-content p {
-        font-size: 1.8rem;
+      .two-col {
+        flex-direction: column;
       }
-      main .section {
-        padding: 40px 15px;
+    }
+    @media (max-width: 600px) {
+      header {
+        padding: 0.8rem 1rem;
       }
-      .cta {
-        padding: 40px 30px;
+      header .logo {
+        font-size: 1.5rem;
+      }
+      header nav a {
+        font-size: 1rem;
+      }
+      .hero .content h1 {
+        font-size: 3rem;
+      }
+      .hero .content p {
+        font-size: 1.4rem;
+      }
+      .section-content h2 {
+        font-size: 2.2rem;
+      }
+      .card h3 {
+        font-size: 1.6rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Skip link for accessibility -->
+  <!-- Skip Link -->
   <a href="#main-content" class="skip-link">Skip to content</a>
-
-  <!-- HEADER with Background Video (Navigation removed) -->
+  
+  <!-- Fixed Top Navigation -->
   <header>
-    <video class="bg-video" autoplay muted loop playsinline>
-      <source src="your-airplane-video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="brand">Neon Airlines</div>
+    <div class="logo">Neon Airlines</div>
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#services">Solutions</a>
+      <a href="#airlines">Partners</a>
+      <a href="#about">About</a>
+      <a href="#info">Info</a>
+    </nav>
   </header>
-
-  <!-- MAIN CONTENT -->
+  
+  <!-- Main Content -->
   <main id="main-content">
-    <!-- HERO SECTION -->
-    <section class="hero" id="hero" aria-label="Hero Section">
-      <div class="hero-content">
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="bg"></div>
+      <div class="content">
         <h1>Welcome to Our Reservation Desk</h1>
         <ul>
           <li>Effortless New Bookings</li>
@@ -325,90 +385,104 @@
           <li>Quick Refunds</li>
         </ul>
         <p>Enjoy special pricing on new bookings – premium travel with unbeatable offers.</p>
-        <a href="tel:8662025229" class="btn" aria-label="Call now at 866 202 5229">Call Now (866) 202-5229</a>
+        <a href="tel:8662025229" class="btn" aria-label="Call Now at (866) 202-5229">Call Now (866) 202-5229</a>
       </div>
     </section>
     
-    <!-- SERVICES SECTION -->
-    <section class="section" id="services" aria-labelledby="services-heading">
-      <h2 id="services-heading">Our Travel Solutions</h2>
-      <p>We offer a complete range of services to simplify your journey – from booking to instant support for cancellations and flight changes.</p>
-      <div class="grid">
-        <div class="card">
-          <img class="icon" src="resources/images/best-price (3).png" alt="Best Price Guarantee Icon">
-          <h3>Best Price Guarantee</h3>
-          <p>Unbeatable fares on your favorite routes.</p>
-        </div>
-        <div class="card">
-          <img class="icon" src="resources/images/call-center.png" alt="24/7 Support Icon">
-          <h3>Outstanding Support</h3>
-          <p>Immediate assistance available 24/7 with no wait.</p>
-        </div>
-        <div class="card">
-          <img class="icon" src="resources/images/user.png" alt="Secure Booking Icon">
-          <h3>Secure &amp; Reliable</h3>
-          <p>Your information is protected by top-grade security protocols.</p>
-        </div>
-      </div>
-    </section>
-    
-    <!-- AIRLINES SECTION -->
-    <section class="section" id="airlines" aria-labelledby="airlines-heading">
-      <h2 id="airlines-heading">Our Trusted Airline Partners</h2>
-      <p>Experience travel excellence with our carefully selected global airline partners.</p>
-      <ul class="airline-list">
-        <li>Air Alaska</li>
-        <li>American Airlines</li>
-        <li>British Airways</li>
-        <li>Delta Airlines</li>
-        <li>Southwest Airlines</li>
-        <li>United Airlines</li>
-      </ul>
-    </section>
-    
-    <!-- ABOUT SECTION -->
-    <section class="section about" id="about" aria-labelledby="about-heading">
-      <h2 id="about-heading">About Us</h2>
-      <p>At <strong>https://kohngaithanyaresort.com/</strong>, our team of travel experts is available around the clock to streamline your bookings. Whether you need to reserve, modify, or cancel a flight, we work to ensure your journey is smooth and unforgettable.</p>
-      <img src="/resources/images/photo-1502906179107-9a5ca87e0a19.jpeg" alt="Airplane in flight">
-    </section>
-    
-    <!-- INFO SECTION -->
-    <section class="section" id="info" aria-labelledby="info-heading">
-      <div class="grid">
-        <div class="block">
-          <h3>24/7 Customer Support</h3>
-          <p>Our dedicated agents are available anytime to assist with your bookings, cancellations, or flight changes.</p>
-        </div>
-        <div class="block">
-          <h3>Compare Flight Costs</h3>
-          <p>Discover exclusive discounts and competitive rates worldwide with our comprehensive travel deals guide.</p>
+    <!-- Services Section with Overlapping Card Grid -->
+    <section id="services">
+      <div class="section-content">
+        <h2>Our Travel Solutions</h2>
+        <p>We offer a complete range of services to simplify your journey – from booking to instant support for cancellations and flight changes.</p>
+        <div class="grid">
+          <div class="card">
+            <img src="resources/images/best-price (3).png" alt="Best Price Guarantee Icon">
+            <h3>Best Price Guarantee</h3>
+            <p>Unbeatable fares on your favorite routes.</p>
+          </div>
+          <div class="card">
+            <img src="resources/images/call-center.png" alt="24/7 Support Icon">
+            <h3>Outstanding Support</h3>
+            <p>Immediate assistance available 24/7 with no wait.</p>
+          </div>
+          <div class="card">
+            <img src="resources/images/user.png" alt="Secure Booking Icon">
+            <h3>Secure &amp; Reliable</h3>
+            <p>Your information is protected by top-grade security protocols.</p>
+          </div>
         </div>
       </div>
     </section>
     
-    <!-- DISCLAIMER SECTION -->
-    <section class="section disclaimer" aria-label="Disclaimer">
-      <p>kohngaithanyaresort.com is an independently owned travel service partner. We provide access to a range of flight products on behalf of various service providers. Final terms and conditions are set by the providers. For more details, visit <a href="https://travel.state.gov/content/travel.html" target="_blank" rel="noopener">travel.state.gov</a>.</p>
+    <!-- Airlines Section with Badge List -->
+    <section id="airlines">
+      <div class="section-content">
+        <h2>Our Trusted Airline Partners</h2>
+        <p>Experience travel excellence with our carefully selected global airline partners.</p>
+        <ul class="airline-list">
+          <li>Air Alaska</li>
+          <li>American Airlines</li>
+          <li>British Airways</li>
+          <li>Delta Airlines</li>
+          <li>Southwest Airlines</li>
+          <li>United Airlines</li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- About Section: Two-Column Layout -->
+    <section id="about">
+      <div class="section-content two-col">
+        <div class="text">
+          <h2>About Us</h2>
+          <p>At <a href="https://kohngaithanyaresort.com/" target="_blank" rel="noopener">Kohngaithanya Resort</a>, our team of travel experts is available around the clock to streamline your bookings. Whether you need to reserve, modify, or cancel a flight, we work to ensure your journey is smooth and unforgettable.</p>
+        </div>
+        <div class="image">
+          <img src="/resources/images/photo-1502906179107-9a5ca87e0a19.jpeg" alt="Airplane in flight">
+        </div>
+      </div>
+    </section>
+    
+    <!-- Info Section: Two Cards Side-by-Side -->
+    <section id="info">
+      <div class="section-content">
+        <div class="grid">
+          <div class="card">
+            <h3>24/7 Customer Support</h3>
+            <p>Our dedicated agents are available anytime to assist with your bookings, cancellations, or flight changes.</p>
+          </div>
+          <div class="card">
+            <h3>Compare Flight Costs</h3>
+            <p>Discover exclusive discounts and competitive rates worldwide with our comprehensive travel deals guide.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Disclaimer Section -->
+    <section>
+      <div class="section-content disclaimer">
+        <p>Kohngaithanyaresort.com is an independently owned travel service partner. We provide access to a range of flight products on behalf of various service providers. Final terms and conditions are set by the providers. For more details, visit <a href="https://travel.state.gov/content/travel.html" target="_blank" rel="noopener">travel.state.gov</a>.</p>
+      </div>
     </section>
   </main>
   
-  <!-- STICKY CTA SECTION (Fixed at Bottom) -->
-  <section class="cta" aria-label="Call to Action">
+  <!-- Sticky Call-to-Action -->
+  <section class="cta">
     <h3>Travel Without the Wait</h3>
     <p>
-      <img class="icon" src="/resources/images/phone (1).png" alt="Phone Icon">
+      <img src="/resources/images/phone (1).png" alt="Phone Icon">
       (866) 202-5229
     </p>
   </section>
   
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer>
-    <div class="links">
+    <nav>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
-    </div>
-    <p>&copy; 2023 <span class="company_name">Your Company Name</span>. All rights reserved.</p>
+    </nav>
+    <p>&copy; 2023 Your Company Name. All rights reserved.</p>
   </footer>
 </body>
 </html>
