@@ -56,7 +56,7 @@
 
     /* HEADER */
     header {
-      background: linear-gradient(135deg, #2980b9, #6dd5fa);
+      background: linear-gradient(135deg, #297fb9ce, #6dd5fa);
       color: #fff;
       padding: 20px 15px 30px;
       position: relative;
@@ -70,95 +70,75 @@
       font-weight: bold;
       flex: 1;
     }
-    /* Hamburger Menu Icon */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
-      margin-right: 15px;
-    }
-    .menu-toggle .bar {
-      width: 25px;
-      height: 3px;
-      background-color: #fff;
-    }
-    /* Navigation Styles */
-    header nav {
-      display: flex;
-      align-items: center;
-      flex: 2;
-      justify-content: center;
-    }
-    header nav a {
-      background: rgba(255, 255, 255, 0.3);
-      padding: 15px 25px;
-      margin: 0 10px;
-      border-radius: 30px;
-      transition: background 0.3s;
-      font-size: 1.2rem;
-    }
-    header nav a:hover {
-      background: rgba(255, 255, 255, 0.5);
-    }
     header .toll-free {
       font-size: 1.2rem;
-      background: rgba(255, 255, 255, 0.3);
       padding: 10px 20px;
       border-radius: 30px;
-      transition: background 0.3s;
       flex: 1;
       text-align: right;
     }
     header .toll-free:hover {
-      background: rgba(255, 255, 255, 0.5);
+      background: rgb(58, 58, 58);
     }
 
-    /* HERO SECTION */
+    /* HERO SECTION (Now with a red background) */
     .hero {
       background: url('/resources/images/c8180829f2d81ed539a007b820c40ee5.gif') center/cover no-repeat;
       position: relative;
-      height: 90vh;
+      min-height: 70vh; /* shortened for smaller screens */
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: #fff;
-      padding: 0 20px;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.4);
+      color: #424242;
+      padding: 40px 20px; 
     }
     .hero .content {
-      position: relative;
-      z-index: 1;
-      max-width: 900px;
-      padding: 0 15px;
+      max-width: 600px;
     }
     .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 30px;
+      font-size: 3rem;
+      margin-bottom: 20px;
     }
+    /* Two-column list in the Hero section */
+.hero ul {
+  column-count: 2;          /* Distribute list items into 2 columns */
+  column-gap: 20px;         /* Space between columns */
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  list-style: none;
+}
+
+/* Style each list item and its checkmark */
+.hero ul li {
+  color: #ffd700;           /* Distinct text color (gold) */
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 25px;       /* Room for the checkmark */
+}
+
+.hero ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #fff;             /* White checkmark for contrast */
+}
+
     .hero p {
-      font-size: 1.75rem;
-      margin-bottom: 30px;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
     }
-    /* Attention-Grabbing Call Now Button */
+    /* Call Now Button */
     .hero .btn {
-      position: relative;
-      background: #e74c3c;
+      background: #222222;
       color: #fff;
       padding: 15px 35px;
       border-radius: 50px;
       transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
-      font-size: 1.2rem;
+      font-size: 1rem;
       overflow: hidden;
+      cursor: pointer;
     }
-    /* Subtle pulse keyframes */
     @keyframes subtlePulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.05); }
@@ -169,7 +149,6 @@
       animation: subtlePulse 1s ease-in-out infinite;
       box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
     }
-    /* Ripple effect on click */
     .hero .btn::after {
       content: "";
       position: absolute;
@@ -189,23 +168,6 @@
       opacity: 0;
       transition: width 0s ease, height 0s ease;
     }
-    .hero ul {
-      list-style: none;
-      margin: 20px 0;
-      text-align: left;
-      font-size: 1.3rem;
-    }
-    .hero ul li {
-      margin-bottom: 10px;
-      padding-left: 25px;
-      position: relative;
-    }
-    .hero ul li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: #e74c3c;
-    }
 
     /* Section Base */
     .section {
@@ -215,14 +177,15 @@
       margin-bottom: 30px;
     }
     .section h2 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 30px;
       color: #2980b9;
     }
     .section p {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       max-width: 900px;
       margin: auto;
+      line-height: 1.6;
     }
 
     /* SERVICES / CUSTOMER SUPPORT SECTION */
@@ -255,6 +218,7 @@
       border-radius: 10px;
       transition: transform 0.3s;
       text-align: center;
+      background: rgba(255, 255, 255, 0.1);
     }
     .services .card:hover {
       transform: translateY(-10px);
@@ -286,13 +250,14 @@
       margin-bottom: 40px;
     }
     .airlines .header h2 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: #2980b9;
       margin-bottom: 10px;
     }
     .airlines .header p {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       color: #555;
+      line-height: 1.6;
     }
     .airlines .carousel {
       display: flex;
@@ -356,7 +321,7 @@
     }
     .about img {
       width: 100%;
-      max-width: 500px;
+      max-width: 1500px;
       border-radius: 10px;
       margin: 30px 0;
     }
@@ -386,7 +351,8 @@
       color: #2980b9;
     }
     .info .block p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
 
     /* DISCLAIMER SECTION */
@@ -403,6 +369,7 @@
       color: #2980b9;
     }
 
+ 
     /* CALL-TO-ACTION SECTION (Sticky with Animation) */
     .cta {
       background: #e74c3c;
@@ -417,12 +384,11 @@
       animation: pulse 2s infinite;
     }
     .cta h3 {
-      font-size: 2.2rem;
+      font-size: 1.rem;
       margin-bottom: 10px;
     }
     .cta p {
       font-size: 1.6rem;
-      display: flex;
       justify-content: center;
       align-items: center;
       gap: 15px;
@@ -430,14 +396,13 @@
     }
     .cta p img {
       vertical-align: middle;
-      width: 40px;
+      width: 30px;
     }
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.05); }
       100% { transform: scale(1); }
     }
-
     /* FOOTER */
     footer {
       background: #2c3e50;
@@ -463,43 +428,34 @@
       header .brand {
         font-size: 2rem;
       }
-      /* Show hamburger, hide nav by default */
-      .menu-toggle {
-        display: flex;
-      }
-      header nav {
-        width: 100%;
-        flex-direction: column;
-        display: none;
-      }
-      header nav.active {
-        display: flex;
-      }
-      header nav a {
-        margin: 10px 0;
-        width: 100%;
-        text-align: center;
-        border-radius: 0;
-      }
       header .toll-free {
         text-align: center;
         margin-top: 10px;
       }
-      /* Adjust hero section */
       .hero {
-        height: 70vh;
+        padding: 30px 20px;
       }
       .hero h1 {
-        font-size: 2.8rem;
-        margin-bottom: 20px;
+        font-size: 2rem;
+        margin-bottom: 15px;
       }
-      .hero p, .hero ul {
-        font-size: 1.2rem;
-        margin-bottom: 20px;
-      }
+      .hero ul {
+        color: #ffffff;
+  font-size: 1rem;
+}
+
       .hero .btn {
-        padding: 10px 25px;
-        font-size: 1rem;
+        font-size: 0.9rem;
+        padding: 10px 20px;
+      }
+      .cta {
+        width: 100%; /* narrower CTA on tablets */
+      }
+      .cta h3 {
+        font-size: 1.1rem;
+      }
+      .cta p {
+        font-size: 0.9rem;
       }
     }
     @media (max-width: 480px) {
@@ -509,21 +465,14 @@
       header .brand {
         font-size: 1.8rem;
       }
-      header nav a {
-        padding: 10px 15px;
+      .cta {
+        width: 100%; /* even narrower CTA on phones */
+      }
+      .cta h3 {
         font-size: 1rem;
       }
-      .services .grid,
-      .info .grid {
-        grid-template-columns: 1fr;
-      }
-      .airlines .carousel {
-        flex-direction: column;
-        align-items: center;
-      }
-      .airlines .item {
-        min-width: 100%;
-        margin-bottom: 20px;
+      .cta p {
+        font-size: 0.8rem;
       }
     }
   </style>
@@ -534,21 +483,9 @@
     <div class="loader"></div>
   </div>
   
-  <!-- HEADER -->
+  <!-- HEADER (Navigation removed) -->
   <header>
     <div class="brand">Airline Reservations</div>
-    <!-- Hamburger icon for mobile -->
-    <div class="menu-toggle" id="mobile-menu">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </div>
-    <nav id="navbar">
-      <a href="#services">Services</a>
-      <a href="#airlines">Airlines Serviced</a>
-      <a href="#about">About</a>
-      <a href="#info">Info</a>
-    </nav>
     <div class="toll-free">24/7 Toll Free</div>
   </header>
   
@@ -665,9 +602,9 @@
     </p>
   </section>
   
-  <!-- CALL-TO-ACTION SECTION (Sticky with Animation) -->
+  <!-- CALL-TO-ACTION SECTION (Smaller & Centered) -->
   <section class="cta">
-    <h3>Experience Travel Without Waiting</h3>
+    <h3>Experience Travel <br/>Without Waiting</h3>
     <p>
       <img src="/resources/images/customer-service-agent.png" alt="Phone Icon">
       (866) 202-5229
@@ -687,10 +624,6 @@
     // Remove preloader after window load
     window.addEventListener('load', () => {
       document.getElementById('preloader').style.display = 'none';
-    });
-    // Toggle mobile navigation
-    document.getElementById("mobile-menu").addEventListener("click", function(){
-      document.getElementById("navbar").classList.toggle("active");
     });
   </script>
   <script src="resources/js/main.js"></script>
