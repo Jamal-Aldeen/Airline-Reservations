@@ -1,502 +1,220 @@
 <!DOCTYPE html>
 <html lang="ar">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Airline Reservations</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" 
-    rel="stylesheet"
-  >
-  <style>
-    :root {
-      --base-bg: #121212;
-      --primary: #e0e0e0;
-      --accent: #00bcd4;
-      --card-bg: #1c1c1c;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      
-    }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: var(--base-bg);
-      color: var(--primary);
-      padding: 20px;
-      overflow-x: hidden;
-      /* Optional background image */
-      background-image: url("YOUR_IMAGE_URL_HERE");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-image: url(/resources/images/background.jpg) ;
-      background-size: cover;
-      
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    /************************************************
-     HEADER
-    ************************************************/
-    header {
-      background: rgba(18, 18, 18, 0.95);
-      top: 0;
-      z-index: 999;
-      padding: 20px 0;
-    }
-    .header-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-    .logo svg {
-      width: 40px;
-      height: 40px;
-      fill: var(--accent);
-    }
-    .toll-free {
-      padding: 10px 20px;
-      font-size: 1rem;
-      transition: background 0.4s ease, color 0.4s ease;
-      border: 2px solid var(--accent);
-      border-radius: 50px;
-    }
-    .toll-free:hover {
-      background: var(--accent);
-      color: var(--base-bg);
-    }
-
-    /************************************************
-     MAIN LAYOUT (GRID)
-    ************************************************/
-    main {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      grid-gap: 20px;
-    }
-
-    .card {
-      background-color: var(--card-bg);
-      padding: 40px;
-      min-height: 200px;
-      border-radius: 6px;
-    }
-
-    /************************************************
-     HERO (Reservation Desk)
-    ************************************************/
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #fff;
-    }
-    .hero ul {
-      list-style: none;
-      margin-top: 20px;
-    }
-    .hero li {
-      margin: 12px 0;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .hero li svg {
-      width: 24px;
-      height: 24px;
-      fill: var(--accent);
-    }
-
-    /************************************************
-     WAIT TIME
-    ************************************************/
-    /* Keyframes for a pulsating effect */
-    @keyframes pulse {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-
-    /* Wait Time section container: center everything */
-    .wait-time {
-      text-align: center;
-    }
-    .wait-time span {
-      display: block;
-      font-size: 1.2rem;
-    }
-    .wait-time strong {
-      display: block;
-      margin: 5px 0 15px;
-      font-size: 1.4rem;
-    }
-    .waittime-action p {
-      margin-bottom: 15px;
-    }
-
-    /* The call button with a pulsating animation */
-    .call-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 28px;
-      margin: 20px auto;         /* centers the button horizontally */
-      background: transparent;
-      border: 2px solid var(--accent);
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--accent);
-      transition: background 0.4s ease, color 0.4s ease;
-      cursor: pointer;
-      text-decoration: none;
-      animation: pulse 2s infinite; /* add the pulsating effect */
-    }
-    .call-btn:hover {
-      background: var(--accent);
-      color: var(--base-bg);
-    }
-
-    /* Icon row styling */
-    .icon-row {
-      margin-top: 20px;
-      display: flex;             /* use flex to center horizontally */
-      justify-content: center;   /* horizontally center icons */
-      gap: 15px;
-      align-items: center;
-    }
-    /* Icon styling */
-    .icon-row img {
-      border-radius: 6px;
-      background-color: #ffffff3f;
-      width: 95px;
-      height: 95px;
-      object-fit: contain;
-    }
-
-    /************************************************
-     AIRLINES
-    ************************************************/
-    .airlines h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #fff;
-    }
-    .airlines-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .airline-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-    .airline-item:hover {
-      transform: translateY(-3px);
-    }
-    .number {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      background: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: var(--base-bg);
-    }
-
-    /************************************************
-     ABOUT
-    ************************************************/
-    .about h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #fff;
-    }
-    .about hr {
-      width: 80px;
-      margin: 20px 0;
-      border: 2px solid var(--accent);
-    }
-
-    /************************************************
-     SUPPORT
-    ************************************************/
-    .support h2 {
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-      color: var(--accent);
-    }
-    .support p {
-      font-size: 1rem;
-      margin-bottom: 10px;
-    }
-
-    /************************************************
-     DISCLAIMER
-    ************************************************/
-    .disclaimer p {
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-
-    /************************************************
-     CTA (BOTTOM BAR)
-    ************************************************/
-    .cta {
-      background: var(--accent);
-      text-align: center;
-      padding: 30px 20px;
-      color: #121212;
-      font-weight: 700;
-      position: sticky;
-      bottom: 0;
-      z-index: 999;
-      box-shadow: 0 -4px 10px rgba(0,0,0,0.4);
-    }
-    .cta h3 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
-    .cta .contact {
-      display: inline-flex;
-      align-items: center;
-      gap: 15px;
-      font-size: 1.5rem;
-    }
-    .cta img {
-      width: 40px;
-      height: 40px;
-    }
-
-    /************************************************
-     FOOTER
-    ************************************************/
-    footer {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 30px 20px;
-      text-align: center;
-      font-size: 1rem;
-      color: var(--primary);
-    }
-    .footer-links {
-      display: inline-flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 15px;
-    }
-  </style>
-</head>
-<body>
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
-      <a href="#" class="logo">
-        <svg viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                d="M12 19l9 2-9-18-9 18 9-2v-8"/>
-        </svg>
-        Airline Reservations
-      </a>
-      <div class="toll-free">
-        <svg viewBox="0 0 24 24" width="20" height="20">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-        </svg>
-        24/7 Toll Free
-      </div>
-    </div>
-  </header>
-  
-  <!-- MAIN CONTENT -->
-  <main>
-    <!-- Reservation Desk (Hero) WITHOUT the call button -->
-  <section class="card hero">
-  <h1>Reservation Desk</h1>
-  <ul>
-    <li>
-      <svg viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M5 13l4 4L19 7"/>
-        </svg>
-        New Bookings
-    </li>
-    <li>
-      <svg viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M5 13l4 4L19 7"/>
-        </svg>
-        Cancellations
-    </li>
-    <li>
-      <svg viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M5 13l4 4L19 7"/>
-        </svg>
-        Changes
-    </li>
-    <li>
-      <svg viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M5 13l4 4L19 7"/>
-        </svg>
-        Refunds
-    </li>
-  </ul>
-</section>
-
-  
-    <!-- Wait Time section WITH the call button and icons -->
-    <section class="card wait-time">
-      <span>Current Wait Time:</span>
-      <strong>Less than 10 seconds</strong>
-      
-      <div class="waittime-action">
-        <p>Special Prices For New Booking until...</p>
-        
-        <!-- Pulsating Call Button -->
-        <a href="tel:8662025229" class="call-btn">
-          <svg viewBox="0 0 24 24" width="24" height="24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-          </svg>
-          Call Now (866) 202-5229
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Airline Reservations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/resources/css/style.css" />
+    <script>
+      function hidePopup() {
+        document.getElementById("popup").style.display = "none";
+        document.querySelector(".popup-overlay").style.display = "none";
+      }
+    </script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="header-container">
+        <a href="#" class="logo">
+          <img src="/resources/images/logo1.png" alt="Logo" width="40" height="40" />
+          WingWay
         </a>
-        
-        <!-- Icon row under the button -->
-        <div class="icon-row">
-          <img src="resources/images/price.gif" alt="Best Price">
-          <img src="resources/images/helpdesk.gif" alt="Help Desk">
-          <img src="resources/images/shield.gif" alt="Secure">
+        <div class="toll-free">
+          (866) 202-5229
         </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <!-- Reservation Desk (Hero) WITHOUT the call button -->
+      <section class="card hero">
+        <h1>Reservation Desk</h1>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5 13l4 4L19 7" />
+            </svg>
+            New Bookings
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5 13l4 4L19 7" />
+            </svg>
+            Cancellations
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5 13l4 4L19 7" />
+            </svg>
+            Changes
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5 13l4 4L19 7" />
+            </svg>
+            Refunds
+          </li>
+        </ul>
+      </section>
+
+      <!-- Wait Time section WITH the call button and icons -->
+      <section class="card wait-time">
+        <span>Current Wait Time:</span>
+        <strong>Less than 10 seconds</strong>
+
+        <div class="waittime-action">
+          <p>Special Prices For New Booking until...</p>
+
+          <!-- Pulsating Call Button -->
+          <a href="tel:8662025229" class="call-btn">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            Call Now (866) 202-5229
+          </a>
+
+          <!-- Icon row under the button -->
+          <div class="icon-row">
+            <img src="resources/images/price.gif" alt="Best Price" />
+            <img src="resources/images/helpdesk.gif" alt="Help Desk" />
+            <img src="resources/images/shield.gif" alt="Secure" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Airlines Serviced -->
+      <section class="card airlines">
+        <h2>
+          <svg viewBox="0 0 24 24" width="28" height="28">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+          AIRLINES SERVICED
+        </h2>
+        <div class="airlines-grid">
+          <div class="airline-item">
+            <div class="number">01</div>
+            <h3>Air Alaska</h3>
+          </div>
+          <div class="airline-item">
+            <div class="number">02</div>
+            <h3>American Airlines</h3>
+          </div>
+          <div class="airline-item">
+            <div class="number">03</div>
+            <h3>British Airways</h3>
+          </div>
+          <div class="airline-item">
+            <div class="number">04</div>
+            <h3>Delta Airlines</h3>
+          </div>
+          <div class="airline-item">
+            <div class="number">05</div>
+            <h3>South West Airlines</h3>
+          </div>
+          <div class="airline-item">
+            <div class="number">06</div>
+            <h3>United Airlines</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- Our Reservations Desk -->
+      <section class="card about">
+        <h2>
+          <svg viewBox="0 0 24 24" width="28" height="28">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Our Reservations Desk
+        </h2>
+        <hr />
+        <p>
+          <strong style="color: var(--accent);">https://kohngaithanyaresort.com/</strong>
+          offers 24/7 flight reservation support. Our experts are ready to assist with bookings, changes, cancellations, and refunds.
+        </p>
+      </section>
+
+      <!-- 24/7 CUSTOMER SUPPORT & Compare Flight Costs -->
+      <section class="card support">
+        <h2>24/7 CUSTOMER SUPPORT</h2>
+        <p>Our team is available around the clock to assist with reservations, cancellations, and flight changes.</p>
+        <h2>COMPARE FLIGHT COSTS</h2>
+        <p>Discover the best deals by comparing prices from multiple carriers.</p>
+      </section>
+
+      <!-- Disclaimer -->
+      <section class="card disclaimer">
+        <p>
+          kohngaithanyaresort.com acts as a travel agent partner for various airlines and travel providers.
+          We are not liable for independent service providers. Check advisories at
+          <a href="https://travel.state.gov/content/travel.html" target="_blank" rel="noopener">
+            travel.state.gov
+          </a>.
+        </p>
+      </section>
+    </main>
+
+    <!-- CTA (BOTTOM BAR) -->
+    <section class="cta">
+      <h3>NO HOLD TIMES: CALL NOW</h3>
+      <div class="contact">
+        <img src="resources/images/24-hours-support.gif" alt="24/7 Support" />
+        (866) 202-5229
       </div>
     </section>
 
-    <!-- Airlines Serviced -->
-    <section class="card airlines">
-      <h2>
-        <svg viewBox="0 0 24 24" width="28" height="28">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-        </svg>
-        AIRLINES SERVICED
-      </h2>
-      <div class="airlines-grid">
-        <div class="airline-item">
-          <div class="number">01</div>
-          <h3>Air Alaska</h3>
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-links">
+        <a href="/pages/privacy.html">Privacy Policy</a>
+        <span>|</span>
+        <a href="/pages/terms.html">Terms of Service</a>
+      </div>
+      <p>&copy; 2023 All rights reserved</p>
+    </footer>
+
+    <!-- Popup Markup -->
+    <div class="popup-overlay"></div>
+    <div class="popup" id="popup">
+      <button onClick="hidePopup()" class="popup-close">&times;</button>
+      <div class="popup-content">
+        <div class="popup-title">FLYNOW RESERVATIONS</div>
+        <div class="popup-phone-number">(866) 202-5229</div>
+        <div class="popup-text">
+          Reservations, Cancellations &amp; Flight Changes
         </div>
-        <div class="airline-item">
-          <div class="number">02</div>
-          <h3>American Airlines</h3>
+        <p class="popup-action-text font-bold text-lg text-gray-700">15% OFF</p>
+        <div class="popup-call-circle">
+          <svg width="39" height="30" viewBox="0 0 27 27" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z"
+            ></path>
+          </svg>
         </div>
-        <div class="airline-item">
-          <div class="number">03</div>
-          <h3>British Airways</h3>
-        </div>
-        <div class="airline-item">
-          <div class="number">04</div>
-          <h3>Delta Airlines</h3>
-        </div>
-        <div class="airline-item">
-          <div class="number">05</div>
-          <h3>South West Airlines</h3>
-        </div>
-        <div class="airline-item">
-          <div class="number">06</div>
-          <h3>United Airlines</h3>
+        <p class="text-gray-700 mb-2">Click to Call</p>
+        <div class="popup-images">
+          <img src="resources/images/united-airlines.jpg" alt="United Airlines" />
+          <img src="resources/images/american-airlines.png" alt="American Airlines" />
+          <img src="resources/images/delta.png" alt="Delta Airlines" />
         </div>
       </div>
-    </section>
-
-    <!-- Our Reservations Desk -->
-    <section class="card about">
-      <h2>
-        <svg viewBox="0 0 24 24" width="28" height="28">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-        </svg>
-        Our Reservations Desk
-      </h2>
-      <hr>
-      <p>
-        <strong style="color: var(--accent);">https://kohngaithanyaresort.com/</strong> 
-        offers 24/7 flight reservation support. Our experts are ready to assist with bookings, changes, cancellations, and refunds.
-      </p>
-    </section>
-
-    <!-- 24/7 CUSTOMER SUPPORT & Compare Flight Costs -->
-    <section class="card support">
-      <h2>24/7 CUSTOMER SUPPORT</h2>
-      <p>Our team is available around the clock to assist with reservations, cancellations, and flight changes.</p>
-      <h2>COMPARE FLIGHT COSTS</h2>
-      <p>Discover the best deals by comparing prices from multiple carriers.</p>
-    </section>
-
-    <!-- Disclaimer -->
-    <section class="card disclaimer">
-      <p>
-        kohngaithanyaresort.com acts as a travel agent partner for various airlines and travel providers. 
-        We are not liable for independent service providers. Check advisories at 
-        <a href="https://travel.state.gov/content/travel.html" target="_blank" rel="noopener">
-          travel.state.gov
-        </a>.
-      </p>
-    </section>
-  </main>
-
-  <!-- CTA (BOTTOM BAR) -->
-  <section class="cta">
-    <h3>NO HOLD TIMES: CALL NOW</h3>
-    <div class="contact">
-      <img src="resources/images/24-hours-support.gif" alt="24/7 Support">
-      (866) 202-5229
+      <div class="popup-bottom text-center py-2">
+        <img alt="Ringing phone" src="resources/images/ringing-phone.gif" width="44" height="44" />
+      </div>
     </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-links">
-      <a href="privacy.html">Privacy Policy</a>
-      <span>|</span>
-      <a href="terms.html">Terms of Service</a>
-    </div>
-    <p>&copy; 2023 All rights reserved</p>
-  </footer>
-</body>
+  </body>
 </html>
