@@ -4,38 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>American Airlines - Travel Information</title>
+    <link rel="stylesheet" href="resources/css/styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.12.0/cdn.min.js" defer></script>
-    <style>
-        /* Sticky CTA Section */
-        .sticky-cta {
-            position: sticky;
-            bottom: 0;
-            z-index: 1000;
-        }
-
-        /* Glow Animation */
-        @keyframes glow {
-            0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
-            50% { box-shadow: 0 0 20px rgba(255, 255, 255, 1); }
-            100% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
-        }
-        .animate-glow {
-            animation: glow 1.5s infinite;
-        }
-
-        /* Pulse Animation */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        .animate-pulse {
-            animation: pulse 1.5s infinite;
-        }
-    </style>
 </head>
-<body class="font-sans bg-slate-50 text-slate-800">
+<body class="bg-gray-50">
+
     <!-- Announcement Bar -->
     <div class="bg-[#002366] text-white text-center py-2 px-4">
         <p class="text-sm">Fly with confidence: Enhanced cleaning protocols and flexible travel options.</p>
@@ -285,5 +259,34 @@
             <p class="text-sm">&copy; 2023 American Airlines. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Popup Script and Markup -->
+    <script>
+        function hidePopup() {
+            document.getElementById("popup").style.display = "none";
+            document.querySelector(".popup-overlay").style.display = "none";
+        }
+    </script>
+
+    <div class="popup-overlay bg-white"></div>
+    <div class="popup" id="popup">
+        <button onClick="hidePopup()" class="popup-close">&times;</button>
+        <div class="popup-content">
+            <div class="popup-title">AIRLINES RESERVATIONS</div>
+            <div class="popup-phone-number">1-800-221-1212</div>
+            <div class="popup-text">
+                Reservations, Cancellations &amp; Flight Changes
+            </div>
+            <div class="popup-click-to-call">
+                <p class="first-popup-action-text">15% OFF</p>
+                <div class="popup-call-circle">
+                    <svg width="39" height="30" viewBox="0 0 27 27" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z"></path>
+                    </svg>
+                </div>
+                <p class="popup-action-text">Click to Call</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
