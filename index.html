@@ -5,23 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>British Airways - Fly with Confidence</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Sticky CTA Button */
+        .sticky-cta {
+            position: sticky;
+            bottom: 0;
+            z-index: 1000;
+        }
+
+        /* Animation for Call Button */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .animate-pulse {
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
 </head>
 <body class="font-sans">
-   <!-- Main Header -->
+    <!-- Main Header -->
     <header class="bg-white py-4 shadow-md">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
-                    <!-- <svg class="h-12 w-auto text-[#2A5DB0]" viewBox="0 0 100 30" fill="currentColor">
-                        <rect x="10" y="5" width="80" height="20" rx="2" />
-                        <path d="M20 15 H80" stroke="white" stroke-width="2" />
-                    </svg> -->
                     <img src="resources/images/british-airways.png" alt="logo" class="h-12 w-auto text-[#2A5DB0]">
                     <span class="ml-3 font-bold text-2xl text-[#2A5DB0]">British Airways</span>
                 </div>
 
-                <a href="tel:03444930787" class="hidden md:block bg-[#C60C30] text-white px-5 py-2 rounded font-medium hover:bg-[#A0071F] transition">
-                    0344 493 0787
+                <a href="tel:03444930787" class="hidden md:block bg-[#C60C30] text-white px-5 py-2 rounded font-medium hover:bg-[#A0071F] transition text-lg">
+                   Contact: 0344 493 0787
                 </a>
                 <button class="md:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -32,62 +55,65 @@
         </div>
     </header>
 
-<!-- Hero Banner -->
-<section class="relative h-[600px]">
-    <!-- Background Gradient and Image -->
-    <div class="absolute inset-0 bg-gradient-to-r from-[#003366]/80 to-[#000]/60 z-10"></div>
-    <div class="absolute inset-0 bg-[url('/api/placeholder/1200/600')] bg-cover bg-center"></div>
+    <!-- Hero Banner -->
+    <section class="relative h-[600px] animate-fade-in">
+        <!-- Background Gradient and Image -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#003366]/80 to-[#000]/60 z-10"></div>
+        <div class="absolute inset-0 bg-[url('resources/images/British-Airways.jpg')] bg-cover bg-center"></div>
 
-    <!-- Content Container -->
-    <div class="relative z-20 h-full flex items-center">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center">
-                <!-- Hero Text -->
-                <div class="max-w-lg">
-                    <h1 class="text-5xl font-bold text-white mb-6 leading-tight">Discover the world with British style</h1>
-                    <p class="text-xl text-white/90 mb-8">Fly to over 200 destinations worldwide with award-winning service and British hospitality</p>
-                </div>
+        <!-- Content Container -->
+        <div class="relative z-20 h-full flex items-center">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center">
+                    <!-- Hero Text -->
+                    <div class="max-w-lg">
+                        <h1 class="text-5xl font-bold text-white mb-6 leading-tight">Discover the world with British style</h1>
+                        <p class="text-xl text-white/90 mb-8">Fly to over 200 destinations worldwide with award-winning service and British hospitality</p>
+                        <a href="tel:03444930787" class="bg-[#C60C30] text-white px-8 py-4 rounded-full font-bold text-center hover:bg-[#A0071F] transition shadow-lg animate-pulse">
+                            Call Now: <span class="text-2xl">0344 493 0787</span>
+                        </a>
+                    </div>
 
-                <!-- Booking Widget -->
-                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 w-full max-w-md">
-                    <h2 class="text-2xl font-bold text-[#2A5DB0] mb-6">Plan your journey</h2>
-                    <div class="bg-[#E6EEF8] p-6 rounded">
-                        <h3 class="text-xl font-bold text-[#2A5DB0] mb-4">Need assistance?</h3>
-                        <p class="mb-4">Our dedicated team is available 24/7 to help with bookings, changes, or special requests.</p>
-                        <ul class="space-y-4">
-                            <li class="flex items-start space-x-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#2A5DB0] mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                <span>Special fares for Executive Club members</span>
-                            </li>
-                            <li class="flex items-start space-x-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#2A5DB0] mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                <span>Flexible booking options available</span>
-                            </li>
-                            <li class="flex items-start space-x-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#2A5DB0] mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                <span>Special assistance for passengers with disabilities</span>
-                            </li>
-                        </ul>
-                        <div class="mt-6">
-                            <a href="tel:03444930787" class="flex items-center justify-center space-x-2 bg-white text-[#2A5DB0] py-3 px-4 rounded font-medium hover:bg-gray-100 transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                                </svg>
-                                <span>Call us at 0344 493 0787</span>
-                            </a>
+                    <!-- Booking Widget -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 w-full max-w-md">
+                        <h2 class="text-2xl font-bold text-[#2A5DB0] mb-6">Plan your journey</h2>
+                        <div class="bg-[#E6EEF8] p-6 rounded">
+                            <h3 class="text-xl font-bold text-[#2A5DB0] mb-4">Need assistance?</h3>
+                            <p class="mb-4">Our dedicated team is available 24/7 to help with bookings, changes, or special requests.</p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start space-x-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#2A5DB0] mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <span>Special fares for Executive Club members</span>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#2A5DB0] mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <span>Flexible booking options available</span>
+                                </li>
+                                <li class="flex items-start space-x-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#2A5DB0] mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <span>Special assistance for passengers with disabilities</span>
+                                </li>
+                            </ul>
+                            <div class="mt-6">
+                                <a href="tel:03444930787" class="flex items-center justify-center space-x-2 bg-white text-[#2A5DB0] py-3 px-4 rounded font-medium hover:bg-gray-100 transition">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                    </svg>
+                                    <span>Call us at 0344 493 0787</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Destinations Showcase -->
     <section class="py-16">
@@ -195,19 +221,19 @@
         </div>
     </section>
 
-    <!-- Mobile Call Button -->
-    <div class="fixed bottom-0 left-0 right-0 bg-[#C60C30] p-4 md:hidden z-50">
-        <a href="tel:03444930787" class="flex items-center justify-center space-x-2 text-white font-bold text-lg">
+    <!-- Sticky CTA Button -->
+    <div class="sticky-cta bg-[#C60C30] text-white py-4 text-center">
+        <div class="container mx-auto flex items-center justify-center space-x-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
             </svg>
-            <span>Call Now: 0344 493 0787</span>
-        </a>
+            <span class="text-2xl font-bold">Call Now: 0344 493 0787</span>
+        </div>
     </div>
 
     <!-- Footer -->
     <footer class="bg-[#00254C] text-white pb-6">        
-        <div class=" pt-6 text-center">
+        <div class="pt-6 text-center">
             <p class="text-sm text-white/80">&copy; 2023 British Airways. All rights reserved.</p>
             <div class="mt-2 flex justify-center space-x-4">
                 <a href="#" class="text-sm text-white/80 hover:text-white">Privacy Policy</a>
