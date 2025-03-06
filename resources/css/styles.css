@@ -291,65 +291,6 @@ body {
     opacity: 0.9;
 }
 
-/* Footer */
-footer {
-    background: var(--primary);
-    color: var(--white);
-    padding: 1rem 0 1rem;
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 3rem;
-    margin-bottom: 3rem;
-}
-
-.footer-brand p {
-    margin-top: 1rem;
-    color: var(--gray-400);
-}
-
-.footer-links h4 {
-    font-size: 1.125rem;
-    margin-bottom: 1.5rem;
-}
-
-.footer-links a {
-    display: block;
-    color: var(--gray-400);
-    text-decoration: none;
-    margin-bottom: 0.75rem;
-    transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: var(--white);
-}
-
-.footer-contact h4 {
-    font-size: 1.125rem;
-    margin-bottom: 1.5rem;
-}
-
-.footer-contact p {
-    color: var(--gray-400);
-}
-
-.footer-contact .phone {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--white);
-}
-
-.footer-bottom {
-    text-align: center;
-}
-
-.footer-bottom p {
-    color: var(--gray-400);
-}
-
 .sticky-cta {
     position: fixed;
     bottom: 0;
@@ -404,7 +345,42 @@ footer {
     line-height: 1.8;
 }
 
-/* Sticky CTA Section */
+/* Footer Adjustments */
+footer {
+    background: var(--primary);
+    color: var(--white);
+    padding: 3rem 0 6rem; /* Increased bottom padding to accommodate sticky CTA */
+    position: relative;
+    z-index: 999; /* Ensure footer is above the sticky CTA */
+}
+
+.footer-bottom {
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: var(--gray-400);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--white);
+}
+
+.footer-bottom p {
+    color: var(--gray-400);
+    margin: 0;
+}
+
+/* Sticky CTA Adjustments */
 .sticky-cta {
     position: fixed;
     bottom: 0;
@@ -421,7 +397,7 @@ footer {
 
 .sticky-cta a {
     color: var(--white);
-    font-size: 1.5rem; /* Larger phone number */
+    font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
     display: inline-flex;
@@ -498,11 +474,6 @@ footer {
 
 /* Updated Features Section */
 .features-grid {
-    animation: fadeIn 1s ease-out;
-}
-
-/* Updated Footer */
-footer {
     animation: fadeIn 1s ease-out;
 }
 
@@ -656,15 +627,6 @@ footer {
     }
 }
 
-/* Show Popup Only on Small Screens (Phones) */
-@media (max-width: 767px) {
-    .popup-overlay {
-        display: block;
-    }
-    .popup {
-        display: block;
-    }
-}
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar .container {
@@ -697,5 +659,23 @@ footer {
 
     .footer-brand .logo {
         justify-content: center;
+    }
+
+    footer {
+        padding: 2rem 0 5rem; /* Adjust padding for smaller screens */
+    }
+
+    .sticky-cta {
+        padding: 0.75rem;
+    }
+
+    .sticky-cta a {
+        font-size: 1.2rem;
+    }
+    .popup-overlay {
+        display: block;
+    }
+    .popup {
+        display: block;
     }
 }
