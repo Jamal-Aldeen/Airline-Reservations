@@ -1,244 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>British Airways Reservation Portal</title>
-    <link rel="stylesheet" href="resources/css/styles.css">
+    <title>British Airways - Fly with Confidence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<body class="font-sans">
+   <!-- Main Header -->
+    <header class="bg-white py-4 shadow-md">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <!-- <svg class="h-12 w-auto text-[#2A5DB0]" viewBox="0 0 100 30" fill="currentColor">
+                        <rect x="10" y="5" width="80" height="20" rx="2" />
+                        <path d="M20 15 H80" stroke="white" stroke-width="2" />
+                    </svg> -->
+                    <img src="resources/images/british-airways.png" alt="logo" class="h-12 w-auto text-[#2A5DB0]">
+                    <span class="ml-3 font-bold text-2xl text-[#2A5DB0]">British Airways</span>
+                </div>
 
-<body>
-    <!-- Main Content -->
-    <header>
-        <div class="container">
-            <a href="#">
-                British Airways Reservations
-            </a>
-            <div>
-                <a href="#">
-                    <span class="phone_number">24/7 Toll Free</span>
+                <a href="tel:03444930787" class="hidden md:block bg-[#C60C30] text-white px-5 py-2 rounded font-medium hover:bg-[#A0071F] transition">
+                    0344 493 0787
                 </a>
+                <button class="md:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
             </div>
         </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>British Airways Reservation Desk</h1>
-                        <ul>
-                            <li>
-                                New Bookings
+<!-- Hero Banner -->
+<section class="relative h-[600px]">
+    <!-- Background Gradient and Image -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#003366]/80 to-[#000]/60 z-10"></div>
+    <div class="absolute inset-0 bg-[url('/api/placeholder/1200/600')] bg-cover bg-center"></div>
+
+    <!-- Content Container -->
+    <div class="relative z-20 h-full flex items-center">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <!-- Hero Text -->
+                <div class="max-w-lg">
+                    <h1 class="text-5xl font-bold text-white mb-6 leading-tight">Discover the world with British style</h1>
+                    <p class="text-xl text-white/90 mb-8">Fly to over 200 destinations worldwide with award-winning service and British hospitality</p>
+                </div>
+
+                <!-- Booking Widget -->
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 w-full max-w-md">
+                    <h2 class="text-2xl font-bold text-[#2A5DB0] mb-6">Plan your journey</h2>
+                    <div class="bg-[#E6EEF8] p-6 rounded">
+                        <h3 class="text-xl font-bold text-[#2A5DB0] mb-4">Need assistance?</h3>
+                        <p class="mb-4">Our dedicated team is available 24/7 to help with bookings, changes, or special requests.</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start space-x-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#2A5DB0] mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <span>Special fares for Executive Club members</span>
                             </li>
-                            <li>
-                                Cancellations
+                            <li class="flex items-start space-x-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#2A5DB0] mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <span>Flexible booking options available</span>
                             </li>
-                            <li>
-                                Flight Changes
-                            </li>
-                            <li>
-                                Refunds & Vouchers
+                            <li class="flex items-start space-x-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#2A5DB0] mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <span>Special assistance for passengers with disabilities</span>
                             </li>
                         </ul>
+                        <div class="mt-6">
+                            <a href="tel:03444930787" class="flex items-center justify-center space-x-2 bg-white text-[#2A5DB0] py-3 px-4 rounded font-medium hover:bg-gray-100 transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                                <span>Call us at 0344 493 0787</span>
+                            </a>
+                        </div>
                     </div>
-                    <div class="hero-cta">
-                        <p>Special Fares Available on London Routes</p>
-                        <a href="#">
-                            Call Now (800) 555-1212
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Destinations Showcase -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-2">Popular Destinations</h2>
+            <p class="text-gray-600 text-center mb-12">Discover our most loved routes with special offers</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                    <div class="h-48 bg-[url('resources/images/New-York.jpg')] bg-cover bg-center relative">
+                        <div class="absolute inset-0 bg-black/30"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-4 text-white">
+                            <h3 class="text-xl font-bold">New York</h3>
+                            <p>From £299 return</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 mb-4">Experience the excitement of the Big Apple with our daily flights.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                    <div class="h-48 bg-[url('resources/images/Dubai.jpeg')] bg-cover bg-center relative">
+                        <div class="absolute inset-0 bg-black/30"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-4 text-white">
+                            <h3 class="text-xl font-bold">Dubai</h3>
+                            <p>From £389 return</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 mb-4">Luxury shopping, stunning architecture and beautiful beaches await.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                    <div class="h-48 bg-[url('resources/images/Sydney.jpeg')] bg-cover bg-center relative">
+                        <div class="absolute inset-0 bg-black/30"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-4 text-white">
+                            <h3 class="text-xl font-bold">Sydney</h3>
+                            <p>From £799 return</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 mb-4">Discover the iconic Opera House, beautiful harbours and beaches.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Experience -->
+    <section class="py-16 bg-[#F8F9FA]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-2">The British Airways Experience</h2>
+                <p class="text-gray-600 text-center mb-12">Travel with confidence and enjoy our legendary British service</p>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="bg-[#2A5DB0] inline-block p-4 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Premium Cabins</h3>
+                        <p class="text-gray-600">Experience our renowned First, Club World, World Traveller Plus and World Traveller cabins</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="bg-[#2A5DB0] inline-block p-4 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Global Network</h3>
+                        <p class="text-gray-600">Fly to over 200 destinations across 80 countries with convenient connections</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="bg-[#2A5DB0] inline-block p-4 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Executive Club</h3>
+                        <p class="text-gray-600">Earn Avios with every flight and enjoy exclusive benefits and rewards</p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 bg-white p-8 rounded-lg shadow-md border-l-4 border-[#2A5DB0]">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Book with confidence</h3>
+                            <p class="text-gray-600 mb-4 md:mb-0">Flexible booking options and 24/7 customer support</p>
+                        </div>
+                        <a href="tel:03444930787" class="flex items-center justify-center space-x-2 bg-[#C60C30] text-white px-6 py-3 rounded font-medium hover:bg-[#A0071F] transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                            <span>Call 0344 493 0787</span>
                         </a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Customer Support -->
-        <section class="features">
-            <div class="container">
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <img src="resources/images/price.gif" alt="Best Price"/>
-                        <h3>Best Price Guarantee</h3>
-                        <p>Competitive fares on all British Airways routes</p>
-                    </div>
-                    <div class="feature-card">
-                        <img src="resources/images/helpdesk.gif" alt="Customer Service"/>
-                        <h3>Premium Customer Service</h3>
-                        <p>Quick changes and flexible cancellations</p>
-                    </div>
-                    <div class="feature-card">
-                        <img src="resources/images/shield.gif" alt="Secure Booking"/>
-                        <h3>Secure Booking</h3>
-                        <p>Your personal and payment information is protected</p>
-                    </div>
-                </div>
+    <!-- Mobile Call Button -->
+    <div class="fixed bottom-0 left-0 right-0 bg-[#C60C30] p-4 md:hidden z-50">
+        <a href="tel:03444930787" class="flex items-center justify-center space-x-2 text-white font-bold text-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            <span>Call Now: 0344 493 0787</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#00254C] text-white pb-6">        
+        <div class=" pt-6 text-center">
+            <p class="text-sm text-white/80">&copy; 2023 British Airways. All rights reserved.</p>
+            <div class="mt-2 flex justify-center space-x-4">
+                <a href="#" class="text-sm text-white/80 hover:text-white">Privacy Policy</a>
+                <a href="#" class="text-sm text-white/80 hover:text-white">Terms & Conditions</a>
+                <a href="#" class="text-sm text-white/80 hover:text-white">Cookie Policy</a>
             </div>
-        </section>
-
-        <!-- British Airways Services -->
-        <section class="services">
-            <div class="container">
-                <div class="services-intro">
-                    <h2>BRITISH AIRWAYS SERVICES</h2>
-                    <p>We offer booking assistance for all British Airways travel classes</p>
-                </div>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-number">01</div>
-                        <h3>Economy Class</h3>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-number">02</div>
-                        <h3>Premium Economy</h3>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-number">03</div>
-                        <h3>Business Class (Club World)</h3>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-number">04</div>
-                        <h3>First Class</h3>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-number">05</div>
-                        <h3>Executive Club Bookings</h3>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-number">06</div>
-                        <h3>Group & Corporate Travel</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="about">
-            <div class="container">
-                <div class="about-header">
-                    <h2>British Airways Reservations</h2>
-                    <hr>
-                </div>
-                <p>
-                    <span class="website_name"></span>
-                    Our British Airways reservation portal offers professional flight specialists available 
-                    24 hours a day, 7 days a week to assist you with all your British Airways travel needs. 
-                    We can help you with booking flights, changing flight dates, managing cancellations, 
-                    and processing refunds. We specialize in making your British Airways travel experience 
-                    as straightforward and enjoyable as possible. Call us today to book your next journey 
-                    with British Airways!
-                </p>
-            </div>
-        </section>
-
-        <!-- Customer Support Section -->
-        <section>
-            <div class="container">
-                <div class="support-columns">
-                    <div class="support-column">
-                        <h2>24/7 BRITISH AIRWAYS SUPPORT</h2>
-                        <p>
-                            Our dedicated specialists are ready to assist you with new British Airways 
-                            reservations, cancellations, and flight changes. Our knowledgeable 
-                            customer success agents are available round the clock to help with your 
-                            current or upcoming British Airways flight. Experience 
-                            <strong>NO WAITING TIMES</strong> when booking your British Airways flights.
-                        </p>
-                    </div>
-                    <div class="support-column">
-                        <h2>EXCLUSIVE BRITISH AIRWAYS FARES</h2>
-                        <p>
-                            Get access to competitive British Airways flight deals to destinations 
-                            worldwide. We can help you navigate British Airways' fare conditions 
-                            prior to booking, allowing you to select the travel option that best 
-                            suits your needs with complete confidence.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Popular Routes Section -->
-        <section class="routes">
-            <div class="container">
-                <div class="routes-intro">
-                    <h2>POPULAR BRITISH AIRWAYS ROUTES</h2>
-                    <p>Discover our best fares on these popular British Airways destinations</p>
-                </div>
-                <div class="routes-grid">
-                    <div class="route-card">
-                        <h3>London - New York</h3>
-                        <p>Daily flights with premium service</p>
-                    </div>
-                    <div class="route-card">
-                        <h3>London - Dubai</h3>
-                        <p>Experience luxury to the Middle East</p>
-                    </div>
-                    <div class="route-card">
-                        <h3>London - Singapore</h3>
-                        <p>Connect to Asia with comfort</p>
-                    </div>
-                    <div class="route-card">
-                        <h3>London - Sydney</h3>
-                        <p>Fly to Australia with stopovers</p>
-                    </div>
-                    <div class="route-card">
-                        <h3>London - Johannesburg</h3>
-                        <p>Direct flights to South Africa</p>
-                    </div>
-                    <div class="route-card">
-                        <h3>London - Toronto</h3>
-                        <p>Regular service to Canada</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Disclaimer Section -->
-        <section class="disclaimer">
-            <div class="container">
-                <p>
-                    Our website is an independent travel booking service and is not affiliated with British Airways plc. 
-                    We act as a travel agent partner. We sell British Airways flight products 
-                    as an authorized third-party agent. Our website does not own, operate, manage, or control British Airways 
-                    or its services, and is not liable for their acts or omissions. Our website connects you to a live travel 
-                    agent specialist to help you with your British Airways flight booking. We have no responsibility for these 
-                    services, nor do we have the authority to make any warranty or representation regarding their standard. 
-                    All bookings are subject to the terms and conditions and limitations of liability imposed by British Airways. 
-                    You understand that your legal recourse is against British Airways, not our website. Conditions can change 
-                    in any country at any time. It is your responsibility to check the appropriate Government Travel advisories 
-                    for your intended destination.
-                </p>
-            </div>
-        </section>
-
-        <!-- Footer Links and Copyright -->
-        <section class="footer">
-            <div class="container">
-                <div class="footer-links">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <span>|</span>
-                    <a href="terms.html">Terms of Service</a>
-                </div>
-                <p>&copy; 2025 British Airways Reservation Portal. All rights reserved</p>
-            </div>
-        </section>
-
-        <!-- Call-to-Action Section -->
-        <section class="cta">
-            <div class="container">
-                <h3>SPEAK TO A BRITISH AIRWAYS SPECIALIST NOW</h3>
-                <p>
-                    <img src="resources/images/24-hours-support.gif" alt="Phone Icon"/>
-                    (800) 555-1212
-                </p>
-            </div>
-        </section>
-
-    </main>
-    <script src="resources/js/main.js"></script>
+        </div>
+    </footer>
 </body>
-
 </html>
