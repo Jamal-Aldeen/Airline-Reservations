@@ -1,0 +1,809 @@
+:root {
+    --white: hsl(0, 0%, 100%);
+    --black: hsl(225, 15%, 9%);
+    --paragraph: hsl(210, 10%, 83%);
+    --line: hsl(215, 9%, 17%);
+    --primary: hsl(210, 92%, 58%);
+    --light-blue: hsl(210, 100%, 70%);
+    --dark-blue: hsl(220, 80%, 30%);
+    --gradient-start: rgba(24, 58, 238, 1);
+    --gradient-end: rgba(47, 147, 250, 1);
+    --accent: rgba(47, 147, 250, 1);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: var(--black);
+    color: var(--white);
+    line-height: 1.6;
+  }
+  
+  a {
+    text-decoration: none;
+    color: var(--white);
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  /* Card Component Base */
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: hsla(225, 15%, 9%, 1);
+    background-image: radial-gradient(at 88% 40%, hsla(225, 15%, 9%, 1) 0px, transparent 85%),
+      radial-gradient(at 49% 30%, hsla(225, 15%, 9%, 1) 0px, transparent 85%),
+      radial-gradient(at 14% 26%, hsla(225, 15%, 9%, 1) 0px, transparent 85%),
+      radial-gradient(at 0% 64%, hsla(210, 93%, 56%, 1) 0px, transparent 85%),
+      radial-gradient(at 41% 94%, hsla(200, 100%, 84%, 1) 0px, transparent 85%),
+      radial-gradient(at 100% 99%, hsla(210, 100%, 57%, 1) 0px, transparent 85%);
+    border-radius: 1rem;
+    box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.1) inset;
+    margin-bottom: 2rem;
+  }
+  
+  .card__border {
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    z-index: -10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    background-image: linear-gradient(0deg, hsl(0, 0%, 100%) -50%, hsl(0, 0%, 40%) 100%);
+    border-radius: 1rem;
+  }
+  
+  .card__border::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    z-index: 200;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200%;
+    height: 10rem;
+    background-image: linear-gradient(0deg, hsla(0, 0%, 100%, 0) 0%, hsl(210, 95%, 60%) 40%,
+        hsl(210, 95%, 60%) 60%, hsla(0, 0%, 40%, 0) 100%);
+    animation: rotate 8s linear infinite;
+  }
+  
+  .card_title__container {
+    text-align: center;
+  }
+  
+  .card_title__container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .card_paragraph {
+    color: var(--paragraph);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .line {
+    width: 100%;
+    height: 0.1rem;
+    background-color: var(--line);
+    border: none;
+    margin: 0.5rem 0;
+  }
+  
+  .card__list_item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: var(--primary);
+    border-radius: 50%;
+  }
+  
+  .list_text {
+    margin: 0;
+  }
+  
+  @keyframes rotate {
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+  
+  /* Button */
+  .button {
+    cursor: pointer;
+    padding: 0.75rem 1.5rem;
+    width: 100%;
+    background-image: linear-gradient(0deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--white);
+    border: 0;
+    border-radius: 9999px;
+    box-shadow: inset 0 -2px 25px -4px var(--white);
+    transition: all 0.3s ease;
+  }
+  
+  .button:hover {
+    transform: translateY(-2px);
+    box-shadow: inset 0 -2px 35px -2px var(--white);
+  }
+  
+  .check_svg {
+    width: 0.75rem;
+    height: 0.75rem;
+    fill: var(--black);
+  }
+  
+  /* Header */
+  header {
+    background-color: var(--black);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .phone-number {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    color: var(--light-blue);
+  }
+  
+  /* Hero Section */
+  .hero {
+    padding: 4rem 0;
+    background-color: var(--black);
+    background-image: radial-gradient(at 88% 40%, hsla(225, 15%, 9%, 1) 0px, transparent 85%),
+      radial-gradient(at 49% 30%, hsla(225, 15%, 9%, 1) 0px, transparent 85%),
+      radial-gradient(at 14% 26%, hsla(225, 15%, 9%, 1) 0px, transparent 85%),
+      radial-gradient(at 0% 64%, hsla(210, 93%, 56%, 0.5) 0px, transparent 85%),
+      radial-gradient(at 41% 94%, hsla(200, 100%, 84%, 0.5) 0px, transparent 85%),
+      radial-gradient(at 100% 99%, hsla(210, 100%, 57%, 0.5) 0px, transparent 85%);
+  }
+  
+  .hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .hero-text {
+    flex: 1;
+  }
+  
+  .hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  
+  .hero-text ul {
+    margin: 1.5rem 0;
+  }
+  
+  .hero-text li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .hero-cta {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 1rem;
+  }
+  
+  .hero-cta p {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--light-blue);
+  }
+  
+  .hero-cta a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--white);
+    padding: 1rem 2rem;
+    background-image: linear-gradient(0deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    border-radius: 9999px;
+    box-shadow: inset 0 -2px 25px -4px var(--white);
+    transition: all 0.3s ease;
+  }
+  
+  .hero-cta a:hover {
+    transform: translateY(-2px);
+    box-shadow: inset 0 -2px 35px -2px var(--white);
+  }
+  
+  /* Features Section */
+  .features {
+    padding: 4rem 0;
+    background-color: var(--black);
+  }
+  
+  .features-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  
+  .feature {
+    text-align: center;
+    flex: 1;
+  }
+  
+  .feature img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px var(--primary));
+    transition: filter 0.3s ease;
+  }
+  
+  .feature img:hover {
+    filter: drop-shadow(0 0 20px var(--light-blue));
+  }
+  
+  .feature h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .feature p {
+    color: var(--paragraph);
+  }
+  
+  /* Airlines Section */
+  .airlines {
+    padding: 4rem 0;
+    background-image: url('/resources/images/airline.webp');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  .airlines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+  
+  .airlines .container {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: hsla(225, 15%, 9%, 0.8);
+    border-radius: 1rem;
+    box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.1) inset;
+    margin-bottom: 2rem;
+  }
+  
+  .card__border {
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    z-index: -10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    background-image: linear-gradient(0deg, hsl(0, 0%, 100%) -50%, hsl(0, 0%, 40%) 100%);
+    border-radius: 1rem;
+  }
+  
+  .card__border::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    z-index: 200;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200%;
+    height: 10rem;
+    background-image: linear-gradient(0deg, hsla(0, 0%, 100%, 0) 0%, hsl(210, 95%, 60%) 40%,
+        hsl(210, 95%, 60%) 60%, hsla(0, 0%, 40%, 0) 100%);
+    animation: rotate 8s linear infinite;
+  }
+  
+  .card_title__container {
+    text-align: center;
+  }
+  
+  .card_title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .card_paragraph {
+    color: var(--paragraph);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .line {
+    width: 100%;
+    height: 0.1rem;
+    background-color: var(--line);
+    border: none;
+    margin: 0.5rem 0;
+  }
+  
+  .airlines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  /* About Section */
+  .about {
+    padding: 4rem 0;
+  }
+  
+  .about-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .about-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .about p {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--paragraph);
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+  
+  /* Combined Background Section */
+  .combined-background-section {
+    padding: 4rem 0;
+    background-image: url('/resources/images/airplane.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  .combined-background-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+  
+  .combined-background-section .container {
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Section Content */
+  .section-content {
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 4rem;
+  }
+  
+  .section-content:last-child {
+    margin-bottom: 0;
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .section-header p {
+    color: var(--paragraph);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .line {
+    width: 100%;
+    height: 0.1rem;
+    background-color: var(--line);
+    border: none;
+    margin: 0.5rem 0;
+  }
+  
+  /* Airlines Grid */
+  .airlines-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .airlines-column {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .card__list_item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: var(--primary);
+    border-radius: 50%;
+  }
+  
+  .check_svg {
+    width: 0.75rem;
+    height: 0.75rem;
+    fill: var(--black);
+  }
+  
+  .list_text {
+    margin: 0;
+  }
+  
+  /* Customer Support */
+  .customer-support {
+    padding: 4rem 0;
+  }
+  
+  .support-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+  }
+  
+  .support-column {
+    padding: 2rem;
+    background-color: hsla(225, 15%, 12%, 0.8);
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  }
+  
+  .support-column h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--light-blue);
+  }
+  
+  .support-column p {
+    color: var(--paragraph);
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  /* Disclaimer */
+  .disclaimer {
+    padding: 2rem 0;
+    background-color: hsla(225, 15%, 7%, 1);
+  }
+  
+  .disclaimer p {
+    font-size: 0.8rem;
+    color: var(--paragraph);
+    line-height: 1.6;
+  }
+  
+  .disclaimer a {
+    color: var(--light-blue);
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 2rem 0;
+    background-color: hsla(225, 15%, 5%, 1);
+    text-align: center;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-links a {
+    color: var(--paragraph);
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover {
+    color: var(--white);
+  }
+  
+  /* Call-to-Action Section */
+  .cta {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    background-color: var(--primary);
+    text-align: center;
+    z-index: 100;
+    box-shadow: 0 0 20px var(--primary);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .cta:hover {
+    box-shadow: 0 0 30px var(--light-blue);
+  }
+  
+  .cta h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+  }
+  
+  .cta p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--white);
+  }
+  
+  .cta img {
+    width: 30px;
+    height: 30px;
+    filter: drop-shadow(0 0 5px var(--light-blue));
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-content,
+    .features-container {
+      flex-direction: column;
+    }
+  
+    .hero-text h1 {
+      font-size: 2.5rem;
+    }
+  
+    .hero-cta {
+      width: 100%;
+    }
+  
+    .airlines-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  
+    .support-columns {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Popup CSS */
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1999;
+    animation: overlayFadeIn 0.5s forwards;
+  }
+  
+  @keyframes overlayFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 90%;
+    max-width: 400px;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    overflow: hidden;
+    animation: popupIn 0.5s forwards;
+  }
+  
+  @keyframes popupIn {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  
+  .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--accent);
+    z-index: 2100;
+  }
+  
+  .popup-content {
+    padding: 2rem 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .popup-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: var(--primary);
+  }
+  
+  .popup-phone-number {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    animation: pulsePhone 2s infinite;
+  }
+  
+  @keyframes pulsePhone {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .popup-text {
+    margin-bottom: 0.75rem;
+    color: #4B5563;
+  }
+  
+  .popup-action-text {
+    margin-bottom: 0.75rem;
+  }
+  
+  .popup-call-circle {
+    width: 60px;
+    height: 60px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    margin: 0 auto 1rem;
+  }
+  
+  .popup-call-circle:hover {
+    transform: scale(1.1);
+  }
+  
+  .popup-images {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+  
+  .popup-images img {
+    width: 70px;
+    border-radius: 4px;
+  }
+  
+  @media (min-width: 769px) {
+    .popup,
+    .popup-overlay {
+      display: none;
+    }
+  }
+  
