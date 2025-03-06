@@ -65,18 +65,19 @@
 
 .popup-content {
   padding: 2rem;
+  margin: 50px 0px;
   text-align: center;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  align-items: center; 
 }
 
 .popup-title {
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  font-weight: 600;
+  /* font-weight: 600; */
   color: #003a70; /* Primary color */
 }
 
@@ -84,7 +85,10 @@
   font-size: 1.6rem;
   font-weight: 600;
   color: #e51937; /* Accent color */
+  border: 1px solid #e51937;
+  border-radius: 5px;
   margin: 0.5rem 0 1rem;
+  padding: 0.5rem 1rem;
   animation: pulsePhone 2s infinite;
 }
 
@@ -108,8 +112,8 @@
 
 .popup-call-circle {
   margin: 1rem auto;
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   background: #e51937; /* Accent color */
   border-radius: 50%;
   display: flex;
@@ -120,6 +124,12 @@
 
 .popup-call-circle:hover {
   transform: scale(1.1);
+}
+
+.popup-click-to-call {
+  font-size: 2rem;
+  font-weight: 600;
+  /* color: white; */
 }
 
 /* Hide popup on larger screens */
@@ -137,7 +147,7 @@
   z-index: 2001; /* Higher than the popup's z-index */
 }
 
-.sticky-cta span{
+.sticky-cta span {
   font-size: 26px;
 }
 
