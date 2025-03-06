@@ -20,6 +20,7 @@
       --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
     }
 
+    /* Global Reset */
     * {
       margin: 0;
       padding: 0;
@@ -31,6 +32,48 @@
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.7;
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeInUpScale {
+      0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 0px rgba(227, 24, 55, 0.6);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(227, 24, 55, 0.9);
+      }
+      100% {
+        box-shadow: 0 0 0px rgba(227, 24, 55, 0.6);
+      }
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Utility Class for Section Animations */
+    .animate {
+      opacity: 0;
+      animation: fadeInUpScale 1s ease-out forwards;
     }
 
     /* Header Styles */
@@ -67,22 +110,31 @@
       border-radius: 8px;
     }
 
-    .contact-button {
+    /* Updated Button Styles with Extra Animations */
+    .contact-button,
+    .cta-button {
       background: var(--accent);
       color: var(--white);
-      padding: 0.75rem 1.5rem;
+      padding: 1rem 2rem;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 500;
-      display: flex;
+      font-size: 1.8rem;
+      display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       transition: all 0.3s ease;
+      background-size: 200% 200%;
+      animation: gradientShift 5s ease infinite;
+      animation: pulseGlow 1.5s infinite;
+
     }
 
-    .contact-button:hover {
+    .contact-button:hover,
+    .cta-button:hover {
       background: var(--accent-hover);
-      transform: translateY(-2px);
+      transform: scale(1.08);
+      animation: pulseGlow 1.5s infinite;
     }
 
     /* Hero Section */
@@ -264,25 +316,6 @@
       opacity: 0.9;
     }
 
-    .cta-button {
-      background: var(--accent);
-      color: var(--white);
-      padding: 1rem 2.5rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.25rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      transition: all 0.3s ease;
-    }
-
-    .cta-button:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-    }
-
     /* Footer */
     footer {
       background: var(--primary);
@@ -327,35 +360,35 @@
       padding-left: 0.5rem;
     }
 
-    .copyright  #pr {
+    .copyright {
       text-align: center;
       padding-top: 2rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       opacity: 0.8;
     }
 
-
     /* Mobile Styles */
     @media (max-width: 768px) {
       .hero h1 {
         font-size: 2.5rem;
       }
-
+  
       .hero p {
         font-size: 1.25rem;
       }
-
+  
       .features-grid,
       .destination-grid {
         grid-template-columns: 1fr;
       }
-
+  
       .cta-box {
         padding: 2rem 1rem;
+        
       }
-
+  
       .cta-box h2 {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
     }
 
@@ -383,42 +416,111 @@
     }
 
     .floating-contact svg {
-      width: 24px;
-      height: 24px;
+      width: 34px;
+      height: 34px;
     }
-   
   </style>
 </head>
 <body>
+    <script>
+        function hidePopup() {
+          document.getElementById("popup").style.display = "none";
+        }
+      </script>
+        <div class="popup link-neutral" id="popup">
+          <button onClick="hidePopup()" class="popup-close">&times;</button>
+      
+          <a class="popup-inner link-neutral phone_number_link" id="popup" href="#">
+            <div class="popup-content">
+              <div class="popup-title text-center">AIRLINES RESERVATIONS</div>
+      
+              <div class="link-neutral popup-phone-number">
+                <svg
+                  id="img-phone"
+                  width="17"
+                  height="17"
+                  viewBox="0 0 27 27"
+                  fill="#e04f67"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z"
+                  ></path>
+                </svg>
+                <span class="phone_number"></span>
+              </div>
+      
+              <div class="popup-text text-center">
+                Reservations, Cancellations & Flight Changes
+              </div>
+      
+              <div
+                class="link-neutral block popup-click-to-call phone_number_link"
+                href="#"
+              >
+              <p class="first-popup-action-text">15% OFF</p>
+                <div class="popup-call-circle">
+                  <svg
+                    id="popup-phone"
+                    width="39"
+                    height="30"
+                    viewBox="0 0 27 27"
+                    fill="white"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z"
+                    ></path>
+                  </svg>
+                </div>
+                <p class="popup-action-text">Click to Call</p>
+              </div>
+              <div class="timage"><img src="resources/images/united-airlines.jpg"/><img src="resources/images/american-airlines.png"/><img src="resources/images/delta.png"/></div>
+            </div>
+      
+            <div
+              class="link-neutral block popup-bottom text-center phone_number_link"
+              href="#"
+            >
+              <img
+                alt="Ringing phone"
+                src="resources/images/ringing-phone.gif"
+                width="44"
+                height="44"
+              />
+              <div class="phone_number">
+              </div>
+            </div>
+          </a>
+          
+        </div>
+    
   <header>
     <div class="header-container">
       <a href="/" class="logo">
-        <img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&q=80" alt="Delta Logo">
+        <img src="/resources/images/Delta-Emblem.png" alt="Delta Logo">
         Delta Air Lines
       </a>
-      <a href="tel:18002211212" class="contact-button">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-        </svg>
+      <a href="tel:18002211212" style="font-size: larger;color: #ffffff;">
         1-800-221-1212
       </a>
     </div>
   </header>
-
-  <section class="hero">
+  
+  <section class="hero animate" style="animation-delay: 0.2s;">
     <div class="hero-content">
       <h1>Fly Beyond Expectations</h1>
       <p>Experience world-class service with America's most trusted airline</p>
       <a href="tel:18002211212" class="cta-button">
-        Book Your Flight Now
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          1-800-221-1212
       </a>
     </div>
   </section>
-
-  <section class="features">
+  
+  <section class="features animate" style="animation-delay: 0.4s;">
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">
@@ -453,8 +555,8 @@
       </div>
     </div>
   </section>
-
-  <section class="destinations">
+  
+  <section class="destinations animate" style="animation-delay: 0.6s;">
     <div class="destinations-content">
       <h2>Popular Destinations</h2>
       <p>Explore our most sought-after routes and destinations</p>
@@ -477,8 +579,8 @@
       </div>
     </div>
   </section>
-
-  <section class="cta">
+  
+  <section class="cta animate" style="animation-delay: 0.8s;">
     <div class="cta-container">
       <div class="cta-box">
         <h2>Ready to Take Flight?</h2>
@@ -492,8 +594,8 @@
       </div>
     </div>
   </section>
-
-  <footer>
+  
+  <footer class="animate" style="animation-delay: 1s;">
     <div class="footer-content">
       <div class="footer-grid">
         <div class="footer-column">
@@ -525,18 +627,17 @@
         </div>
       </div>
       <div class="copyright">
-        <nav aria-label="Footer Navigation" style=" color: #f8fafc; padding: 1rem; text-align: center;">
-            <ul class="footer-links" style="list-style: none; padding: 0; display: inline-flex; gap: 1rem;">
-              <li><a href="/pages/privacy.html" style="color: inherit; text-decoration: none;">Privacy</a></li>
-              <li><a href="/pages/terms.html" style="color: inherit; text-decoration: none;">Terms</a></li>
-            </ul>
-          </nav>
+        <nav aria-label="Footer Navigation" style="color: #f8fafc; padding: 1rem; text-align: center;">
+          <ul class="footer-links" style="list-style: none; padding: 0; display: inline-flex; gap: 1rem;">
+            <li><a href="/pages/privacy.html" style="color: inherit; text-decoration: none;">Privacy</a></li>
+            <li><a href="/pages/terms.html" style="color: inherit; text-decoration: none;">Terms</a></li>
+          </ul>
+        </nav>
         &copy; 2024 Delta Air Lines. All rights reserved.
-        </h2>
-    </div>
+      </div>
     </div>
   </footer>
-
+  
   <a href="tel:18002211212" class="floating-contact">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
