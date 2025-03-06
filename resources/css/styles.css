@@ -295,7 +295,7 @@ body {
 footer {
     background: var(--primary);
     color: var(--white);
-    padding: 4rem 0 2rem;
+    padding: 1rem 0 1rem;
 }
 
 .footer-grid {
@@ -344,14 +344,327 @@ footer {
 
 .footer-bottom {
     text-align: center;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-bottom p {
     color: var(--gray-400);
 }
 
+.sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(90deg, #ff6f61, #ff3b2f);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+.sticky-cta a {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.sticky-cta a svg {
+    width: 20px;
+    height: 20px;
+}
+.phone-large {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* New About Section */
+.about {
+    background: var(--white);
+    padding: 5rem 0;
+}
+
+.about .container {
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 2.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+}
+
+.about p {
+    font-size: 1.125rem;
+    color: var(--gray-500);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* Sticky CTA Section */
+.sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    color: var(--white);
+    padding: 1rem;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.5s ease-out;
+}
+
+.sticky-cta a {
+    color: var(--white);
+    font-size: 1.5rem; /* Larger phone number */
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.sticky-cta a:hover {
+    transform: scale(1.05);
+}
+
+.sticky-cta a svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Animation for Sticky CTA */
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Pulse Animation for CTA Button */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(14, 165, 233, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(14, 165, 233, 0);
+    }
+}
+
+.cta-button {
+    animation: pulse 2s infinite;
+}
+
+/* Larger Phone Numbers */
+.phone-large {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Updated Hero Card Animation */
+.hero-card {
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Updated Airlines Section */
+.airlines-grid {
+    animation: fadeIn 1s ease-out;
+}
+
+/* Updated Features Section */
+.features-grid {
+    animation: fadeIn 1s ease-out;
+}
+
+/* Updated Footer */
+footer {
+    animation: fadeIn 1s ease-out;
+}
+
+/* Popup Overlay */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.9); /* Dark overlay */
+    backdrop-filter: blur(10px);
+    z-index: 1001;
+    display: none;
+}
+
+/* Popup Container */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--white);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1002;
+    display: none;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Popup Close Button */
+.popup-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--gray-500);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.popup-close:hover {
+    color: var(--accent);
+}
+
+/* Popup Content */
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.popup-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.popup-phone-number {
+    font-size: 2rem; /* Larger phone number */
+    font-weight: 700;
+    color: var(--accent);
+    margin: 0.5rem 0;
+}
+
+.popup-text {
+    font-size: 1rem;
+    color: var(--gray-500);
+}
+
+.popup-click-to-call {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.first-popup-action-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.popup-call-circle {
+    width: 60px;
+    height: 60px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.popup-call-circle:hover {
+    transform: scale(1.1);
+}
+
+.popup-call-circle svg {
+    width: 24px;
+    height: 24px;
+}
+
+.popup-action-text {
+    font-size: 1rem;
+    color: var(--gray-500);
+}
+
+/* Popup Images */
+.timage {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.timage img {
+    width: 60px;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
+/* Popup Bottom */
+.popup-bottom {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.popup-bottom img {
+    width: 44px;
+    height: 44px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Show Popup Only on Small Screens (Phones) */
+@media (max-width: 767px) {
+    .popup-overlay {
+        display: block;
+    }
+    .popup {
+        display: block;
+    }
+}
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar .container {
