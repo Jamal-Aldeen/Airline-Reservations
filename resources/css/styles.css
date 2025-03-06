@@ -25,7 +25,6 @@
             animation: pulse 1.5s infinite;
         }
 
-        <style>
         /* Overlay for Popup */
         .popup-overlay {
           position: fixed;
