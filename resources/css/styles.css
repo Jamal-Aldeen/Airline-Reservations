@@ -125,12 +125,16 @@
       }
       
       .features-list {
-        list-style: none;
-        margin-bottom: 2rem;
-      }
-      
-      .features-list li {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
+        gap: 10px; /* Adds space between items */
+        list-style-type: none; /* Removes default list bullets */
+        padding: 0; /* Removes default padding */
+    }
+    
+    .features-list li {
+        padding: 5px; /* Adds padding to each list item */
+     display: flex;
         align-items: center;
         gap: 1rem;
         font-size: 1.2rem;
@@ -166,16 +170,20 @@
         display: inline-block;
         background: var(--secondary);
         color: white;
-        padding: 0.75rem 1.5rem;
+        padding: 1.5rem 3rem; /* Increased padding */
         border-radius: 50px;
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 700; /* Bolder font */
+        font-size: 1.5rem; /* Larger font size */
         transition: background 0.3s ease;
-      }
-      
-      .cta-button:hover {
+        text-align: center;
+        width: fit-content; /* Ensure it doesn't stretch */
+        margin: 0 auto; /* Center the button */
+    }
+    
+    .cta-button:hover {
         background: darken(var(--secondary), 10%);
-      }
+    }
   
       /* Modern Cards for Support Features */
       .support-features {
