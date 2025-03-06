@@ -7,40 +7,177 @@
     <title>Airlines Information Center</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+
+    <!-- Popup CSS -->
+    <style>
+        /* Overlay for Popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1999;
+            animation: overlayFadeIn 0.5s forwards;
+        }
+
+        @keyframes overlayFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Popup Container */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            z-index: 2000;
+            overflow: hidden;
+            animation: popupIn 0.5s forwards;
+        }
+
+        @keyframes popupIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            line-height: 1;
+            cursor: pointer;
+            color: #3b82f6; /* Blue color */
+            z-index: 2100;
+        }
+
+        .popup-content {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .popup-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #1e40af; /* Dark blue color */
+        }
+
+        .popup-phone-number {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #3b82f6; /* Blue color */
+            margin: 0.5rem 0 1rem;
+            animation: pulsePhone 2s infinite;
+        }
+
+        @keyframes pulsePhone {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .popup-text,
+        .popup-action-text {
+            margin: 0.75rem 0;
+            color: #4b5563; /* Gray color */
+        }
+
+        .popup-call-circle {
+            margin: 1rem auto;
+            width: 60px;
+            height: 60px;
+            background: #3b82f6; /* Blue color */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .popup-call-circle:hover {
+            transform: scale(1.1);
+        }
+
+        .timage img {
+            width: 80px;
+            margin: 0.5rem;
+        }
+
+        /* Hide popup on larger screens */
+        @media (min-width: 769px) {
+            .popup,
+            .popup-overlay {
+                display: none;
+            }
+        }
+
+        /* Show popup on phone screens */
+        @media (max-width: 768px) {
+            .popup,
+            .popup-overlay {
+                display: block;
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-gray-900 font-sans text-gray-100">
     <!-- Header -->
-    <header class="bg-gray-800 shadow-md">
+    <header class="bg-gray-800 shadow-md fixed w-full z-50">
         <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
             <!-- Logo -->
             <a href="#" class="text-2xl font-bold text-blue-500 flex items-center mb-4 md:mb-0">
-              <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="filter: drop-shadow(0 0 6px #0000ff) drop-shadow(0 0 12px #0000ff);">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="-webkit-text-stroke: 1px blue;" d="M2 12l20-10-5 20-5-5-10 0z" />
-              </svg>
-                Airline Reservations
+                <span class="ml-2">Airline Reservations</span>
             </a>
+    
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex space-x-6 items-center">
+                <a href="#" class="text-gray-300 hover:text-blue-500">Home</a>
+                <a href="#" class="text-gray-300 hover:text-blue-500">Services</a>
+                <a href="#" class="text-gray-300 hover:text-blue-500">Airlines</a>
+                <a href="#" class="text-gray-300 hover:text-blue-500">Contact</a>
+                <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                    Book Now
+                </a>
+            </nav>
     
             <!-- Phone Number -->
             <div class="flex items-center mt-4 md:mt-0">
                 <a href="#" class="flex items-center text-blue-500 hover:text-blue-400 font-medium">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     <span class="phone_number">24/7 Toll Free</span>
                 </a>
             </div>
         </div>
     </header>
+
     <main>
-        <!-- New Hero Section -->
+        <!-- Hero Section -->
         <section class="relative bg-cover bg-center py-16 text-white" style="background-image: url('resources/images/airplane.webp');">
             <!-- Overlay -->
             <div class="absolute inset-0 bg-black bg-opacity-50"></div>
 
             <!-- Content -->
-            <div class="container mx-auto px-4 relative z-10">
+            <div class="container mx-auto px-4 relative z-10 mt-10">
                 <div class="flex flex-col md:flex-row items-center gap-8">
                     <div class="w-full md:w-1/2">
                         <h1 class="text-4xl md:text-5xl font-bold mb-6">Your Journey Starts Here</h1>
@@ -61,8 +198,7 @@
                 </div>
             </div>
         </section>
-
-        <!-- Customer Support Section -->
+<!-- Customer Support Section -->
         <section class="py-16 bg-gray-800">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-12">
@@ -110,68 +246,60 @@
             </div>
         </section>
 
-        <!-- Airlines List Section -->
-        <section class="py-16 bg-gray-900">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-gray-100 mb-4">AIRLINES SERVICED</h2>
-                    <p class="text-gray-300">We proudly work with these leading airlines</p>
-                </div>
+<!-- Airlines List Section -->
+<section class="py-16 bg-gray-900">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-100 mb-4">AIRLINES SERVICED</h2>
+            <p class="text-gray-300">We proudly work with these leading airlines</p>
+        </div>
 
-                <!-- Grid Layout -->
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                    <!-- Airline Card 1 -->
-                    <div
-                        class="bg-gray-300 p-6 rounded-lg shadow-md flex flex-col items-center hover:shadow-lg transition duration-300">
-                        <div class="p-2 rounded-lg">
-                            <img src="resources/images/air-alaska.png" alt="Air Alaska Logo" class="w-24 h-12" />
-                        </div>
-                    </div>
-
-                    <!-- Airline Card 2 -->
-                    <div
-                        class="bg-gray-300 p-6 rounded-lg shadow-md flex flex-col items-center hover:shadow-lg transition duration-300">
-                        <div class="p-2 rounded-lg">
-                            <img src="resources/images/american-airlines.png" alt="American Airlines Logo"
-                                class="w-24 h-12" />
-                        </div>
-                    </div>
-
-                    <!-- Airline Card 3 -->
-                    <div
-                        class="bg-gray-300 p-6 rounded-lg shadow-md flex flex-col items-center hover:shadow-lg transition duration-300">
-                        <div class="p-2 rounded-lg">
-                            <img src="resources/images/british-airways.png" alt="British Airways Logo"
-                                class="w-24 h-12 mb-4" />
-                        </div>
-                    </div>
-
-                    <!-- Airline Card 4 -->
-                    <div
-                        class="bg-gray-300 p-6 rounded-lg shadow-md flex flex-col items-center hover:shadow-lg transition duration-300">
-                        <div class="p-2 rounded-lg"> <img src="resources/images/united-airlines.png"
-                                alt="United Airlines Logo" class="w-24 h-12 mb-4" />
-                        </div>
-                    </div>
-
-                    <!-- Airline Card 5 -->
-                    <div
-                        class="bg-gray-300 p-6 rounded-lg shadow-md flex flex-col items-center hover:shadow-lg transition duration-300">
-                        <div class="p-2 rounded-lg"> <img src="resources/images/Qatar-Airways.png"
-                                alt="Qatar Airways Logo" class="w-24 h-12 mb-4" />
-                        </div>
-                    </div>
-
-                    <!-- Airline Card 6 -->
-                    <div
-                        class="bg-gray-300 p-6 rounded-lg shadow-md flex flex-col items-center hover:shadow-lg transition duration-300">
-                        <div class="p-2 rounded-lg"> <img src="resources/images/Emirates.png"
-                                alt="Emirates Logo" class="w-24 h-12 mb-4" />
-                        </div>
-                    </div>
+        <!-- Grid Layout -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            <!-- Airline Card 1 -->
+            <div class="bg-gray-300 p-6 rounded-lg shadow-md flex flex-col items-center hover:shadow-lg transition duration-300">
+                <div class="w-24 h-12 flex items-center justify-center">
+                    <img src="resources/images/air-alaska.png" alt="Air Alaska Logo" class="w-full h-full object-contain" />
                 </div>
             </div>
-        </section>
+
+            <!-- Airline Card 2 -->
+            <div class="bg-gray-300 p-6 rounded-lg shadow-md flex flex-col items-center hover:shadow-lg transition duration-300">
+                <div class="w-24 h-12 flex items-center justify-center">
+                    <img src="resources/images/american-airlines.png" alt="American Airlines Logo" class="w-full h-full object-contain" />
+                </div>
+            </div>
+
+            <!-- Airline Card 3 -->
+            <div class="bg-gray-300 p-6 rounded-lg shadow-md flex flex-col items-center hover:shadow-lg transition duration-300">
+                <div class="w-24 h-12 flex items-center justify-center">
+                    <img src="resources/images/british-airways.png" alt="British Airways Logo" class="w-full h-full object-contain" />
+                </div>
+            </div>
+
+            <!-- Airline Card 4 -->
+            <div class="bg-gray-300 p-6 rounded-lg shadow-md flex flex-col items-center hover:shadow-lg transition duration-300">
+                <div class="w-24 h-12 flex items-center justify-center">
+                    <img src="resources/images/united-airlines.png" alt="United Airlines Logo" class="w-full h-full object-contain" />
+                </div>
+            </div>
+
+            <!-- Airline Card 5 -->
+            <div class="bg-gray-300 p-6 rounded-lg shadow-md flex flex-col items-center hover:shadow-lg transition duration-300">
+                <div class="w-24 h-12 flex items-center justify-center">
+                    <img src="resources/images/Qatar-Airways.png" alt="Qatar Airways Logo" class="w-full h-full object-contain" />
+                </div>
+            </div>
+
+            <!-- Airline Card 6 -->
+            <div class="bg-gray-300 p-6 rounded-lg shadow-md flex flex-col items-center hover:shadow-lg transition duration-300">
+                <div class="w-24 h-12 flex items-center justify-center">
+                    <img src="resources/images/Emirates.png" alt="Emirates Logo" class="w-full h-full object-contain" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- About Section -->
 <section class="py-16 bg-gray-800">
@@ -193,35 +321,36 @@
     </div>
 </section>
 
-<!-- Disclaimer Section -->
-<section class="py-10 bg-gray-800">
-    <div class="container mx-auto px-4 max-w-5xl">
-        <div class="bg-gray-700 p-6 rounded-lg shadow-md">
-            <details class="group">
-                <summary class="flex items-center justify-between cursor-pointer">
-                    <h3 class="text-lg font-bold text-gray-100">Disclaimer</h3>
-                    <svg class="w-6 h-6 text-blue-500 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                    </svg>
-                </summary>
-                <p class="text-sm text-gray-400 leading-relaxed mt-4">
-                    <span class="website_name font-medium">kohngaithanyaresort.com</span> is a trusted travel agent partner, offering a wide range of airline and travel-related services. We work with various transport and accommodation providers, including airlines, coach services, rail operators, cruise lines, and hotels. Please note that <span class="website_name font-medium">kohngaithanyaresort.com</span> does not own, operate, or manage these independent service providers and is not responsible for their actions or omissions. Our role is to connect you with experienced travel specialists who can assist with flight bookings and related inquiries. While we strive to provide accurate and reliable services, we cannot guarantee specific outcomes, as all bookings are subject to the terms and conditions of the respective service providers. For the latest travel advisories and safety information, we recommend consulting the U.S. Department of State's travel website at 
-                    <a href="https://travel.state.gov/content/travel.html" target="_blank" rel="noopener" class="text-blue-500 hover:underline">
-                        https://travel.state.gov/content/travel.html
-                    </a>.
-                </p>
-            </details>
-        </div>
-    </div>
-</section>
+
+        <!-- Disclaimer Section -->
+        <section class="py-10 bg-gray-800">
+            <div class="container mx-auto px-4 max-w-5xl">
+                <div class="bg-gray-700 p-6 rounded-lg shadow-md">
+                    <details class="group">
+                        <summary class="flex items-center justify-between cursor-pointer">
+                            <h3 class="text-lg font-bold text-gray-100">Disclaimer</h3>
+                            <svg class="w-6 h-6 text-blue-500 transform group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </summary>
+                        <p class="text-sm text-gray-400 leading-relaxed mt-4">
+                            <span class="website_name font-medium">kohngaithanyaresort.com</span> is a trusted travel agent partner, offering a wide range of airline and travel-related services. We work with various transport and accommodation providers, including airlines, coach services, rail operators, cruise lines, and hotels. Please note that <span class="website_name font-medium">kohngaithanyaresort.com</span> does not own, operate, or manage these independent service providers and is not responsible for their actions or omissions. Our role is to connect you with experienced travel specialists who can assist with flight bookings and related inquiries. While we strive to provide accurate and reliable services, we cannot guarantee specific outcomes, as all bookings are subject to the terms and conditions of the respective service providers. For the latest travel advisories and safety information, we recommend consulting the U.S. Department of State's travel website at 
+                            <a href="https://travel.state.gov/content/travel.html" target="_blank" rel="noopener" class="text-blue-500 hover:underline">
+                                https://travel.state.gov/content/travel.html
+                            </a>.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
 
         <!-- Footer Links and Copyright -->
         <section class="py-8 bg-gray-900 text-gray-300">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-4">
-                    <a href="privacy.html" class="hover:text-white">Privacy Policy</a>
+                    <a href="/pages/privacy.html" class="hover:text-white">Privacy Policy</a>
                     <span class="mx-2">|</span>
-                    <a href="terms.html" class="hover:text-white">Terms of Service</a>
+                    <a href="/pages/terms.html" class="hover:text-white">Terms of Service</a>
                 </div>
                 <p class="text-center text-sm">&copy; 2023 <span class="company_name"></span>. All rights reserved</p>
             </div>
@@ -240,12 +369,46 @@
         </section>
     </main>
 
-    <script src="resources/js/main.js"></script>
+    <!-- Popup Overlay and Markup -->
+    <div class="popup-overlay"></div>
+    <div class="popup" id="popup">
+        <button onclick="hidePopup()" class="popup-close">&times;</button>
+        <div class="popup-content">
+            <div class="popup-title">AIRLINES RESERVATIONS</div>
+            <div class="popup-phone-number">1-800-221-1212</div>
+            <div class="popup-text">
+                Reservations, Cancellations &amp; Flight Changes
+            </div>
+            <div class="popup-click-to-call">
+                <p class="first-popup-action-text">15% OFF</p>
+                <div class="popup-call-circle">
+                    <svg width="39" height="30" viewBox="0 0 27 27" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z"></path>
+                    </svg>
+                </div>
+                <p class="popup-action-text">Click to Call</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script for Popup -->
     <script>
         function hidePopup() {
             document.getElementById("popup").style.display = "none";
+            document.querySelector(".popup-overlay").style.display = "none";
         }
+
+        // Automatically show the popup on phone screens after the page loads
+        window.onload = function () {
+            if (window.innerWidth <= 768) {
+                document.getElementById("popup").style.display = "block";
+                document.querySelector(".popup-overlay").style.display = "block";
+            }
+        };
     </script>
+
+    <!-- External Scripts -->
+    <script src="resources/js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 </body>
 
