@@ -332,7 +332,8 @@ background-size: 400% 400%;
   .footer-links a:hover {
     color: var(--secondary);
   }
-/* Popup Overlay */
+
+  /* Popup Overlay - Hidden by Default */
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -342,11 +343,11 @@ background-size: 400% 400%;
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(5px);
     z-index: 1000;
-    display: none;
-  }
-  
-  /* Popup Container */
-  .popup {
+    display: none; /* Hidden by default */
+}
+
+/* Popup Container - Hidden by Default */
+.popup {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -356,19 +357,18 @@ background-size: 400% 400%;
     padding: 2rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     z-index: 1001;
-    display: none;
+    display: none; /* Hidden by default */
     text-align: center;
     border: 1px solid var(--accent);
     width: 90%; /* Responsive width */
     max-width: 300px; /* Maximum width to keep it square */
     aspect-ratio: 1; /* Ensures the popup stays square */
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  
-  .popup-close {
+}
+
+.popup-close {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -377,49 +377,49 @@ background-size: 400% 400%;
     color: var(--accent);
     font-size: 1.5rem;
     cursor: pointer;
-  }
-  
-  .popup-content {
+}
+
+.popup-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
     width: 100%;
-  }
-  
-  .popup-title {
+}
+
+.popup-title {
     font-size: 1.5rem;
     color: var(--accent);
     font-weight: bold;
-  }
-  
-  .popup-phone-number {
+}
+
+.popup-phone-number {
     font-size: 1.5rem; /* Adjusted for smaller screens */
     color: var(--primary);
     font-weight: bold;
     margin: 0.5rem 0;
-  }
-  
-  .popup-text {
+}
+
+.popup-text {
     font-size: 0.9rem; /* Adjusted for smaller screens */
     color: var(--primary);
     opacity: 0.8;
-  }
-  
-  .popup-click-to-call {
+}
+
+.popup-click-to-call {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     margin-top: 1rem;
-  }
-  
-  .first-popup-action-text {
+}
+
+.first-popup-action-text {
     font-size: 1rem; /* Adjusted for smaller screens */
     color: var(--accent);
     font-weight: bold;
-  }
-  
-  .popup-call-circle {
+}
+
+.popup-call-circle {
     width: 40px; /* Adjusted for smaller screens */
     height: 40px; /* Adjusted for smaller screens */
     background: var(--accent);
@@ -428,20 +428,28 @@ background-size: 400% 400%;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-  }
-  
-  .popup-call-circle svg {
+}
+
+.popup-call-circle svg {
     width: 20px; /* Adjusted for smaller screens */
     height: 20px; /* Adjusted for smaller screens */
-  }
-  
-  .popup-action-text {
+}
+
+.popup-action-text {
     font-size: 0.9rem; /* Adjusted for smaller screens */
     color: var(--primary);
     opacity: 0.8;
-  }
-  /* Responsive Design */
-  @media (max-width: 768px) {
+}
+
+/* Media Query for Smaller Screens (Phones) */
+@media (max-width: 768px) {
+    .popup-overlay {
+        display: block; /* Show overlay on smaller screens */
+    }
+
+    .popup {
+        display: flex; /* Show popup on smaller screens */
+    }
     .header-content {
       flex-direction: column;
       gap: 1rem;
