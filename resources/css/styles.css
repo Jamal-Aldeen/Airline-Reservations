@@ -82,11 +82,14 @@
 }
 
 .popup-phone-number {
+  display: flex; /* Use flexbox to align items in a single line */
+  align-items: center; /* Vertically center the icon and text */
+  gap: 8px; /* Add space between the icon and text */
   font-size: 1.6rem;
   font-weight: 600;
   color: #e51937; /* Accent color */
   border: 1px solid #e51937;
-  border-radius: 5px;
+  border-radius: 12px;
   margin: 0.5rem 0 1rem;
   padding: 0.5rem 1rem;
   animation: pulsePhone 2s infinite;
