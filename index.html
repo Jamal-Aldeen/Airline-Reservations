@@ -7,555 +7,55 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #1a365d;
-      --secondary: #2d5a88;
-      --accent: #e31837;
-      --accent-hover: #c41430;
-      --text: #2d3748;
-      --text-light: #718096;
-      --bg: #f8fafc;
-      --white: #ffffff;
-      --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
-    }
-    
-    /* Global Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-    }
-    
-    /* --------------------- Popup Styles --------------------- */
-    
-    /* Overlay for Popup */
-    .popup-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 1999;
-      animation: overlayFadeIn 0.5s forwards;
-    }
-    
-    @keyframes overlayFadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    /* Popup Container */
-    .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.9);
-      width: 90%;
-      max-width: 400px;
-      background: var(--white);
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      z-index: 2000;
-      overflow: hidden;
-      animation: popupIn 0.5s forwards;
-    }
-    
-    @keyframes popupIn {
-      from {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.8);
-      }
-      to {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-      }
-    }
-    
-    .popup-close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      background: none;
-      border: none;
-      font-size: 2rem;
-      line-height: 1;
-      cursor: pointer;
-      color: var(--accent);
-      z-index: 2100;
-    }
-    
-    .popup-content {
-      padding: 2rem;
-      text-align: center;
-    }
-    
-    .popup-title {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-      color: var(--primary);
-    }
-    
-    .popup-phone-number {
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: var(--accent);
-      margin: 0.5rem 0 1rem;
-      animation: pulsePhone 2s infinite;
-    }
-    
-    @keyframes pulsePhone {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    
-    .popup-text,
-    .popup-action-text {
-      margin: 0.75rem 0;
-    }
-    
-    .popup-call-circle {
-      margin: 1rem auto;
-      width: 60px;
-      height: 60px;
-      background: var(--accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease;
-    }
-    
-    .popup-call-circle:hover {
-      transform: scale(1.1);
-    }
-    
-    .timage img {
-      width: 80px;
-      margin: 0.5rem;
-    }
-    
-    /* Hide popup on larger screens */
-    @media (min-width: 769px) {
-      .popup,
-      .popup-overlay {
-        display: none;
-      }
-    }
-    
-    /* --------------------- End Popup Styles --------------------- */
-    
-    /* --------------------- Page Styles --------------------- */
-    
-    /* Header Styles */
-    header {
-      background: var(--gradient);
-      padding: 1.25rem;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
-    
-    .header-container {
-      max-width: 1280px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      color: var(--white);
-      font-weight: 600;
-      font-size: 1.5rem;
-      text-decoration: none;
-    }
-    
-    .logo img {
-      height: 45px;
-      border-radius: 8px;
-    }
-    
-    /* Updated Button Styles with Extra Animations */
-    .contact-button,
-    .cta-button {
-      background: var(--accent);
-      color: var(--white);
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.8rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.3s ease;
-      background-size: 200% 200%;
-      animation: gradientShift 5s ease infinite, pulseGlow 1.5s infinite;
-    }
-    
-    .contact-button:hover,
-    .cta-button:hover {
-      background: var(--accent-hover);
-      transform: scale(1.08);
-      animation: pulseGlow 1.5s infinite;
-    }
-    
-    @keyframes pulseGlow {
-      0% {
-        box-shadow: 0 0 0px rgba(227, 24, 55, 0.6);
-      }
-      50% {
-        box-shadow: 0 0 20px rgba(227, 24, 55, 0.9);
-      }
-      100% {
-        box-shadow: 0 0 0px rgba(227, 24, 55, 0.6);
-      }
-    }
-    
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
-    /* Hero Section */
-    .hero {
-      margin-top: 80px;
-      padding: 6rem 1.25rem;
-      background-image: url('https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&q=80');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      color: var(--white);
-    }
-    
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
-    }
-    
-    .hero-content {
-      position: relative;
-      max-width: 1280px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    
-    .hero h1 {
-      font-size: 4rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-    }
-    
-    .hero p {
-      font-size: 1.5rem;
-      margin-bottom: 2.5rem;
-      opacity: 0.9;
-    }
-    
-    /* Features Section */
-    .features {
-      padding: 5rem 1.25rem;
-      background: var(--white);
-    }
-    
-    .features-grid {
-      max-width: 1280px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    
-    .feature-card {
-      background: var(--bg);
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-      transition: all 0.3s ease;
-    }
-    
-    .feature-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    }
-    
-    .feature-icon {
-      background: var(--gradient);
-      width: 60px;
-      height: 60px;
-      border-radius: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-    }
-    
-    .feature-icon svg {
-      width: 30px;
-      height: 30px;
-      color: var(--white);
-    }
-    
-    .feature-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
-    
-    .feature-card p {
-      color: var(--text-light);
-    }
-    
-    /* Destinations Section */
-    .destinations {
-      padding: 5rem 1.25rem;
-      background: var(--gradient);
-      color: var(--white);
-    }
-    
-    .destinations-content {
-      max-width: 1280px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    
-    .destinations h2 {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .destinations p {
-      font-size: 1.25rem;
-      margin-bottom: 3rem;
-      opacity: 0.9;
-    }
-    
-    .destination-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    
-    .destination-card {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 2rem;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
-    
-    .destination-card:hover {
-      transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.2);
-    }
-    
-    .destination-card h3 {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-    }
-    
-    .destination-card p {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    /* CTA Section */
-    .cta {
-      padding: 5rem 1.25rem;
-      background: var(--white);
-    }
-    
-    .cta-container {
-      max-width: 1280px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    
-    .cta-box {
-      background: var(--gradient);
-      padding: 4rem 2rem;
-      border-radius: 30px;
-      color: var(--white);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    }
-    
-    .cta-box h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .cta-box p {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-      opacity: 0.9;
-    }
-    
-    /* Footer */
-    footer {
-      background: var(--primary);
-      color: var(--white);
-      padding: 5rem 1.25rem 2rem;
-    }
-    
-    .footer-content {
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-    
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 3rem;
-      margin-bottom: 3rem;
-    }
-    
-    .footer-column h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .footer-column ul {
-      list-style: none;
-    }
-    
-    .footer-column ul li {
-      margin-bottom: 1rem;
-    }
-    
-    .footer-column a {
-      color: var(--white);
-      text-decoration: none;
-      opacity: 0.8;
-      transition: all 0.3s ease;
-    }
-    
-    .footer-column a:hover {
-      opacity: 1;
-      padding-left: 0.5rem;
-    }
-    
-    .copyright {
-      text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      opacity: 0.8;
-    }
-    
-    /* Mobile Styles */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      
-      .hero p {
-        font-size: 1.25rem;
-      }
-      
-      .features-grid,
-      .destination-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .cta-box {
-        padding: 2rem 1rem;
-      }
-      
-      .cta-box h2 {
-        font-size: 2.5rem;
-      }
-    }
-    
-    /* Floating Contact Button */
-    .floating-contact {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: var(--accent);
-      color: var(--white);
-      padding: 1rem;
-      border-radius: 50%;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      z-index: 1000;
-    }
-    
-    .floating-contact:hover {
-      transform: scale(1.1);
-      background: var(--accent-hover);
-    }
-    
-    .floating-contact svg {
-      width: 34px;
-      height: 34px;
-    }
-    
-    /* --------------------- End Page Styles --------------------- */
-  </style>
+  <link rel="stylesheet" href="resources/css/styles.css">
 </head>
 <body>
-  <!-- Popup for Small Screens -->
-  <script>
-    function hidePopup() {
-      document.getElementById("popup").style.display = "none";
-      document.querySelector(".popup-overlay").style.display = "none";
-    }
-  </script>
-  
-  <div class="popup-overlay"></div>
-  <div class="popup" id="popup">
-    <button onClick="hidePopup()" class="popup-close">&times;</button>
-    <div class="popup-content">
-      <div class="popup-title">AIRLINES RESERVATIONS</div>
-      <div class="popup-phone-number">1-800-221-1212</div>
-      <div class="popup-text">
-        Reservations, Cancellations &amp; Flight Changes
-      </div>
-      <div class="popup-click-to-call">
-        <p class="first-popup-action-text">15% OFF</p>
-        <div class="popup-call-circle">
-          <svg width="39" height="30" viewBox="0 0 27 27" fill="white" xmlns="http://www.w3.org/2000/svg">
-            <path d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z"></path>
-          </svg>
+    <!-- Popup Script and Markup -->
+    <script>
+        function hidePopup() {
+            document.getElementById("popup").style.display = "none";
+            document.querySelector(".popup-overlay").style.display = "none";
+        }
+
+        function redirectToCall() {
+            // Check if the screen width is less than or equal to 768px (typical breakpoint for mobile devices)
+            if (window.innerWidth <= 768) {
+                window.location.href = "tel:+10000000000";
+            }
+            return false; // Prevent default behavior
+        }
+    </script>
+
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" onclick="redirectToCall()"></div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup"  onclick="redirectToCall()">
+        <button onClick="hidePopup()" class="popup-close">&times;</button>
+        <div class="popup-content">
+            <div class="popup-title">AIRLINES RESERVATIONS</div>
+            <div class="popup-phone-number">
+                <svg id="img-phone" width="17" height="17" viewBox="0 0 27 27" fill="#e04f67" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z"></path>
+                </svg>        
+                <span class="phone_number">000-000-000</span>
+            </div>
+            <div class="popup-text">
+                Reservations, Cancellations &amp; Flight Changes
+            </div>
+            <div class="popup-click-to-call">
+                <p class="first-popup-action-text">15% OFF</p>
+                <a href="tel:+10000000000" class="popup-call-circle">
+                    <svg width="39" height="30" viewBox="0 0 27 27" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z">
+                        </path>
+                    </svg>
+                </a>
+                <p class="popup-action-text">Click to Call</p>
+            </div>
         </div>
-        <p class="popup-action-text">Click to Call</p>
-      </div>
-      <div class="timage">
-        <img src="resources/images/united-airlines.jpg" alt="United Airlines" />
-        <img src="resources/images/american-airlines.png" alt="American Airlines" />
-        <img src="resources/images/delta.png" alt="Delta Airlines" />
-      </div>
     </div>
-    <div class="popup-bottom">
-      <!-- <img alt="Ringing phone" src="resources/images/ringing-phone.gif" width="44" height="44" c /> -->
-    </div>
-  </div>
   
   <!-- Header -->
   <header>
@@ -564,8 +64,8 @@
         <img src="/resources/images/Delta-Emblem.png" alt="Delta Logo">
         Delta Air Lines
       </a>
-      <a href="tel:18002211212" style="font-size: larger; color: #ffffff;">
-        1-800-221-1212
+      <a href="tel:10000000000" style="font-size: larger; color: #ffffff;">
+        Customer Service: 000-000-000
       </a>
     </div>
   </header>
@@ -575,11 +75,11 @@
     <div class="hero-content">
       <h1>Fly Beyond Expectations</h1>
       <p>Experience world-class service with America's most trusted airline</p>
-      <a href="tel:18002211212" class="cta-button">
+      <a href="tel:10000000000" class="cta-button">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
         </svg>
-        1-800-221-1212
+        000-000-000
       </a>
     </div>
   </section>
@@ -630,34 +130,18 @@
         <div class="destination-card">
           <h3>Domestic Flights</h3>
           <p>Connect to over 200 destinations within the United States</p>
-          <a href="tel:18002211212" class="contact-button">Book Now</a>
+          <a href="tel:10000000000" class="contact-button">Book Now</a>
         </div>
         <div class="destination-card">
           <h3>International</h3>
           <p>Fly to more than 50 countries across six continents</p>
-          <a href="tel:18002211212" class="contact-button">Book Now</a>
+          <a href="tel:10000000000" class="contact-button">Book Now</a>
         </div>
         <div class="destination-card">
           <h3>Caribbean</h3>
           <p>Escape to paradise with our Caribbean destination network</p>
-          <a href="tel:18002211212" class="contact-button">Book Now</a>
+          <a href="tel:10000000000" class="contact-button">Book Now</a>
         </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- CTA Section -->
-  <section class="cta animate" style="animation-delay: 0.8s;">
-    <div class="cta-container">
-      <div class="cta-box">
-        <h2>Ready to Take Flight?</h2>
-        <p>Call now to book your next adventure with Delta Air Lines</p>
-        <a href="tel:18002211212" class="cta-button">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
-          1-800-221-1212
-        </a>
       </div>
     </div>
   </section>
@@ -706,11 +190,20 @@
     </div>
   </footer>
   
-  <!-- Floating Contact Button -->
-  <a href="tel:18002211212" class="floating-contact">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-    </svg>
-  </a>
+<!-- CTA Section -->
+<section class="cta sticky-cta animate" style="animation-delay: 0.8s;">
+    <div class="cta-container">
+      <div class="cta-box">
+        <h2>Ready to Take Flight?</h2>
+        <p>Call now to book your next adventure with Delta Air Lines</p>
+        <a href="tel:10000000000" class="cta-button">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          000-000-000
+        </a>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
