@@ -1,160 +1,180 @@
-/* Sticky CTA Button */
-.sticky-cta {
-  position: sticky;
-  bottom: 0;
-  z-index: 1000;
-}
-
 /* Animation for Call Button */
 @keyframes pulse {
-  0% {
-    transform: scale(1);
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
-  50% {
-    transform: scale(1.05);
+  .animate-pulse {
+    animation: pulse 1.5s infinite;
   }
-  100% {
-    transform: scale(1);
+  
+  /* Fade-in Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
-}
-.animate-pulse {
-  animation: pulse 1.5s infinite;
-}
-
-/* Fade-in Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+  .animate-fade-in {
+    animation: fadeIn 1s ease-in-out;
   }
-  to {
-    opacity: 1;
+  /* Popup Overlay */
+  
+  @keyframes overlayFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
-}
-.animate-fade-in {
-  animation: fadeIn 1s ease-in-out;
-}
-
-/* Popup CSS */
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1999;
-  animation: overlayFadeIn 0.5s forwards;
-}
-
-@keyframes overlayFadeIn {
-  from {
-    opacity: 0;
+  
+  /* Popup Container */
+  
+  @keyframes popupIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
-  to {
-    opacity: 1;
+  
+  .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #e51937; /* Accent color */
+    z-index: 2100;
   }
-}
-
-.popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
-  width: 90%;
-  max-width: 400px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  z-index: 2000;
-  overflow: hidden;
-  animation: popupIn 0.5s forwards;
-}
-
-@keyframes popupIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
+  
+  .popup-content {
+    padding: 2rem;
+    margin: 50px 0px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center; 
   }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+  
+  .popup-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    /* font-weight: 600; */
+    color: #003a70; /* Primary color */
   }
-}
-
-.popup-close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
-  color: #c60c30;
-  z-index: 2100;
-}
-
-.popup-content {
-  padding: 2rem;
-  text-align: center;
-}
-
-.popup-title {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-  color: #2a5db0;
-}
-
-.popup-phone-number {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #c60c30;
-  margin: 0.5rem 0 1rem;
-  animation: pulsePhone 2s infinite;
-}
-
-@keyframes pulsePhone {
-  0% {
-    transform: scale(1);
+  
+  .popup-phone-number {
+    display: flex; /* Use flexbox to align items in a single line */
+    align-items: center; /* Vertically center the icon and text */
+    gap: 8px; /* Add space between the icon and text */
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #e51937; /* Accent color */
+    border: 1px solid #e51937;
+    border-radius: 12px;
+    margin: 0.5rem 0 1rem;
+    padding: 0.5rem 1rem;
+    animation: pulsePhone 2s infinite;
   }
-  50% {
-    transform: scale(1.05);
+  
+  @keyframes pulsePhone {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
-  100% {
-    transform: scale(1);
+  
+  .popup-text,
+  .popup-action-text {
+    margin: 0.75rem 0;
+    color: #333; /* Neutral text color */
   }
-}
-
-.popup-text,
-.popup-action-text {
-  margin: 0.75rem 0;
-}
-
-.popup-call-circle {
-  margin: 1rem auto;
-  width: 60px;
-  height: 60px;
-  background: #c60c30;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-}
-
-.popup-call-circle:hover {
-  transform: scale(1.1);
-}
-
-.timage img {
-  width: 80px;
-  margin: 0.5rem;
-}
-
-@media (min-width: 769px) {
-  .popup,
+  
+  .popup-call-circle {
+    margin: 1rem auto;
+    width: 100px;
+    height: 100px;
+    background: #e51937; /* Accent color */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .popup-call-circle:hover {
+    transform: scale(1.1);
+  }
+  
+  .popup-click-to-call {
+    font-size: 2rem;
+    font-weight: 600;
+    /* color: white; */
+  }
+  
+  /* Hide popup on larger screens */
+  @media (min-width: 769px) {
+    .popup,
+    .popup-overlay {
+      display: none;
+    }
+  }
+  
+  /* Sticky CTA Section */
+  .sticky-cta {
+    position: sticky;
+    bottom: 0;
+    z-index: 2001; /* Higher than the popup's z-index */
+  }
+  
+  .sticky-cta span {
+    font-size: 26px;
+  }
+  
+  /* Popup Overlay */
   .popup-overlay {
-    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1999; /* Lower than the sticky CTA */
+    animation: overlayFadeIn 0.5s forwards;
   }
-}
+  
+  /* Popup Container */
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 2000; /* Higher than the overlay but lower than the sticky CTA */
+    overflow: hidden;
+    animation: popupIn 0.5s forwards;
+  }
