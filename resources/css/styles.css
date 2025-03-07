@@ -253,7 +253,7 @@
   }
   
   /* CTA Section */
-  /* .cta {
+  .cta {
     padding: 5rem 1.25rem;
     background: var(--white);
   }
@@ -281,7 +281,7 @@
     font-size: 1.25rem;
     margin-bottom: 2rem;
     opacity: 0.9;
-  } */
+  }
   
   /* Footer */
   footer {
@@ -334,57 +334,6 @@
     opacity: 0.8;
   }
   
-  /* Sticky CTA Section */
-.sticky-cta {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* Ensure it stays on top of other content */
-    background-color: #ffffff; /* Adjust background color as needed */
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
-  }
-  
-  .sticky-cta .cta-container {
-    max-width: 1200px; /* Adjust as needed */
-    margin: 0 auto;
-    padding: 1rem;
-  }
-  
-  .sticky-cta .cta-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .sticky-cta h2 {
-    margin: 0;
-    font-size: 1.25rem;
-  }
-  
-  .sticky-cta p {
-    margin: 0;
-    font-size: 0.875rem;
-  }
-  
-  .sticky-cta .cta-button {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #e04f67; /* Adjust button color as needed */
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: 500;
-  }
-  
-  .sticky-cta .cta-button svg {
-    width: 20px;
-    height: 20px;
-  }
-  
   /* Mobile Styles */
   @media (max-width: 768px) {
     .hero h1 {
@@ -409,37 +358,53 @@
     }
   }
   
-  /* Floating Contact Button
-  .floating-contact {
+/* Floating Contact Button - Full Width */
+.floating-contact {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background: var(--accent);
-    color: var(--white);
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1.8rem;
-    display: inline-flex;
+    bottom: 1rem; /* Adjust distance from the bottom */
+    left: 1rem; /* Start from the left edge */
+    right: 1rem; /* End at the right edge */
+    width: calc(100% - 2rem); /* Take up almost full width (with 1rem margin on both sides) */
+    background: var(--accent); /* Use your accent color */
+    color: var(--white); /* Use your white color */
+    padding: 1rem; /* Add padding */
+    border-radius: 50px; /* Rounded corners */
+    display: flex;
     align-items: center;
-    gap: 0.5rem;
-    transition: all 0.3s ease;
-    background-size: 200% 200%;
-    cursor: pointer;
-    z-index: 1000;
+    justify-content: center;
+    gap: 0.5rem; /* Space between icon and text */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make text bold */
+    font-size: 1.8rem; /* Larger text size */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Add shadow */
+    z-index: 1001; /* Ensure it's above the footer and popup */
+    transition: all 0.3s ease; /* Smooth hover effect */
   }
   
   .floating-contact:hover {
-    transform: scale(1.1);
-    background: var(--accent-hover);
+    background: var(--accent-hover); /* Change color on hover */
+    transform: scale(1.02); /* Slight scale effect */
   }
   
   .floating-contact svg {
-    width: 34px;
-    height: 34px;
-  } */
+    width: 30px; /* Adjust icon size */
+    height: 30px;
+  }
   
+  /* Ensure the floating button doesn't cover the footer */
+  @media (min-width: 769px) {
+    .floating-contact {
+      bottom: 2rem; /* Adjust for larger screens */
+    }
+  }
+  
+  /* Make the floating button appear above the popup on smaller screens */
+  @media (max-width: 768px) {
+    .floating-contact {
+      z-index: 2001; /* Higher than the popup's z-index */
+    }
+  }
+
   /* --------------------- End Page Styles --------------------- */
 
 
@@ -586,17 +551,6 @@
     .popup-overlay {
       display: none;
     }
-  }
-  
-  /* Sticky CTA Section */
-  .sticky-cta {
-    position: sticky;
-    bottom: 0;
-    z-index: 2001; /* Higher than the popup's z-index */
-  }
-  
-  .sticky-cta span {
-    font-size: 26px;
   }
   
   /* Popup Overlay */
