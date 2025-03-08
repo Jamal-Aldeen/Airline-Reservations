@@ -196,7 +196,7 @@ WAIT TIME
 
 .icon-row img {
   border-radius: 6px;
-  background-color: #ffffffda;
+  background-color: #ffffff ;
   width: 95px;
   height: 95px;
   object-fit: contain;
@@ -396,24 +396,27 @@ POPUP CSS
 }
 
 .popup-content {
-  padding: 2rem;
+  padding: 1.8rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  height: 90%;
 }
 
 .popup-title {
-  font-size: 1.8rem;
+  font-size: 2.8rem;
   margin-bottom: 0.75rem;
   font-weight: 600;
   color: var(--primary);
 }
 
 .popup-phone-number {
-  font-size: 1.6rem;
+  font-size: 2.6rem;
+  border: 1px solid aqua;
+  border-radius: 20px;
+  padding: 10px;
   font-weight: 600;
   color: var(--accent);
   margin-bottom: 0.75rem;
