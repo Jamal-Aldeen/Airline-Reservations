@@ -156,6 +156,29 @@
   font-size: 26px;
 }
 
+/* Adjust layout for smaller screens
+@media (max-width: 768px) {
+  .sticky-cta .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sticky-cta h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .sticky-cta p {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sticky-cta p img {
+    margin-bottom: 0.5rem;
+  }
+} */
+
+
 /* Popup Overlay */
 .popup-overlay {
   position: fixed;
