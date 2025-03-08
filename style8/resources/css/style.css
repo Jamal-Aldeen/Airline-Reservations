@@ -39,13 +39,17 @@ header {
   background: rgba(18, 18, 18, 0.95);
   top: 0;
   z-index: 999;
-  padding: 20px 0;
+  width: 100%;
+  padding: 15px 0; /* Reduce padding for mobile */
+  position: fixed;
+  left: 0;
+  right: 0;
 }
 
 .header-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 15px; /* Reduce side padding */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -54,31 +58,55 @@ header {
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 2rem;
+  gap: 5px; /* Reduce gap */
+  font-size: 2rem; /* Reduce font size */
   font-weight: 700;
   color: var(--accent);
 }
 
-.logo svg {
-  width: 40px;
-  height: 40px;
-  fill: var(--accent);
+.logo img {
+  width: 35px; /* Slightly smaller */
+  height: 35px;
 }
 
 .toll-free {
-  padding: 10px 20px;
-  font-size: 1rem;
+  padding: 8px 15px; /* Reduce padding */
+  font-size: 2rem; /* Reduce font size */
   transition: background 0.4s ease, color 0.4s ease;
   color: #e0e0e0;
   border: 2px solid var(--accent);
   border-radius: 50px;
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .toll-free:hover {
   background: var(--accent);
   color: whitesmoke;
 }
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: row; /* Keep in one line */
+    justify-content: space-between;
+    padding: 0 10px; /* Reduce padding */
+  }
+
+  .logo {
+    font-size: 1.4rem; /* Smaller font */
+  }
+
+  .logo img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .toll-free {
+    padding: 6px 12px; /* Adjust button padding */
+    font-size: 1rem; /* Adjust font size */
+  }
+}
+
 
 /************************************************
 MAIN LAYOUT (GRID)
@@ -300,21 +328,65 @@ CTA (BOTTOM BAR)
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.4);
 }
 
+/* .cta {
+  background: var(--accent);
+  text-align: center;
+  padding: 15px;
+  color: #121212;
+  font-weight: 700;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20001;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.4);
+  border-radius: 20px 20px 0 0; /* Prevents overflow issues 
+} */
+
 .cta h3 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
+  font-size: 1.6rem;
+  margin-bottom: 5px;
 }
 
 .cta .contact {
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 15px;
-  font-size: 1.5rem;
+  gap: 10px;
+  font-size: 1.4rem;
 }
 
 .cta img {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
+}
+
+.cta a {
+  color: white; /* Better contrast */
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+@media (max-width: 480px) {
+  .cta {
+    padding: 12px;
+  }
+  
+  .cta h3 {
+    font-size: 1.4rem;
+  }
+  
+  .cta .contact {
+    font-size: 1.2rem;
+    gap: 8px;
+  }
+
+  .cta img {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 /************************************************
@@ -406,14 +478,14 @@ POPUP CSS
 }
 
 .popup-title {
-  font-size: 2.8rem;
+  font-size: 1.8rem;
   margin-bottom: 0.75rem;
-  font-weight: 600;
+  /* font-weight: 600; */
   color: var(--primary);
 }
 
 .popup-phone-number {
-  font-size: 2.6rem;
+  font-size: 2rem;
   border: 1px solid aqua;
   border-radius: 20px;
   padding: 10px;
@@ -442,9 +514,10 @@ POPUP CSS
   color: #555;
 }
 
+.first-popup-action-text,
 .popup-action-text {
   margin-bottom: 0.75rem;
-  font-size: 1rem;
+  font-size: 1.7rem;
   color: #ffffff;
   padding: 10px;
 }
