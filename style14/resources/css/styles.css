@@ -95,8 +95,6 @@ body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: url("./resources/images/71ef47140fab5931b5d767bb4c3f3406.gif")
-    center/cover no-repeat;
   opacity: 0.1;
   z-index: 1;
 }
@@ -446,8 +444,6 @@ top: -50%;
 left: -50%;
 width: 200%;
 height: 200%;
-background: url("./resources/images/71ef47140fab5931b5d767bb4c3f3406.gif")
-    center/cover no-repeat;
 opacity: 0.1;
 z-index: 1;
 }
