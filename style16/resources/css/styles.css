@@ -39,6 +39,7 @@ header {
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
+  margin: 0 0 25px 0;
   z-index: 100;
   padding: 1rem 0;
   border-bottom: 1px solid var(--accent);
@@ -323,8 +324,8 @@ main {
 /* Footer */
 footer {
   text-align: center;
-  padding: 2rem 0 6rem;
-  background: linear-gradient(to top, rgba(0, 31, 63, 0.95), transparent);
+  padding: 2rem 0 2rem;
+  background: linear-gradient( rgba(0, 31, 63, 0.95), transparent);
 }
 
 .footer-links {

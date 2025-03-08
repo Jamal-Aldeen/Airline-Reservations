@@ -72,7 +72,6 @@ header a {
 
 /* HERO SECTION STYLES */
 section.hero {
-  background-image: url('/resources/images/background.jpg');
   background-size: cover;
   background-position: center;
   height: 70vh;
@@ -578,7 +577,6 @@ footer a:hover {
 
 /* Hero Section Background */
 .hero-bg {
-  background-image: url('/resources/images/background+3.jpg');
   background-size: cover;
   background-position: center;
   position: relative;

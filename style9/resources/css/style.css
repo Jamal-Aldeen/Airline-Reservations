@@ -317,15 +317,6 @@ header {
   color: var(--paragraph);
 }
 
-/* Combined Background Section */
-.combined-background-section {
-  padding: 4rem 0;
-  background-image: url('/resources/images/airplane.jpg');
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
 .combined-background-section::before {
   content: '';
   position: absolute;
