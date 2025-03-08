@@ -1,0 +1,611 @@
+:root {
+  --primary: #1E3A8A; /* New Primary color */
+  --accent: #1D4ED8;  /* New Accent color */
+  --white: #ffffff;
+}
+
+/* Global Styles & Color Palette
+   Base: #E0E1DD, Accent: #778DA9, Secondary: #415A77,
+   Dark Background: #1B263B, Darker Accent: #0D1B2A */
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #E0E1DD;
+  color: #415A77;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Neumorphic Base */
+.neu-box {
+  background: #E0E1DD;
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px #778DA9, -10px -10px 20px #ffffff;
+}
+
+.neu-inset {
+  box-shadow: inset 5px 5px 10px #778DA9, inset -5px -5px 10px #ffffff;
+}
+
+/* Uniform Section Width */
+section {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* Global Responsive Adjustments */
+@media (max-width: 767px) {
+  section {
+    padding: 2rem 0;
+  }
+  .container {
+    padding: 0 1rem;
+  }
+  .grid {
+    gap: 1.5rem;
+  }
+}
+
+/* HEADER STYLES */
+header {
+  background: linear-gradient(135deg, #1B263B 0%, #0D1B2A 100%);
+  padding: 1.2rem 0;
+  transition: background 0.5s ease;
+}
+
+header a {
+  color: #0D1B2A;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.phone-button {
+  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.phone-button:hover {
+  transform: scale(1.05);
+}
+
+/* HERO SECTION STYLES */
+section.hero {
+  background-image: url('/resources/images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 70vh;
+  border-radius: 30px;
+  box-shadow: 15px 15px 30px #778DA9, -15px -15px 30px #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+section.hero::before {
+  content: "";
+  background: linear-gradient(135deg, rgba(27,38,59,0.8) 0%, rgba(13,27,42,0.8) 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+section.hero > .content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  color: #E0E1DD;
+  font-weight: 800;
+  font-family: 'Poppins', sans-serif;
+  animation: fadeInDown 1s ease;
+}
+
+section.hero ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+section.hero ul li {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  color: #E0E1DD;
+  animation: fadeInUp 1s ease;
+}
+
+section.hero ul li svg {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 1rem;
+  fill: #FFD700;
+}
+
+.phone-button {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: #1B263B;
+  border-radius: 30px;
+  padding: 1.25rem 2.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 2rem auto;
+  width: fit-content;
+}
+
+.phone-button.hero-btn {
+  animation: bounceIn 1s ease, pulseButton 2s infinite;
+}
+
+.phone-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.phone-button svg {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  fill: #1B263B;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% { transform: translateY(20px); opacity: 0; }
+  60% { transform: translateY(-10px); opacity: 1; }
+  100% { transform: translateY(0); }
+}
+
+@keyframes pulseButton {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255, 165, 0, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.7);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(255, 165, 0, 0.7);
+  }
+}
+
+/* CURRENT WAIT TIME SECTION STYLES */
+.wait-time-section {
+  background: linear-gradient(135deg, #E0E1DD 0%, #D0D1DD 100%);
+  box-shadow: inset 5px 5px 10px #778DA9, inset -5px -5px 10px #ffffff;
+  color: #1B263B;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.particle {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #778DA9;
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: particle-float 4s ease-in-out infinite;
+}
+
+@keyframes particle-float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(10px, -20px); }
+}
+
+.clock-icon {
+  animation: rotate 6s linear infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* CUSTOMER SUPPORT CARDS */
+.card, .flat-box {
+  background: #E0E1DD;
+  border-radius: 20px;
+  box-shadow: 8px 8px 16px #778DA9, -8px -8px 16px #ffffff;
+  transition: all 0.3s ease;
+}
+
+.card:hover, .flat-box:hover {
+  box-shadow: 12px 12px 24px #778DA9, -12px -12px 24px #ffffff;
+  transform: translateY(-5px);
+}
+
+/* CUSTOMER SUPPORT SECTION WITH BACKGROUND */
+.support-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.support-card:hover {
+  box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.feature-icon {
+  transition: transform 0.3s ease;
+}
+
+.feature-icon:hover {
+  transform: rotate(6deg) scale(1.1);
+}
+
+/* VERTICAL DIVIDER */
+.vertical-divider {
+  position: relative;
+}
+
+.vertical-divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid #FBBF24;
+  border-radius: 50%;
+  animation: ping 1s infinite;
+}
+
+@keyframes ping {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  75% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* AIRLINES LIST SECTION STYLES */
+.airline-item {
+  background: #E0E1DD;
+  border-radius: 20px;
+  box-shadow: 8px 8px 16px #778DA9, -8px -8px 16px #ffffff;
+  transition: all 0.3s ease;
+}
+
+.number {
+  box-shadow: 5px 5px 10px #778DA9, -5px -5px 10px #ffffff;
+  background: #778DA9;
+  color: #E0E1DD;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+}
+
+.line {
+  width: 60px;
+  height: 3px;
+  background: #778DA9;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.airline-item:hover .line {
+  width: 100px;
+  background: #415A77;
+}
+
+.airline-item h3 {
+  color: #415A77;
+  margin-top: 1rem;
+  transition: color 0.3s ease;
+}
+
+.airline-item:hover h3 {
+  color: #778DA9;
+}
+
+/* ABOUT SECTION STYLES */
+.floating-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(117,138,167,0.3) 0%, transparent 70%);
+  animation: float 6s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(117,138,167,0.6);
+}
+
+/* DISCLAIMER SECTION STYLES */
+.disclaimer-container {
+  border: 1px solid #778DA9;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 2px 2px 8px rgba(119,141,169,0.2);
+}
+
+.disclaimer a {
+  color: #778DA9;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.disclaimer a:hover {
+  color: #415A77;
+}
+
+/* CALL-TO-ACTION SECTION STYLES */
+/* Full width and shorter height */
+.cta {
+  width: 100%;
+  background: linear-gradient(135deg, #1B263B 0%, #2d4a68 100%);
+  box-shadow: 0 -6px 25px rgba(0,0,0,0.3);
+  border-top: 4px solid #778DA9;
+  padding: 0.75rem 0;
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
+}
+
+.number-glow {
+  text-shadow: 0 0 10px rgb(255,252,252);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; text-shadow: 0 0 15px rgba(119,141,169,0.6); }
+}
+
+.animate-bounce-in {
+  animation: bounceIn 1s ease;
+}
+
+/* FOOTER STYLES */
+footer {
+  background: #445575;
+  color: #E0E1DD;
+  padding: 1.5rem 0;
+  border-radius: 5%;
+}
+
+footer a {
+  color: #778DA9;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #E0E1DD;
+}
+
+/* POPUP STYLES */
+/* Updated to full-screen with new colors */
+
+/* Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1999;
+  animation: overlayFadeIn 0.5s forwards;
+  display: none;
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Container */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--white);
+  z-index: 2000;
+  overflow: hidden;
+  animation: popupIn 0.5s forwards;
+  display: none;
+}
+
+@keyframes popupIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--accent);
+  z-index: 2100;
+}
+
+/* Popup Content with more top space, bigger phone icon, phone number border */
+.popup-content {
+  padding: 3rem 2rem 2rem; /* Increased padding */
+  margin-top: 2rem;       /* Extra top space */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.popup-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.popup-phone-number {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  animation: pulsePhone 2s infinite;
+
+  /* Border around phone number */
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+}
+
+@keyframes pulsePhone {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.popup-text,
+.popup-action-text {
+  margin: 0.75rem 0;
+  color: #333;
+}
+
+.popup-call-circle {
+  margin: 1rem auto;
+  width: 100px;
+  height: 100px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.popup-call-circle:hover {
+  transform: scale(1.1);
+}
+
+/* Enlarge phone icon */
+.popup-call-circle svg {
+  width: 2.5rem;  /* Increased size */
+  height: 2.5rem;
+}
+
+.popup-click-to-call {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* Hide popup on screens 768px and larger */
+@media (min-width: 768px) {
+  .popup,
+  .popup-overlay {
+    display: none !important;
+  }
+}
+
+/* Hero Section Background */
+.hero-bg {
+  background-image: url('/resources/images/background+3.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 58, 175, 0.6);
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 767px) {
+  section.hero {
+    height: auto;
+    padding: 4rem 1rem;
+  }
+  section.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  section.hero ul li {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+  .phone-button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+}

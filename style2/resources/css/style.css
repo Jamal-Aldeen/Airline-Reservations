@@ -1,0 +1,361 @@
+/* Global Styles */
+body {
+  background: #fdfdfd;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+a {
+  text-decoration: none;
+}
+
+/* Header */
+header {
+  background: #2b2b2b;
+  color: #fff;
+  padding: 1.2rem 0;
+  border-bottom: 3px solid #ff6f61;
+}
+header a {
+  color: #fff;
+}
+header a:hover {
+  color: #ff6f61;
+}
+header .phone_number {
+  font-weight: bold;
+}
+
+/* Hero Section */
+section.hero {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 4rem 1rem;
+}
+section.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+section.hero .content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+section.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+section.hero ul {
+  list-style: none;
+  padding: 0;
+}
+section.hero li {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  section.hero h1 {
+    font-size: 4rem;
+  }
+  section.hero li {
+    font-size: 1.4rem;
+  }
+}
+
+/* Section Headings & Padding */
+section h2,
+section h3 {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+section {
+  padding: 3rem 1rem;
+}
+
+/* Cards and Boxes */
+.card,
+.flat-box {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover,
+.flat-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card .number {
+  background: #ff6f61;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+.card img {
+  max-width: 80px;
+  margin: 0 auto;
+}
+
+/* Airlines List */
+.airlines-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.airline-card {
+  background: #fff;
+  border: 2px solid #ff6f61;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.airline-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+.airline-card .number {
+  background: #ff6f61;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+  background: #2b2b2b;
+  color: #bbb;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+footer a {
+  color: #ff6f61;
+  margin: 0 0.5rem;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Call-to-Action (CTA) */
+.cta {
+  background: linear-gradient(135deg, #2b2b2b 0%, #1a1a1a 100%);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+  border-top: 3px solid #ff6f61;
+  padding: 1.5rem 0;
+  text-align: center;
+  position: sticky;
+  bottom: 0;
+  z-index: 3000;
+  transition: transform 0.3s;
+}
+.cta:hover {
+  transform: translateY(-1rem);
+}
+.cta h3 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.cta p {
+  font-size: 2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.number-glow {
+  text-shadow: 0 0 10px rgba(255, 111, 97, 0.4);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.8; text-shadow: 0 0 15px rgba(255, 111, 97, 0.6); }
+  100% { opacity: 1; }
+}
+
+/* Animations for Call Button */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.animate-pulse {
+  animation: pulse 1.5s infinite;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.animate-fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Overlay Fade In */
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Popup In Animation */
+@keyframes popupIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #e51937; /* Accent color */
+  z-index: 2100;
+}
+
+.popup-content {
+  padding: 2rem;
+  margin: 50px 0;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #003a70; /* Primary color */
+}
+
+.popup-phone-number {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #e51937; /* Accent color */
+  border: 1px solid #e51937;
+  border-radius: 12px;
+  margin: 0.5rem 0 1rem;
+  padding: 0.5rem 1rem;
+  animation: pulse 2s infinite;
+}
+
+.popup-text,
+.popup-action-text {
+  margin: 0.75rem 0;
+  color: #333; /* Neutral text color */
+}
+
+.popup-call-circle {
+  margin: 1rem auto;
+  width: 100px;
+  height: 100px;
+  background: #e51937; /* Accent color */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.popup-call-circle:hover {
+  transform: scale(1.1);
+}
+
+.popup-click-to-call {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1999;
+  animation: overlayFadeIn 0.5s forwards;
+}
+
+/* Popup Container */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  z-index: 2000;
+  overflow: hidden;
+  animation: popupIn 0.5s forwards;
+}
+
+/* Hide popup on larger screens */
+@media (min-width: 769px) {
+  .popup,
+  .popup-overlay {
+    display: none;
+  }
+}

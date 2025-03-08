@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Airlines</title>
+    <link rel="icon" type="image/x-icon" href="/resources/images/travel4.png" />
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="/resources/css/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      function hidePopup() {
+        document.getElementById("popup").style.display = "none";
+        document.querySelector(".popup-overlay").style.display = "none";
+      }
+      function redirectToCall() {
+        if (window.innerWidth <= 768) {
+          window.location.href = "tel:+1000000000";
+        }
+        return false;
+      }
+    </script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="neu-box mx-4 mt-4">
+      <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+        <a href="#" class="text-2xl font-bold flex items-center">
+          <img src="resources/images/logo.png" alt="Logo" class="w-12 h-12 mr-2 neu-box p-1" />
+          JetReservations
+        </a>
+        <div class="mt-2 md:mt-0">
+          <a href="tel:+1000000000" class="px-6 py-2 phone-button flex items-center">
+            <svg class="w-6 h-6 mr-2" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+              />
+            </svg>
+            <span class="phone_number">000-000-000</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+      <!-- HERO SECTION -->
+      <section class="hero neu-box mt-6 relative overflow-hidden">
+        <div class="content px-4 text-center">
+          <h1 class="text-4xl md:text-5xl font-bold text-white animate-fadeInDown">
+            Reservation Desk
+          </h1>
+          <ul class="mt-4 space-y-4 md:space-y-6 flex flex-col items-center">
+            <li class="text-white flex items-center animate-fadeInUp">
+              <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+              New Bookings
+            </li>
+            <li class="text-white flex items-center animate-fadeInUp">
+              <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              Cancellations
+            </li>
+            <li class="text-white flex items-center animate-fadeInUp">
+              <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 19l-7-7 7-7" />
+              </svg>
+              Changes
+            </li>
+            <li class="text-white flex items-center animate-fadeInUp">
+              <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+              Refunds
+            </li>
+          </ul>
+          <div class="mt-8">
+            <a
+              href="tel:+1000000000"
+              class="phone-button hero-btn px-8 py-4 flex items-center animate-bounce hover:translate-y-[-5px] transition-transform duration-300"
+            >
+              <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                />
+              </svg>
+              Call Now 000-000-000
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CURRENT WAIT TIME SECTION -->
+      <section class="wait-time-section neu-inset mt-6">
+        <div class="flex items-center justify-center space-x-4">
+          <div class="relative">
+            <svg class="w-12 h-12 text-neu-red clock-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </div>
+          <div class="flex flex-col md:flex-row items-center">
+            <span class="text-xl md:text-2xl font-medium">
+              Current Wait Time:
+            </span>
+            <span class="text-3xl md:text-4xl font-bold text-neu-red ml-2 glow-text">
+              Less than 10 seconds
+            </span>
+          </div>
+        </div>
+        <div class="absolute inset-0 pointer-events-none">
+          <div class="particle" style="top: 10%; left: 20%;"></div>
+          <div class="particle" style="top: 30%; left: 70%;"></div>
+          <div class="particle" style="top: 50%; left: 40%;"></div>
+          <div class="particle" style="top: 70%; left: 80%;"></div>
+          <div class="particle" style="top: 90%; left: 10%;"></div>
+        </div>
+      </section>
+
+      <!-- CUSTOMER SUPPORT CARDS -->
+      <section class="grid md:grid-cols-3 gap-6 mt-6">
+        <div class="card p-6">
+          <img src="resources/images/price.gif" alt="Best Price" class="w-24 mx-auto mb-4" />
+          <h3 class="text-2xl font-bold mb-2">Best Price Guarantee</h3>
+          <p class="text-gray-600">Flight tickets for all destinations</p>
+        </div>
+        <div class="card p-6">
+          <img src="resources/images/helpdesk.gif" alt="Customer Service" class="w-24 mx-auto mb-4" />
+          <h3 class="text-2xl font-bold mb-2">Excellent Customer Service</h3>
+          <p class="text-gray-600">Quick changes and cancellations</p>
+        </div>
+        <div class="card p-6">
+          <img src="resources/images/shield.gif" alt="Secure Booking" class="w-24 mx-auto mb-4" />
+          <h3 class="text-2xl font-bold mb-2">Secure Booking</h3>
+          <p class="text-gray-600">Your Personal Information is secure</p>
+        </div>
+      </section>
+
+      <!-- CUSTOMER SUPPORT SECTION WITH BACKGROUND -->
+      <section
+        class="relative bg-cover bg-center py-12 px-4 md:px-8 mt-6 rounded-2xl overflow-hidden"
+        style="background-image: url('resources/images/background+.jpg');"
+      >
+        <div class="absolute inset-0 bg-[rgba(27,38,59,0.9)] bg-opacity-70 transition-all duration-500"></div>
+        <div class="relative max-w-6xl mx-auto h-full z-10">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-center py-8 md:py-12">
+            <!-- 24/7 SUPPORT Column -->
+            <div class="support-card">
+              <div class="flex items-center mb-6">
+                <div class="feature-icon w-10 h-10 bg-yellow-400/10 rounded-md p-2 mr-4 flex items-center justify-center">
+                  <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">
+                  24/7 SUPPORT
+                </h2>
+              </div>
+              <p class="text-gray-200 text-lg md:text-xl leading-relaxed mb-6">
+                Instant access to expert assistance for all your travel needs, any time of day.
+                <span class="font-semibold text-yellow-300">Real-time solutions</span> for urgent requests.
+              </p>
+              <ul class="space-y-3">
+                <li class="flex items-center text-gray-200 text-base md:text-lg">
+                  <div class="w-2 h-2 bg-yellow-400 rounded-full mr-3"></div>
+                  Immediate flight rebooking
+                </li>
+                <li class="flex items-center text-gray-200 text-base md:text-lg">
+                  <div class="w-2 h-2 bg-yellow-400 rounded-full mr-3"></div>
+                  Instant itinerary modifications
+                </li>
+              </ul>
+            </div>
+
+            <!-- Vertical Divider -->
+            <div class="hidden md:flex items-center justify-center h-full vertical-divider"></div>
+
+            <!-- FLIGHT DEALS Column -->
+            <div class="support-card">
+              <div class="flex items-center mb-6">
+                <div class="feature-icon w-10 h-10 bg-yellow-400/10 rounded-md p-2 mr-4 flex items-center justify-center">
+                  <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 3v18m9-9H3" />
+                  </svg>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">
+                  FLIGHT DEALS
+                </h2>
+              </div>
+              <p class="text-gray-200 text-lg md:text-xl leading-relaxed mb-6">
+                Access exclusive rates and last-minute offers with our global network.
+                <span class="font-semibold text-yellow-300">Price protection</span> on all bookings.
+              </p>
+              <div class="relative mt-8">
+                <div class="absolute inset-0 bg-yellow-400/10 rounded-xl blur-xl"></div>
+                <div class="relative flex items-center justify-center gap-3 text-yellow-400 p-4 rounded-xl border border-yellow-400/20">
+                  <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                  </svg>
+                  <span class="text-lg font-semibold">Best Price Guarantee</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AIRLINES LIST SECTION -->
+      <section class="mt-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="airline-item p-6">
+            <div class="number bg-neu-red text-white">01</div>
+            <h3 class="text-xl font-semibold mt-4">Air Alaska</h3>
+            <div class="line bg-neu-red mt-4"></div>
+          </div>
+          <div class="airline-item p-6">
+            <div class="number bg-neu-red text-white">02</div>
+            <h3 class="text-xl font-semibold mt-4">American Airlines</h3>
+            <div class="line bg-neu-red mt-4"></div>
+          </div>
+          <div class="airline-item p-6">
+            <div class="number bg-neu-red text-white">03</div>
+            <h3 class="text-xl font-semibold mt-4">British Airways</h3>
+            <div class="line bg-neu-red mt-4"></div>
+          </div>
+          <div class="airline-item p-6">
+            <div class="number bg-neu-red text-white">04</div>
+            <h3 class="text-xl font-semibold mt-4">Delta Airlines</h3>
+            <div class="line bg-neu-red mt-4"></div>
+          </div>
+          <div class="airline-item p-6">
+            <div class="number bg-neu-red text-white">05</div>
+            <h3 class="text-xl font-semibold mt-4">South West Airlines</h3>
+            <div class="line bg-neu-red mt-4"></div>
+          </div>
+          <div class="airline-item p-6">
+            <div class="number bg-neu-red text-white">06</div>
+            <h3 class="text-xl font-semibold mt-4">United Airlines</h3>
+            <div class="line bg-neu-red mt-4"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT SECTION -->
+      <section class="relative overflow-hidden mt-6">
+        <div class="floating-circle w-32 h-32 top-10 left-10"></div>
+        <div class="floating-circle w-20 h-20 bottom-10 right-10"></div>
+        <div class="relative z-10 container mx-auto px-4 max-w-8xl text-center py-20 bg-white bg-opacity-90 rounded-2xl shadow-lg overflow-hidden">
+          <h2 class="text-4xl md:text-5xl font-extrabold mb-6 text-[#415A77] tracking-wide">
+            Our Reservations Desk
+          </h2>
+          <div class="mb-8 flex justify-center">
+            <div class="w-24 h-1 rounded-full bg-gradient-to-r from-[#778DA9] to-[#415A77] animate-pulse"></div>
+          </div>
+          <div class="relative group">
+            <p class="hover-glow text-lg md:text-xl leading-relaxed transition-all duration-500 p-8 rounded-2xl text-[#415A77] bg-gradient-to-r from-transparent via-transparent to-transparent group-hover:from-[#E0E1DD] group-hover:via-[#778DA9] group-hover:to-[#E0E1DD]">
+              We specialize in seamless bookings, date changes, cancellations, and refunds. Renowned for transforming complex travel planning into effortless experiences, we're committed to making your journey as enjoyable as the destination itself.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- DISCLAIMER SECTION -->
+      <section class="mt-6">
+        <div class="container disclaimer mx-auto px-4 max-w-8xl text-center py-12">
+          <div class="disclaimer-container">
+            <p class="text-lg text-[#415A77] leading-relaxed">
+              kohngaithanyaresort.com is an owned and operated property of kohngaithanyaresort.com and acts as a travel agent partner.
+              We sell various airline flight related products on behalf of numerous transport and accommodation service providers,
+              including, but not limited to, airlines, coach, rail, cruise line operators, and hotels.
+              kohngaithanyaresort.com does not own, operate, manage, or control these independent suppliers of services and is not liable for their acts or omissions.
+              kohngaithanyaresort.com connects you to a live travel agent specialist to help you with your flight booking.
+              We have no responsibility for these services, nor do we have the authority to make any warranty or representation regarding their standard.
+              Requests cannot be guaranteed. All bookings are subject to the terms and conditions and limitations of liability imposed by these travel service providers.
+              You understand that your legal recourse is against the specific airline carrier, not kohngaithanyaresort.com.
+              Conditions can change in any country at any time.
+              It is your responsibility to check the USA Government Travel advisories for your intended destination at
+              <a href="https://travel.state.gov/content/travel.html" target="_blank" rel="noopener">travel.state.gov</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+<!-- CALL-TO-ACTION (STICKY) SECTION -->
+<section class="cta transform transition-all duration-300 hover:-translate-y-1 mt-6" style="z-index: 3000;">
+  <div class="w-full px-2">
+    <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+      <div class="flex items-center animate-bounce-in">
+        <img src="resources/images/24-hours-support.gif" alt="24 Hours Support" class="w-20 h-20 md:w-24 md:h-24 mr-4 hover:rotate-[20deg] transition-transform duration-300" />
+        <div class="text-center md:text-left">
+          <p class="text-lg md:text-xl font-medium text-white/90">
+            Zero Waiting • Direct Support
+          </p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <div class="relative group">
+          <div class="absolute -inset-1 bg-white/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <a href="tel:+1000000000" class="flex items-center text-2xl md:text-4xl font-bold text-white hover:text-[#778DA9] transition-colors">
+            <span class="mr-3">📞</span>
+            <span class="number-glow">000-000-000</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="neu-box mt-6 p-6">
+      <div class="container mx-auto px-4 text-center">
+        <div class="mb-4">
+          <a href="/pages/privacy.html" class="text-neu-red" style="color:#778DA9; font-weight: 500;">Privacy Policy</a>
+          <span class="mx-2" style="color:#415A77;">|</span>
+          <a href="/pages/terms.html" class="text-neu-red" style="color:#778DA9; font-weight: 500;">Terms of Service</a>
+        </div>
+        <p style="color:#415A77;">&copy; 2023 Airline Reservations. All rights reserved</p>
+      </div>
+    </footer>
+
+    <!-- Popup Markup -->
+    <div class="popup-overlay" onclick="redirectToCall()"></div>
+    <div class="popup" id="popup" onclick="redirectToCall()">
+      <button onClick="hidePopup()" class="popup-close">&times;</button>
+      <div class="popup-content">
+        <div class="popup-title">FLYNOW RESERVATIONS</div>
+        <div class="popup-phone-number">
+          <a href="tel:+1000000000" class="phone-link">000-000-000</a>
+        </div>
+        <div class="popup-text">
+          Book your flights, manage cancellations &amp; changes effortlessly.
+        </div>
+        <p class="popup-action-text font-bold text-lg text-gray-700">
+          Enjoy 15% OFF Your First Booking!
+        </p>
+        <div class="popup-call-circle">
+          <a href="tel:+1000000000">
+            <svg width="39" height="30" viewBox="0 0 27 27" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z"></path>
+            </svg>
+          </a>
+        </div>
+        <p class="popup-action-text">Click to Call</p>
+      </div>
+    </div>
+
+    <script src="resources/js/main.js"></script>
+  </body>
+</html>
