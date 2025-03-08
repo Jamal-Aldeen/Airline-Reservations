@@ -525,7 +525,6 @@ footer {
     border-radius: 12px;
     margin: 0.5rem 0 1rem;
     padding: 0.5rem 1rem;
-    animation: pulsePhone 2s infinite;
   }
 
 .popup-text {
@@ -556,6 +555,8 @@ footer {
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease;
+    animation: pulsePhone 2s infinite;
+
   }
   
   .popup-call-circle:hover {
@@ -583,6 +584,18 @@ footer {
         transform: translate(-50%, -50%);
     }
 }
+
+@keyframes pulsePhone {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 
 /* Hide popup on larger screens */
 @media (min-width: 769px) {
