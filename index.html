@@ -99,6 +99,7 @@
         }
     </style>
 </head>
+</head>
 <body>
     <div class="container">
         <header>
@@ -106,7 +107,7 @@
             <p>Select a design style to preview</p>
         </header>
 
-        <div class="grid" id="styleContainer">
+        <div class="grid" id="styleContainer" role="list">
             <!-- Cards will be inserted here -->
         </div>
 
@@ -119,48 +120,71 @@
         document.addEventListener('DOMContentLoaded', () => {
             const styleContainer = document.getElementById('styleContainer');
             const totalStyles = 20;
+            const fragment = document.createDocumentFragment();
 
             // Create style cards
-            for (let i = 1; i <= totalStyles; i++) {
+            Array.from({ length: totalStyles }).forEach((_, i) => {
+                const styleNumber = i + 1;
                 const card = document.createElement('a');
                 card.className = 'style-card';
-                card.href = `style${i}/index.html`;
-                
+                card.href = `style${styleNumber}/index.html`;
+                card.setAttribute('role', 'listitem');
+                card.setAttribute('aria-label', `Style ${styleNumber}`);
                 card.innerHTML = `
-                    <div class="style-number">Style ${i}</div>
+                    <div class="style-number">Style ${styleNumber}</div>
                     <small>Click to preview</small>
-                    <div class="status-dot ${i <= 20 || i === 20 ? 'available' : 'missing'}"></div>
+                    <div class="status-dot available" 
+                         aria-label="Available"
+                         title="Available"></div>
                 `;
 
-                // Add availability warning
-                if (i > 20) {
-                    card.style.opacity = '0.6';
-                    card.style.cursor = 'not-allowed';
-                    card.addEventListener('click', (e) => {
+                // Verify link existence (theoretical implementation)
+                checkLinkAvailability(card.href).then(available => {
+                    if (!available) {
+                        card.querySelector('.status-dot').classList.replace('available', 'missing');
+                        card.querySelector('.status-dot').setAttribute('aria-label', 'Unavailable');
+                        card.style.pointerEvents = 'none';
+                        card.style.opacity = '0.6';
+                    }
+                });
+
+                fragment.appendChild(card);
+            });
+
+            styleContainer.appendChild(fragment);
+
+            // Improved keyboard navigation
+            styleContainer.addEventListener('keydown', (e) => {
+                const cards = Array.from(document.querySelectorAll('.style-card'));
+                const currentCard = document.activeElement;
+                const currentIndex = cards.indexOf(currentCard);
+
+                switch(e.key) {
+                    case 'ArrowRight':
+                    case 'ArrowDown':
                         e.preventDefault();
-                        alert('Style ${i} is currently unavailable');
-                    });
-                }
-
-                styleContainer.appendChild(card);
-            }
-
-            // Add keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                const cards = document.querySelectorAll('.style-card');
-                const currentFocus = document.activeElement;
-
-                if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-                    const index = Array.from(cards).indexOf(currentFocus);
-                    if (index < cards.length - 1) cards[index + 1].focus();
-                }
-                
-                if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-                    const index = Array.from(cards).indexOf(currentFocus);
-                    if (index > 0) cards[index - 1].focus();
+                        const nextIndex = (currentIndex + 1) % cards.length;
+                        cards[nextIndex].focus();
+                        break;
+                    case 'ArrowLeft':
+                    case 'ArrowUp':
+                        e.preventDefault();
+                        const prevIndex = (currentIndex - 1 + cards.length) % cards.length;
+                        cards[prevIndex].focus();
+                        break;
                 }
             });
         });
+
+        // Theoretical link availability check (would need server-side implementation)
+        async function checkLinkAvailability(url) {
+            try {
+                const response = await fetch(url, { method: 'HEAD' });
+                return response.ok;
+            } catch {
+                return false;
+            }
+        }
     </script>
 </body>
 </html>
