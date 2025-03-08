@@ -1,496 +1,726 @@
-    /* Modern Color Palette & Base Variables */
-    :root {
-        --primary: #2d3436;
-        --secondary: #00b894;
-        --accent: #fd79a8;
-        --light: #dfe6e9;
-        --dark: #2d3436;
-        --glass: rgba(255, 255, 255, 0.15);
-        --gradient: linear-gradient(135deg, #6c5ce7 0%, #a8e6cf 100%);
-      }
-  
-      /* Reset & Base Styles */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Inter', sans-serif;
-      }
-      
-      body {
-        background: var(--light);
-        color: var(--dark);
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
-      
-      /* Modern Scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      
-      ::-webkit-scrollbar-track {
-        background: var(--light);
-      }
-      
-      ::-webkit-scrollbar-thumb {
-        background: var(--secondary);
-        border-radius: 4px;
-      }
-  
-      /* Glassmorphism Header */
-      .header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        transition: background 0.3s ease;
-      }
-  
-      .nav-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 1rem 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-  
-      .logo {
-        font-size: 1.8rem;
-        font-weight: 700;
-        background: var(--gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-  
-      .phone-number {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--primary);
-        font-weight: 600;
-        text-decoration: none;
-      }
-  
-      /* Hero Section with 3D Background Animation */
-      .hero {
-        position: relative;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 6rem 2rem 2rem;
-        background: var(--gradient);
-        overflow: hidden;
-      }
-      
-      .hero::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: url('/resources/images/71ef47140fab5931b5d767bb4c3f3406.gif')
-          center/cover no-repeat;
-        opacity: 0.1;
-              z-index: 1;
-      }
-      
-      @keyframes rotate {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-      
-      .hero-content {
-        position: relative;
-        z-index: 2;
-        max-width: 1400px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-      }
-      
-      .hero-text h1 {
-        font-size: 3.5rem;
-        margin-bottom: 2rem;
-        font-weight: 800;
-        color: white;
-      }
-      
-      .features-list {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
-        gap: 10px; /* Adds space between items */
-        list-style-type: none; /* Removes default list bullets */
-        padding: 0; /* Removes default padding */
-    }
-    
-    .features-list li {
-        padding: 5px; /* Adds padding to each list item */
-     display: flex;
-        align-items: center;
-        gap: 1rem;
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-        color: white;
-      }
-      
-      .features-list li::before {
-        content: "✓";
-        color: var(--accent);
-      }
-      
-      .special-offer {
-        background: var(--glass);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 20px;
-        padding: 1.5rem;
-        max-width: 400px;
-      }
-      
-      .special-offer h3 {
-        color: white;
-        margin-bottom: 0.5rem;
-      }
-      
-      .special-offer p {
-        color: white;
-        margin-bottom: 1rem;
-      }
-      
-      .cta-button {
-        display: inline-block;
-        background: var(--secondary);
-        color: white;
-        padding: 1.5rem 3rem; /* Increased padding */
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: 700; /* Bolder font */
-        font-size: 1.5rem; /* Larger font size */
-        transition: background 0.3s ease;
-        text-align: center;
-        width: fit-content; /* Ensure it doesn't stretch */
-        margin: 0 auto; /* Center the button */
-    }
-    
-    .cta-button:hover {
-        background: darken(var(--secondary), 10%);
-    }
-  
-      /* Modern Cards for Support Features */
-      .support-features {
-        padding: 4rem 2rem;
-        background: white;
-      }
-      
-      .support-grid {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-      }
-      
-      .support-card {
-        background: var(--glass);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        border-radius: 20px;
-        text-align: center;
-        padding: 2rem;
-        transition: transform 0.3s ease;
-      }
-      
-      .support-card:hover {
-        transform: translateY(-10px);
-      }
-      
-      .support-card img {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 1rem;
-      }
-      
-      .support-card h3 {
-        margin-bottom: 0.5rem;
-        color: var(--primary);
-      }
-      
-      .support-card p {
-        font-size: 0.95rem;
-        color: var(--primary);
-      }
-      
-      /* Airlines Section */
-      .airlines {
-        padding: 4rem 2rem;
-        background: var(--light);
-      }
-      
-      .airlines-container {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-      
-      .airlines-header {
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-      
-      .airlines-header h2 {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-        color: var(--primary);
-      }
-      
-      .airlines-header p {
-        font-size: 1rem;
-        color: var(--primary);
-      }
-      
-      .airlines-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-      }
-      
-      .airline-card {
-        background: white;
-        border-radius: 20px;
-        padding: 2rem;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        transition: transform 0.3s ease;
-      }
-      
-      .airline-card:hover {
-        transform: translateY(-10px);
-      }
-      
-      .airline-card h3 {
-        margin-bottom: 1rem;
-        color: var(--primary);
-      }
-      
-      .airline-card .number {
-        font-size: 4rem;
-        color: var(--secondary);
-        opacity: 0.1;
-        position: absolute;
-        bottom: 1rem;
-        right: 1rem;
-      }
-      
-      /* 24/7 Support Section */
-      .support {
-        padding: 4rem 2rem;
-        background: var(--gradient);
-        color: white;
-      }
-      
-      .support-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 3rem;
-      }
-      
-      .support-item {
-        background: var(--glass);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 20px;
-        padding: 2rem;
-      }
-      
-      .support-item h2 {
-        margin-bottom: 1rem;
-        color: white;
-      }
-      
-      .support-item p {
-        color: white;
-        font-size: 0.95rem;
-      }
-      
-      /* Disclaimer Section */
-      .disclaimer {
-        padding: 2rem;
-        background: var(--light);
-        font-size: 0.85rem;
-        color: var(--dark);
-        text-align: center;
-      }
-      
-      /* Footer */
-      .footer {
-        background: var(--dark);
-        color: white;
-        padding: 2rem;
-        text-align: center;
-      }
-      
-      .footer a {
-        color: white;
-        text-decoration: none;
-        opacity: 0.8;
-        transition: opacity 0.3s ease;
-        margin: 0 0.5rem;
-      }
-      
-      .footer a:hover {
-        opacity: 1;
-      }
-      
-      /* Floating CTA Button */
-      .cta-floating {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        background: var(--secondary);
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 50px;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-        transition: transform 0.3s ease;
-        z-index: 90;
-      }
-      
-      .cta-floating:hover {
-        transform: translateY(-5px);
-      }
-      
-      .cta-floating img {
-        width: 30px;
-        height: 30px;
-      }
-  
-      .hero {
-        position: relative;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 6rem 2rem 2rem;
-        background: var(--gradient);
-        overflow: hidden;
-      }
-      
-      .hero-content {
-        position: relative;
-        z-index: 2;
-        max-width: 1200px; /* Adjusted max-width */
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* Two equal columns */
-        gap: 2rem; /* Reduced gap between columns */
-        align-items: center; /* Vertically center content */
-      }
-      
-      .hero-text {
-        text-align: left; /* Align text to the left */
-      }
-      
-      .hero-text h1 {
-        font-size: 3.5rem;
-        margin-bottom: 1.5rem; /* Adjusted margin */
-        font-weight: 800;
-        color: white;
-      }
-      
-      .features-list {
-        list-style: none;
-        margin-bottom: 2rem;
-      }
-      
-      .features-list li {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-        color: white;
-      }
-      
-      .features-list li::before {
-        content: "✓";
-        color: var(--accent);
-      }
-      
-      .special-offer {
-        background: var(--glass);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 20px;
-        padding: 1.5rem;
-        max-width: 400px;
-        margin-left: auto; /* Push to the right */
-      }
-      
-      .special-offer h3 {
-        color: white;
-        margin-bottom: 0.5rem;
-      }
-      
-      .special-offer p {
-        color: white;
-        margin-bottom: 1.5rem; /* Adjusted margin */
-      }
-      
-      .cta-button {
-        display: inline-block;
-        background: var(--secondary);
-        color: white;
-        padding: 1rem 2rem; /* Adjusted padding */
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1.2rem; /* Adjusted font size */
-        transition: background 0.3s ease;
-      }
-      
-      .cta-button:hover {
-        background: darken(var(--secondary), 10%);
-      }
+/* Modern Color Palette & Base Variables */
+:root {
+  --primary: #2d3436;
+  --secondary: #00b894;
+  --accent: #fd79a8;
+  --light: #dfe6e9;
+  --dark: #2d3436;
+  --glass: rgba(255, 255, 255, 0.15);
+  --gradient: linear-gradient(135deg, #6c5ce7 0%, #a8e6cf 100%);
+}
 
-      .phone-number {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--primary);
-        font-weight: 600;
-        text-decoration: none;
-        font-size: 1.5rem; /* Increased font size */
-      }
-      
-      /* Responsive Design */
-      @media (max-width: 768px) {
-    .hero-content {
-      grid-template-columns: 1fr; /* Single column on small screens */
-      text-align: center; /* Center align content */
-    }
-  
-    .special-offer {
-      margin: 0 auto; /* Center the special offer */
-    }      
-      .airlines-grid {
-      grid-template-columns: 1fr;
-      }
-      .phone-number {
-        font-size: 1.2rem; /* Slightly smaller on mobile */
-      }
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Modern Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 4px;
+}
+
+/* Glassmorphism Header */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background 0.3s ease;
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.phone-number {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Hero Section with 3D Background Animation */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 2rem;
+  background: var(--gradient);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: url("/resources/images/71ef47140fab5931b5d767bb4c3f3406.gif")
+    center/cover no-repeat;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  text-align: center;
+
+  margin-bottom: 2rem;
+  font-weight: 800;
+  color: white;
+}
+
+.special-offer {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 1.5rem;
+  max-width: 400px;
+}
+
+.special-offer h3 {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.special-offer p {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background: var(--secondary);
+  color: white;
+  padding: 1.5rem 3rem; /* Increased padding */
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700; /* Bolder font */
+  font-size: 1.5rem; /* Larger font size */
+  transition: background 0.3s ease;
+  text-align: center;
+  width: fit-content; /* Ensure it doesn't stretch */
+  margin: 0 auto; /* Center the button */
+}
+
+.cta-button:hover {
+  background: darken(var(--secondary), 10%);
+}
+
+/* Modern Cards for Support Features */
+.support-features {
+  padding: 4rem 2rem;
+  background: white;
+}
+
+.support-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.support-card {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  text-align: center;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.support-card:hover {
+  transform: translateY(-10px);
+}
+
+.support-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+}
+
+.support-card h3 {
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.support-card p {
+  font-size: 0.95rem;
+  color: var(--primary);
+}
+
+/* Airlines Section */
+.airlines {
+  padding: 4rem 2rem;
+  background: var(--light);
+}
+
+.airlines-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.airlines-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.airlines-header h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.airlines-header p {
+  font-size: 1rem;
+  color: var(--primary);
+}
+
+.airlines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.airline-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.airline-card:hover {
+  transform: translateY(-10px);
+}
+
+.airline-card h3 {
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.airline-card .number {
+  font-size: 4rem;
+  color: var(--secondary);
+  opacity: 0.1;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+/* 24/7 Support Section */
+.support {
+    padding: 4rem 2rem;
+    background: var(--gradient);
+    color: white;
+  }
+  
+  .support-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+  }
+  
+  .support-item {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+  }
+  
+  .support-item h2 {
+    margin-bottom: 1rem;
+    color: white;
+  }
+  
+  .support-item p {
+    color: white;
+    font-size: 0.95rem;
+  }
+
+/* Disclaimer Section */
+.disclaimer {
+  padding: 2rem;
+  background: var(--light);
+  font-size: 0.85rem;
+  color: var(--dark);
+  text-align: center;
+}
+
+/* Footer */
+.footer {
+  background: var(--dark);
+  color: white;
+  padding: 1rem 1rem 9rem;
+  text-align: center;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  margin: 0 0.5rem;
+}
+
+.footer a:hover {
+  opacity: 1;
+}
+
+/* Floating CTA Button */
+.cta-floating {
+    position: fixed;
+    bottom: 20px;
+    left: 5%;
+    transform: translateX(-50%);
+    width: 90vw; /* Adjusted fixed width */
+    max-width: 90%; /* Ensures responsiveness */
+    background: var(--secondary);
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    z-index: 2005;
+    white-space: normal; /* Allow text to wrap */
+}
+
+/* Image styling */
+.cta-floating img {
+    width: 40px;
+    height: 40px;
+}
+
+/* Text styling */
+.cta-floating h3 {
+    font-size: 1.2rem;
+    line-height: 1.4; /* Improves readability */
+    text-align: center;
+}
+
+/* Call number styling */
+.cta-floating span {
+    font-size: 1.3rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .cta-floating {
+        width: 90%;
+        bottom: 10px;
+    }
+}
+
+/* Hover effect */
+.cta-floating:hover {
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.cta-content {
+    display: flex;
+    align-items: center; /* Aligns image and text */
+    gap: 8px; /* Adds spacing between image and text */
+}
+
+.cta-content span {
+    font-size: 2rem;
+}
+
+/* Adjust image size */
+.cta-content img {
+    width: 50px; /* Adjust width to make it fit better */
+    height: 50px;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 2rem;
+  background: var(--gradient);
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px; /* Adjusted max-width */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 2rem; /* Reduced gap between columns */
+  align-items: center; /* Vertically center content */
+}
+
+.hero-text {
+  text-align: left; /* Align text to the left */
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem; /* Adjusted margin */
+  font-weight: 800;
+  color: white;
+}
+
+.hero::before {
+content: "";
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: url("/resources/images/71ef47140fab5931b5d767bb4c3f3406.gif")
+    center/cover no-repeat;
+opacity: 0.1;
+z-index: 1;
+}
+  
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.features-list {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+.features-list li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.features-list li::before {
+  content: "✓";
+  color: var(--accent);
+}
+
+.special-offer {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 1.5rem;
+  max-width: 400px;
+  margin-left: auto; /* Push to the right */
+}
+
+.special-offer h3 {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.special-offer p {
+  color: white;
+  margin-bottom: 1.5rem; /* Adjusted margin */
+}
+
+.cta-button {
+  display: inline-block;
+  background: var(--secondary);
+  color: white;
+  padding: 1rem 2rem; /* Adjusted padding */
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.2rem; /* Adjusted font size */
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background: darken(var(--secondary), 10%);
+}
+
+.phone-number {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.5rem; /* Increased font size */
+}
+
+/* Animation for Call Button */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+    }
+    .animate-pulse {
+    animation: pulse 1.5s infinite;
+    }
+
+    /* Fade-in Animation */
+    @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+    }
+    .animate-fade-in {
+    animation: fadeIn 1s ease-in-out;
+    }
+    /* Popup Overlay */
+
+    @keyframes overlayFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+    }
+
+    /* Popup Container */
+
+    @keyframes popupIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+    }
+
+    .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--accent);
+    z-index: 2100;
+    }
+
+    .popup-content {
+    padding: 2rem;
+    margin: 50px 0px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center; 
+    }
+
+    .popup-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    /* font-weight: 600; */
+    color: var(--dark); /* Primary color */
+    }
+
+    .popup-phone-number {
+    display: flex; /* Use flexbox to align items in a single line */
+    align-items: center; /* Vertically center the icon and text */
+    gap: 8px; /* Add space between the icon and text */
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    margin: 0.5rem 0 1rem;
+    padding: 0.5rem 1rem;
+    animation: pulsePhone 2s infinite;
+    }
+
+    @keyframes pulsePhone {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+    }
+
+    .popup-text,
+    .popup-action-text {
+    margin: 0.75rem 0;
+    color: #333; /* Neutral text color */
+    }
+
+    .popup-call-circle {
+    margin: 1rem auto;
+    width: 100px;
+    height: 100px;
+    background: var(--accent); /* Accent color */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    }
+
+    .popup-call-circle:hover {
+    transform: scale(1.1);
+    }
+
+    .popup-click-to-call {
+    font-size: 2rem;
+    font-weight: 600;
+    /* color: white; */
+    }
+
+    /* Hide popup on larger screens */
+    @media (min-width: 769px) {
+    .popup,
+    .popup-overlay {
+        display: none;
+    }
+    }
+
+    /* Sticky CTA Section */
+    .sticky-cta {
+    position: sticky;
+    bottom: 0;
+    z-index: 2001; /* Higher than the popup's z-index */
+    }
+
+    .sticky-cta span {
+    font-size: 26px;
+    }
+
+    /* Popup Overlay */
+    .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1999; /* Lower than the sticky CTA */
+    animation: overlayFadeIn 0.5s forwards;
+    }
+
+    /* Popup Container */
+    .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 2000; /* Higher than the overlay but lower than the sticky CTA */
+    overflow: hidden;
+    animation: popupIn 0.5s forwards;
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content {
+    grid-template-columns: 1fr; /* Single column on small screens */
+    text-align: center; /* Center align content */
+  }
+
+  .special-offer {
+    margin: 0 auto; /* Center the special offer */
+  }
+  .airlines-grid {
+    grid-template-columns: 1fr;
+  }
+  .phone-number {
+    font-size: 1.2rem; /* Slightly smaller on mobile */
+  }
+}
