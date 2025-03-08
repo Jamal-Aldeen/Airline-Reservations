@@ -4,27 +4,614 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TravelHub - Global Flight Network</title>
-    <!-- Link to External Stylesheet -->
     <link rel="stylesheet" href="./resources/css/style.css" />
-    <style>.hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('./resources/images/airplane.jpg');
-      background-size: cover;
-      background-position: center;
-      z-index: -1;
-    } </style>
+    <style>
+      :root {
+        --primary: #1a5f7a;
+        --secondary: #57c5b6;
+        --accent: #ff9e45;
+        --light: #f9f9f9;
+        --dark: #333;
+        --white: #ffffff;
+        --phone-color: #003a70;
+      }
+
+      /* Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--light);
+        color: var(--dark);
+        line-height: 1.6;
+      }
+
+      header {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        padding: 1rem 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+      }
+
+      .contact-header {
+        display: flex;
+        align-items: center;
+        color: white;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .contact-header svg {
+        margin-right: 8px;
+        height: 20px;
+        width: 20px;
+      }
+
+      /* Hero Section */
+      .hero {
+        position: relative;
+        padding: 5rem 2rem;
+        color: white;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('./resources/images/airplane.jpg');
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+      }
+
+      .hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 0;
+      }
+
+      .hero-container {
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .hero-content h1 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        font-weight: 800;
+      }
+
+      .hero-features {
+        list-style: none;
+        margin-bottom: 2rem;
+      }
+
+      .hero-features li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+
+      .hero-features svg {
+        margin-right: 10px;
+        color: var(--accent);
+        height: 24px;
+        width: 24px;
+      }
+
+      .special-offer {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .special-offer p {
+        color: var(--dark);
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+
+      .special-offer a {
+        background-color: var(--primary);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.3s ease;
+        font-size: 1.1rem;
+      }
+
+      .special-offer a:hover {
+        background-color: var(--secondary);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .special-offer a svg {
+        margin-right: 10px;
+        height: 24px;
+        width: 24px;
+      }
+
+      /* About and Features Section */
+      .about-features {
+        padding: 5rem 2rem;
+        background-color: white;
+      }
+
+      .about-features-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: start;
+      }
+
+      .about {
+        padding: 1rem;
+      }
+
+      .about-header h2 {
+        color: var(--primary);
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      hr {
+        width: 60px;
+        height: 4px;
+        background-color: var(--accent);
+        border: none;
+        margin: 0 0 1.5rem 0;
+      }
+
+      .about p {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--dark);
+      }
+
+      .features {
+        padding: 1rem;
+      }
+
+      .features-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        border-radius: 10px;
+        transition: background-color 0.3s ease;
+      }
+
+      .feature-item:hover {
+        background-color: var(--light);
+      }
+
+      .feature-item img {
+        height: 60px;
+        width: 60px;
+      }
+
+      .feature-text h3 {
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .feature-text p {
+        font-size: 0.95rem;
+        color: var(--dark);
+      }
+
+      /* Airlines Section */
+      .airlines {
+        padding: 5rem 2rem;
+        background-color: var(--light);
+      }
+
+      .airlines-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .airlines-header {
+        text-align: left;
+        margin-bottom: 3rem;
+      }
+
+      .airlines-header h2 {
+        color: var(--primary);
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .airlines-header hr {
+        width: 60px;
+        height: 4px;
+        background-color: var(--accent);
+        border: none;
+        margin: 0 0 1.5rem 0;
+      }
+
+      .airlines-header p {
+        font-size: 1.1rem;
+        color: var(--dark);
+      }
+
+      .airlines-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .airline-item {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1rem;
+        text-align: left;
+      }
+
+      .airline-number {
+        color: var(--accent);
+        font-weight: 700;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+      }
+
+      .airline-item h3 {
+        font-size: 1.2rem;
+        color: var(--dark);
+      }
+
+      /* Support Section */
+      .support {
+        padding: 5rem 2rem;
+        background-color: white;
+      }
+
+      .support-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .support-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+      }
+
+      .support-item {
+        padding: 1rem;
+      }
+
+      .support-item h2 {
+        color: var(--primary);
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .support-item p {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--dark);
+      }
+
+      /* Disclaimer Section */
+      .disclaimer {
+        padding: 3rem 2rem;
+        background-color: #f1f1f1;
+      }
+
+      .disclaimer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .disclaimer p {
+        font-size: 0.9rem;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .disclaimer a {
+        color: var(--primary);
+        text-decoration: underline;
+      }
+
+      /* Footer Links */
+      .footer-links {
+        padding: 3rem 2rem;
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .links {
+        margin-bottom: 1.5rem;
+      }
+
+      .links a {
+        color: white;
+        text-decoration: none;
+        margin: 0 1rem;
+        transition: color 0.3s ease;
+      }
+
+      .links a:hover {
+        color: var(--accent);
+      }
+
+      .links span {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* Floating CTA */
+      .cta-floating {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background-color: var(--accent);
+        color: var(--dark);
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        z-index: 11100;
+      }
+
+      .cta-floating h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .cta-floating p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        font-weight: 700;
+      }
+
+      .cta-floating img {
+        height: 30px;
+        margin-right: 10px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        header {
+          padding: 0.5rem 1rem;
+        }
+
+        .header-container {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .logo {
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .contact-header {
+          font-size: 0.9rem;
+        }
+
+        .hero {
+          padding: 2rem 1rem;
+        }
+
+        .hero-container {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+
+        .hero-features li {
+          font-size: 1rem;
+        }
+
+        .special-offer {
+          padding: 1rem;
+        }
+
+        .special-offer p {
+          font-size: 1.1rem;
+        }
+
+        .special-offer a {
+          padding: 0.8rem 1.5rem;
+          font-size: 1rem;
+        }
+
+        .about-features {
+          padding: 2rem 1rem;
+        }
+
+        .about-features-container {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .about-header h2 {
+          font-size: 1.8rem;
+        }
+
+        .about p {
+          font-size: 0.9rem;
+        }
+
+        .features-grid {
+          gap: 1rem;
+        }
+
+        .feature-item {
+          padding: 1rem;
+        }
+
+        .feature-item img {
+          height: 40px;
+          width: 40px;
+        }
+
+        .feature-text h3 {
+          font-size: 1rem;
+        }
+
+        .feature-text p {
+          font-size: 0.85rem;
+        }
+
+        .airlines {
+          padding: 2rem 1rem;
+        }
+
+        .airlines-header h2 {
+          font-size: 2rem;
+        }
+
+        .airlines-header p {
+          font-size: 1rem;
+        }
+
+        .airlines-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .airline-item {
+          padding: 0.5rem;
+        }
+
+        .airline-number {
+          font-size: 1.2rem;
+        }
+
+        .airline-item h3 {
+          font-size: 1rem;
+        }
+
+        .support {
+          padding: 2rem 1rem;
+        }
+
+        .support-item h2 {
+          font-size: 1.5rem;
+        }
+
+        .support-item p {
+          font-size: 0.9rem;
+        }
+
+        .disclaimer {
+          padding: 1.5rem 1rem;
+        }
+
+        .disclaimer p {
+          font-size: 0.8rem;
+        }
+
+        .footer-links {
+          padding: 1.5rem 1rem;
+        }
+
+        .links {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .links a {
+          margin: 0;
+        }
+
+        .footer-container p {
+          font-size: 0.8rem;
+        }
+
+        .cta-floating {
+          bottom: 1rem;
+          right: 1rem;
+          padding: 0.8rem 1.5rem;
+        }
+
+        .cta-floating h3 {
+          font-size: 1rem;
+        }
+
+        .cta-floating p {
+          font-size: 1.2rem;
+        }
+
+        .cta-floating img {
+          height: 20px;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- Header -->
     <header>
       <div class="header-container">
         <a href="#" class="logo">TravelHub</a>
-        <a href="tel:+1000000000" class="contact-header" >
+        <a href="tel:+1000000000" class="contact-header">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -43,6 +630,50 @@
     </header>
 
     <main>
+
+    <!-- Popup Markup and Script -->
+    <script>
+      function hidePopup() {
+        document.getElementById("popup").style.display = "none";
+        document.querySelector(".popup-overlay").style.display = "none";
+      }
+
+      function redirectToCall() {
+        if (window.innerWidth <= 768) {
+          window.location.href = "tel:+1000000000";
+        }
+        return false;
+      }
+    </script>
+
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" onclick="redirectToCall()"></div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup" onclick="redirectToCall()">
+      <button onClick="hidePopup()" class="popup-close">&times;</button>
+      <div class="popup-content">
+        <div class="popup-title">AIRLINES RESERVATIONS</div>
+        <div class="popup-phone-number">
+          <svg id="img-phone" width="17" height="17" viewBox="0 0 27 27" fill="#ff9e45" xmlns="http://www.w3.org/2000/svg">
+            <path d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z"></path>
+          </svg>
+          <a href="tel:+1000000000" class="phone-link"><span class="phone_number">000-000-000</span></a>
+        </div>
+        <div class="popup-text">
+          Reservations, Cancellations &amp; Flight Changes
+        </div>
+        <div class="popup-click-to-call">
+          <p class="first-popup-action-text">15% OFF</p>
+          <a href="tel:+1000000000" class="popup-call-circle" >
+            <svg width=39 height="30" viewBox="0 0 27 27" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z"></path>
+            </svg>
+          </a>
+          <p class="popup-action-text">Click to Call</p>
+        </div>
+      </div>
+    </div>
       <!-- Hero Section -->
       <section class="hero">
         <div class="hero-container">
@@ -308,58 +939,14 @@
 
       <!-- Floating CTA -->
       <div class="cta-floating">
-        <h3>ZERO WAIT TIME: CALL NOW</h3>
+        <h3>ZERO WAIT TIME:</h3>
         <p>
           <a href="tel:+1000000000" class="phone-link">
             <img src="./resources/images/support-17576925-unscreen.gif" alt="Phone" />
-            000-000-000
+            <span class="phone-number">000-000-000</span>
           </a>
         </p>
       </div>
     </main>
-
-    <!-- Popup Markup and Script -->
-    <script>
-      function hidePopup() {
-        document.getElementById("popup").style.display = "none";
-        document.querySelector(".popup-overlay").style.display = "none";
-      }
-
-      function redirectToCall() {
-        if (window.innerWidth <= 768) {
-          window.location.href = "tel:+1000000000";
-        }
-        return false;
-      }
-    </script>
-
-    <!-- Popup Overlay -->
-    <div class="popup-overlay" onclick="redirectToCall()"></div>
-
-    <!-- Popup -->
-    <div class="popup" id="popup" onclick="redirectToCall()">
-      <button onClick="hidePopup()" class="popup-close">&times;</button>
-      <div class="popup-content">
-        <div class="popup-title">AIRLINES RESERVATIONS</div>
-        <div class="popup-phone-number">
-          <svg id="img-phone" width="17" height="17" viewBox="0 0 27 27" fill="#e51937" xmlns="http://www.w3.org/2000/svg">
-            <path d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z"></path>
-          </svg>
-          <a href="tel:+1000000000" class="phone-link"><span class="phone_number">000-000-000</span></a>
-        </div>
-        <div class="popup-text">
-          Reservations, Cancellations &amp; Flight Changes
-        </div>
-        <div class="popup-click-to-call">
-          <p class="first-popup-action-text">15% OFF</p>
-          <a href="tel:+1000000000" class="popup-call-circle" >
-            <svg width="39" height="30" viewBox="0 0 27 27" fill="white" xmlns="http://www.w3.org/2000/svg">
-              <path d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z"></path>
-            </svg>
-          </a>
-          <p class="popup-action-text">Click to Call</p>
-        </div>
-      </div>
-    </div>
   </body>
 </html>

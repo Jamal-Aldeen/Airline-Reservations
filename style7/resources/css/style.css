@@ -11,7 +11,7 @@
   }
  
   .phone-link {
-    color: var(--phone-color); /* Changes text color */
+    color: var(--accent); /* Changes text color */
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -447,11 +447,53 @@ hr {
   justify-content: center;
   font-size: 1.4rem;
   font-weight: 700;
+  margin: 0; /* Remove default margin */
 }
 
-.cta-floating img {
+.cta-floating a {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between image and text */
+  color: var(--light);
+  text-decoration: none;
+}
+
+.cta-floating a img {
   height: 30px;
-  margin-right: 10px;
+  width: 30px; /* Ensure consistent sizing */
+}
+
+.cta-floating .phone-number {
+  font-size: 1.2rem; /* Adjust font size if needed */
+}
+
+/* Center CTA on mobile screens */
+@media (max-width: 768px) {
+  .cta-floating {
+    left: 50%; /* Center horizontally */
+    right: auto; /* Remove right positioning */
+    transform: translateX(-50%); /* Adjust for exact centering */
+    width: 90%; /* Make it wider for better visibility */
+    max-width: 300px; /* Limit maximum width */
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+
+  .cta-floating h3 {
+    font-size: 1rem; /* Smaller font size for mobile */
+  }
+
+  .cta-floating p {
+    font-size: 1.2rem; /* Smaller font size for mobile */
+  }
+
+  .cta-floating a img {
+    height: 25px; /* Smaller image for mobile */
+    width: 25px;
+  }
+
+  .cta-floating .phone-number {
+    font-size: 1rem; /* Smaller font size for mobile */
+  }
 }
 
 /* Responsive Design */
