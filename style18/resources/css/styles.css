@@ -64,15 +64,15 @@
   
   @media (max-width: 768px) {
     .header-container a {
-      font-size: 14px; /* Smaller font size for mobile */
+      font-size: 18px; /* Smaller font size for mobile */
     }
   
     .logo {
-      font-size: 1.2rem; /* Adjust logo text size */
+      font-size: 1rem; /* Adjust logo text size */
     }
   
     .logo img {
-      height: 35px; /* Adjust logo image size */
+      height: 20px; /* Adjust logo image size */
     }
   }
   /* Updated Button Styles with Extra Animations */
@@ -302,7 +302,7 @@
     background: var(--primary);
     color: var(--white);
     padding: 1rem 1.25rem 1rem;
-    padding-bottom: 150px; /* Add extra padding to footer to accommodate the button */
+    padding-bottom: 130px; /* Add extra padding to footer to accommodate the button */
   }
   
     .footer-grid {
@@ -328,7 +328,7 @@
   @media (max-width: 768px) {
     footer {
       padding: 2rem 1rem; /* Adjust padding for smaller screens */
-      padding-bottom: 200px; /* Add extra padding to footer to accommodate the button */
+      padding-bottom: 100px; /* Add extra padding to footer to accommodate the button */
     }
   }
 
@@ -359,7 +359,7 @@
 /* Floating Contact Button - Full Width */
 .floating-contact {
     position: fixed;
-    bottom: 5rem; /* Adjust distance from the bottom */
+    bottom: 1rem; /* Adjust distance from the bottom */
     left: 1rem; /* Start from the left edge */
     right: 1rem; /* End at the right edge */
     width: calc(100% - 2rem); /* Take up almost full width (with 1rem margin on both sides) */
@@ -400,6 +400,7 @@
   @media (max-width: 768px) {
     .floating-contact {
       z-index: 2001; /* Higher than the popup's z-index */
+      font-size: 1.3rem; /* Larger text size */
     }
   }
 
