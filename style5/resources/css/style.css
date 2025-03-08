@@ -51,6 +51,7 @@ section {
 header {
   background: linear-gradient(135deg, #1B263B 0%, #0D1B2A 100%);
   padding: 1.2rem 0;
+  font-size: 2rem;
   transition: background 0.5s ease;
 }
 
@@ -509,17 +510,17 @@ footer a:hover {
 }
 
 .popup-phone-number {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--accent);
-  margin-bottom: 0.75rem;
-  animation: pulsePhone 2s infinite;
-
-  /* Border around phone number */
-  border: 2px solid var(--accent);
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  display: inline-block;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    margin: 0.5rem 0 1rem;
+    padding: 0.5rem 1rem;
+    animation: pulsePhone 2s infinite;
 }
 
 @keyframes pulsePhone {
@@ -564,7 +565,7 @@ footer a:hover {
 
 .popup-click-to-call {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 800;
 }
 
 /* Hide popup on screens 768px and larger */
@@ -590,6 +591,9 @@ footer a:hover {
 
 /* Responsive adjustments for small screens */
 @media (max-width: 767px) {
+  header{
+    font-size: 1.3rem;
+  }
   section.hero {
     height: auto;
     padding: 4rem 1rem;
