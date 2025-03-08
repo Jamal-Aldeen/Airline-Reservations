@@ -170,32 +170,72 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Call-to-Action (CTA) */
+/* Call-to-Action (CTA) - Mobile Optimized */
 .cta {
   background: linear-gradient(135deg, #2b2b2b 0%, #1a1a1a 100%);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
   border-top: 3px solid #ff6f61;
-  padding: 1.5rem 0;
+  padding: 1rem 0; /* Reduced padding for mobile */
   text-align: center;
   position: sticky;
   bottom: 0;
   z-index: 3000;
   transition: transform 0.3s;
 }
+
 .cta:hover {
-  transform: translateY(-1rem);
+  transform: none; /* Removed hover translateY for mobile */
 }
+
 .cta h3 {
-  font-size: 1.75rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.5rem; /* Adjusted for smaller screens */
+  margin-bottom: 0.25rem;
 }
+
 .cta p {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.25rem; /* Adjusted for readability */
+  font-weight: 600;
+}
+
+.cta .call-button {
+  background: #ff6f61;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1.5rem;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: background 0.3s ease;
 }
+
+.cta .call-button:hover,
+.cta .call-button:active {
+  background: #e65b50;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .cta {
+    padding: 0.75rem 0;
+  }
+
+  .cta h3 {
+    font-size: 1.25rem;
+  }
+
+  .cta p {
+    font-size: 1.1rem;
+  }
+
+  .cta .call-button {
+    font-size: 1.25rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
 .number-glow {
   text-shadow: 0 0 10px rgba(255, 111, 97, 0.4);
   animation: pulse 2s infinite;
