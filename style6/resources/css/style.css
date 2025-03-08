@@ -96,7 +96,7 @@
   header {
     padding: 100px 30px;
     text-align: center;
-    background: url("/resources/images/bg.jpg") no-repeat center center;
+    background: url("./resources/images/bg.jpg") no-repeat center center;
     background-size: cover;
     position: relative;
     overflow: hidden;
@@ -244,7 +244,7 @@
      ========================= */
   .services {
     text-align: center;
-    background: url("/resources/images/background+.jpeg") no-repeat center center;
+    background: url("./resources/images/background+.jpeg") no-repeat center center;
     background-size: cover;
     position: relative;
     padding: 80px 20px;
@@ -366,7 +366,7 @@
      ABOUT SECTION
      ========================= */
   .about {
-    background: url("/resources/images/background1.jpg") no-repeat center center;
+    background: url("./resources/images/background1.jpg") no-repeat center center;
     color: #000000;
     text-align: center;
   }

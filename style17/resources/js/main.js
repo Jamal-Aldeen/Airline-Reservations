@@ -38,7 +38,7 @@ var def = {
     var untilDate = date.toLocaleString('en-US', { month: 'long', day: 'numeric' });
     updateElementOnPageByClass(untilDate, "until_date", "textContent");
   
-    fetch("/resources/data.json")
+    fetch("./resources/data.json")
       .then(response => response.json())
       .then(json => {
         Object.keys(json).forEach(variableKey => {

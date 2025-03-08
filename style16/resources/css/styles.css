@@ -23,7 +23,7 @@ body {
   color: var(--primary);
   line-height: 1.6;
   min-height: 100vh;
-  background-image: url("resources/images/3796059_9442.jpg");
+  background-image: url("./resources/images/3796059_9442.jpg");
   background: cover no-repeat;
 }
 

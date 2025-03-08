@@ -20,7 +20,7 @@ body {
   color: var(--primary);
   padding: 20px;
   overflow-x: hidden;
-  background-image: url("/resources/images/background.jpg");
+  background-image: url("./resources/images/background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

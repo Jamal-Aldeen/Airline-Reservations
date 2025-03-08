@@ -109,7 +109,7 @@ nav a:hover::after {
 .hero {
   position: relative;
   min-height: 100vh;
-  background: url("/resources/images/free-photo-of-clouds-seen-from-an-airplane.jpeg")
+  background: url("./resources/images/free-photo-of-clouds-seen-from-an-airplane.jpeg")
     center/cover no-repeat;
   display: flex;
   align-items: center;
