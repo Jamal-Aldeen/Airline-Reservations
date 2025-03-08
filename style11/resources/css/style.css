@@ -74,6 +74,36 @@ body {
   transform: translateY(-2px);
 }
 
+/* Responsive Styles for Mobile Screens */
+@media (max-width: 768px) {
+  .header {
+    padding: 0.9rem 0; /* Reduce padding for smaller screens */
+  }
+
+  .logo {
+    font-size: 1.5rem; /* Reduce font size for the logo */
+  }
+
+  .phone-button {
+    font-size: 1.5rem; /* Reduce font size for the phone button */
+  }
+
+  .header-content {
+    flex-direction: row; /* Stack logo and phone button vertically */
+    gap: 0.5rem; /* Add space between stacked items */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1rem; /* Further reduce font size for very small screens */
+  }
+
+  .phone-button {
+    font-size: 0.8rem; /* Further reduce font size for very small screens */
+  }
+}
+
 .hero-content {
   color: white;
   max-width: 800px;
