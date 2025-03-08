@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AirWave Travels</title>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="/resources/css/style.css" />
+    <script type="module" src="/src/main.tsx"></script>
+  </head>
+  <body>
+    <!-- Popup Script and Markup -->
+    <script>
+      function hidePopup() {
+        document.getElementById("popup").style.display = "none";
+        document.querySelector(".popup-overlay").style.display = "none";
+      }
+
+      function redirectToCall() {
+        // Check if the screen width is less than or equal to 768px (typical breakpoint for mobile devices)
+        if (window.innerWidth <= 768) {
+          window.location.href = "tel:+1000000000";
+        }
+        return false; // Prevent default behavior
+      }
+    </script>
+
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" onclick="redirectToCall()"></div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup" onclick="redirectToCall()">
+      <button onClick="hidePopup()" class="popup-close">&times;</button>
+      <div class="popup-content">
+        <div class="popup-title">AirWave Travels</div>
+        <div class="popup-phone-number">
+          <svg id="img-phone" width="17" height="17" viewBox="0 0 27 27" fill="#e04f67" xmlns="http://www.w3.org/2000/svg">
+            <path d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z"></path>
+          </svg>
+          <span class="phone_number">000-000-000</span>
+        </div>
+        <div class="popup-text">
+          Reservations, Cancellations &amp; Flight Changes
+        </div>
+        <div class="popup-click-to-call">
+          <p class="first-popup-action-text">15% OFF</p>
+          <a href="tel:+1000000000" class="popup-call-circle">
+            <svg width="39" height="30" viewBox="0 0 27 27" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z">
+              </path>
+            </svg>
+          </a>
+          <p class="popup-action-text">Click to Call</p>
+        </div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="container header-content">
+        <a href="/" class="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path>
+          </svg>
+          AirWave Travels
+        </a>
+        <a href="tel:+1000000000" class="phone-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          000-000-000
+        </a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container hero-content">
+        <h1 class="hero-title">Reservation Desk</h1>
+        <p class="hero-subtitle">
+          New Bookings • Cancellations • Changes • Refunds<br>
+          Special Prices For New Bookings
+        </p>
+        <a href="tel:+1000000000" class="cta-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          Call Now 000-000-000
+        </a>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container">
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+            </div>
+            <h3 class="feature-title">Best Price Guarantee</h3>
+            <p>Flight tickets for all destinations at unbeatable prices</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+              </svg>
+            </div>
+            <h3 class="feature-title">24/7 Customer Service</h3>
+            <p>Expert support for changes and cancellations anytime</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3 class="feature-title">Secure Booking</h3>
+            <p>Your personal information is always protected</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="airlines">
+      <div class="container">
+        <h2 class="section-title">Airlines We Service</h2>
+        <p class="section-subtitle">Book your next flight with these leading airlines</p>
+        
+        <div class="airlines-grid">
+          <div class="airline-card">
+            <div class="airline-number">01</div>
+            <h3>Air Alaska</h3>
+          </div>
+          <div class="airline-card">
+            <div class="airline-number">02</div>
+            <h3>American Airlines</h3>
+          </div>
+          <div class="airline-card">
+            <div class="airline-number">03</div>
+            <h3>British Airways</h3>
+          </div>
+          <div class="airline-card">
+            <div class="airline-number">04</div>
+            <h3>Delta Airlines</h3>
+          </div>
+          <div class="airline-card">
+            <div class="airline-number">05</div>
+            <h3>Southwest Airlines</h3>
+          </div>
+          <div class="airline-card">
+            <div class="airline-number">06</div>
+            <h3>United Airlines</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="container about-content">
+        <h2 class="section-title">Our Reservations Desk</h2>
+        <p class="section-subtitle">
+          Our website has a professional group of flight specialists available 24 hours a day, 
+          7 days a week to assist you with your ticket reservation needs. We can assist you 
+          with booking flights, changing flight dates, canceling tickets, and obtaining refunds. 
+          We are well-known for making our clients' holidays as straightforward and pleasurable 
+          as possible. Call us today to make your vacation simple and enjoyable!
+        </p>
+      </div>
+    </section>
+
+    <section class="support">
+      <div class="container">
+        <div class="support-grid">
+          <div class="support-card">
+            <h2 class="support-title">24/7 CUSTOMER SUPPORT</h2>
+            <p>
+              We are delighted to assist you with New Reservations, Cancellations, 
+              and Flight Change inquiries. Our knowledgeable customer success agents 
+              are available 24 hours a day, 7 days a week to help you with your new 
+              or forthcoming flight. There are <strong>NO WAITING TIMES</strong> to book flights 
+              with nearly any airline.
+            </p>
+          </div>
+          <div class="support-card">
+            <h2 class="support-title">COMPARE FLIGHT COSTS</h2>
+            <p>
+              Get the greatest flight discounts anywhere in the globe. We can assist 
+              you in navigating the conditions of each airline prior to booking, 
+              allowing you to book the travel you require with peace of mind.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="disclaimer">
+      <div class="container">
+        <div class="disclaimer-content">
+          <p class="disclaimer-text">
+            Our website is an owned and operated property and acts as a travel agent partner. 
+            We sell various airline flight-related products on behalf of numerous transport and accommodation service providers, 
+            including, but not limited to, airlines, coach, rail, cruise line operators, and hotels. We do not own, 
+            operate, manage, or control these independent suppliers of services and are not liable for their acts or omissions. 
+            We connect you to a live travel agent specialist to help you with your flight booking. 
+            We have no responsibility for these services, nor do we have the authority to make any warranty or representation 
+            regarding their standard. Requests cannot be guaranteed. All bookings are subject to the terms and conditions 
+            and limitations of liability imposed by these travel service providers. You understand that your legal recourse 
+            is against the specific airline carrier, not us. Conditions can change in any country at any time. 
+            It is your responsibility to check the USA Government Travel advisories for your intended destination at 
+            <a href="https://travel.state.gov/content/travel.html" target="_blank" rel="noopener" class="disclaimer-link">
+              https://travel.state.gov/content/travel.html
+            </a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call-to-Action Section -->
+    <section class="cta">
+      <div class="container">
+        <h3>NO HOLD TIMES : CALL NOW</h3>
+        <p>
+          <a href="tel:+1000000000" style="text-decoration: none; color: #ffffff;">
+            <img src="resources/images/ringing-phone.gif" alt="Phone Icon" />
+            000-000-000
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <div class="footer-links">
+          <a href="/pages/privacy.html">Privacy Policy</a>
+          <span style="margin: 0 1rem;">|</span>
+          <a href="pages/terms.html">Terms of Service</a>
+        </div>
+        <p>&copy; 2024 AirWave Travels. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

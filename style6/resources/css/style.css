@@ -1,0 +1,621 @@
+/* =========================
+   GLOBAL RESET & BASE
+   ========================= */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: #111;
+    color: #f0f0f0;
+    overflow-x: hidden;
+    font-size: 18px;
+  }
+  a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+  
+  /* =========================
+     PRELOADER
+     ========================= */
+  #preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  #preloader .loader {
+    border: 10px solid rgba(255, 255, 255, 0.1);
+    border-top: 10px solid #ff6f61;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* =========================
+     PARALLAX BACKGROUND
+     ========================= */
+  .parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://via.placeholder.com/1920x1080?text=Sky');
+    background-size: cover;
+    background-attachment: fixed;
+    filter: blur(3px);
+    opacity: 0.3;
+    z-index: -1;
+    animation: slowRotate 30s linear infinite;
+  }
+  @keyframes slowRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  /* =========================
+     SCROLL ANIMATION
+     ========================= */
+  .animate-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+  }
+  .animate-section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* =========================
+     SECTION LAYOUT
+     ========================= */
+  section {
+    width: 100%;
+    padding: 100px 30px;
+    position: relative;
+  }
+  
+  /* =========================
+     HEADER
+     ========================= */
+  header {
+    padding: 100px 30px;
+    text-align: center;
+    background: url("/resources/images/bg.jpg") no-repeat center center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 0;
+  }
+  header h1 {
+    font-size: 4.5rem;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: textReveal 1.5s forwards;
+  }
+  @keyframes textReveal {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  header p {
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: textReveal 1.5s 0.5s forwards;
+    color: #000000;
+  }
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: textReveal 1.5s 1s forwards;
+  }
+  nav a {
+    padding: 16px 30px;
+    background: #222;
+    border-radius: 30px;
+    transition: background 0.3s, transform 0.3s;
+    font-size: 1.2rem;
+  }
+  nav a:hover {
+    background: #ff6f61;
+    transform: scale(1.05);
+  }
+  
+  /* =========================
+     HERO SECTION
+     ========================= */
+  .hero {
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+    position: relative;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 0;
+  }
+  .hero .intro-text,
+  .hero .intro-action {
+    position: relative;
+    z-index: 1;
+  }
+  .hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+  }
+  .hero p {
+    font-size: 1.5rem;
+  }
+  .hero .action-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 25px 50px;
+    color: #fff;
+    background: #ff6f61;
+    border-radius: 50px;
+    font-size: 2rem;
+    margin-top: 30px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: pulseBtn 2s infinite;
+  }
+  .hero .action-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255,111,97,0.8);
+  }
+  @keyframes pulseBtn {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 10px rgba(255,111,97,0.5);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255,111,97,0.8);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 10px rgba(255,111,97,0.5);
+    }
+  }
+  
+  /* =========================
+     WAIT TIME BANNER
+     ========================= */
+  .wait-banner {
+    text-align: center;
+    font-size: 1.7rem;
+    background: #222;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: bannerFadeIn 1s forwards, bannerPulse 2s infinite 1s;
+  }
+  @keyframes bannerFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes bannerPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  
+  /* =========================
+     SERVICES SECTION
+     ========================= */
+  .services {
+    text-align: center;
+    background: url("/resources/images/background+.jpeg") no-repeat center center;
+    background-size: cover;
+    position: relative;
+    padding: 80px 20px;
+    overflow: hidden;
+  }
+  .services::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    z-index: 0;
+    animation: overlayPulse 6s ease-in-out infinite;
+  }
+  @keyframes overlayPulse {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 0.65; }
+  }
+  .services h2 {
+    font-size: 3.5rem;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+    color: #ff6f61;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  }
+  .services .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 1;
+  }
+  .card {
+    background: rgba(51,51,51,0.9);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    transition: transform 0.4s, box-shadow 0.4s;
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  }
+  .card img {
+    width: 80px;
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+  }
+  .card img:hover {
+    transform: scale(1.1);
+  }
+  .card h3 {
+    margin-bottom: 15px;
+    font-size: 2rem;
+    color: #ff6f61;
+  }
+  .card p {
+    font-size: 1.3rem;
+    color: #ccc;
+  }
+  
+  /* =========================
+     AIRLINES SECTION
+     ========================= */
+  #airlines {
+    text-align: center;
+    padding: 80px 20px;
+    background: #111;
+  }
+  #airlines h2 {
+    font-size: 3.5rem;
+    margin-bottom: 40px;
+    color: #ff6f61;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  }
+  #airlines .airlines-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+  }
+  .airline-item {
+    background: rgba(51,51,51,0.9);
+    padding: 40px;
+    border-radius: 20px;
+    width: 260px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .airline-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  }
+  .airline-item .number {
+    background: #ff6f61;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    font-size: 1.5rem;
+    color: #fff;
+  }
+  .airline-item h3 {
+    font-size: 1.8rem;
+    color: #fff;
+  }
+  
+  /* =========================
+     ABOUT SECTION
+     ========================= */
+  .about {
+    background: url("/resources/images/background1.jpg") no-repeat center center;
+    color: #000000;
+    text-align: center;
+  }
+  .about h2 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+  }
+  .about p {
+    max-width: 800px;
+    margin: 20px auto;
+    font-size: 1.4rem;
+  }
+  
+  /* =========================
+     INFO DUO SECTION
+     ========================= */
+  .info-duo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  @media (min-width: 768px) {
+    .info-duo {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .info-block h3 {
+    font-size: 2.5rem;
+    color: #ff6f61;
+    margin-bottom: 15px;
+  }
+  .info-block p {
+    font-size: 1.3rem;
+    color: #aaa;
+  }
+  
+  /* =========================
+     STICKY CTA
+     ========================= */
+     .cta {
+      position: sticky;
+      bottom: 0;
+      background: #ff6f61;
+      color: #fff;
+      text-align: center;
+      font-size: 1.8rem;
+      z-index: 3000;
+      padding: 15px; /* reduced padding to decrease height */
+    }
+    
+  .phone-icon {
+    vertical-align: middle;
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  /* =========================
+     FOOTER
+     ========================= */
+  footer {
+    background: #111;
+    text-align: center;
+    padding: 50px 30px;
+    font-size: 1rem;
+    color: #777;
+  }
+  footer a {
+    margin: 0 15px;
+    transition: color 0.3s;
+  }
+  footer a:hover {
+    color: #ff6f61;
+  }
+  
+  /* =========================
+     POPUP STYLES
+     ========================= */
+  
+  /* Define your brand colors for the popup */
+  :root {
+    --popup-primary: #ffffff;  /* your existing dark blue */
+    --popup-accent: #e51937;   /* your accent red */
+    --popup-text-dark: #ffffff;
+    --popup-bg: #000000;       /* background for the full-screen popup */
+  }
+  
+  /* Popup Overlay */
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1999;
+    animation: overlayFadeIn 0.5s forwards;
+  }
+  @keyframes overlayFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Full-Screen Popup Container */
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--popup-bg);
+    z-index: 2000;
+    overflow: auto; /* allow scrolling if content is tall */
+    /* remove border-radius and shadow for full screen */
+    border-radius: 0;
+    box-shadow: none;
+    /* optional fade-in animation */
+    animation: popupFadeIn 0.5s forwards;
+  }
+  @keyframes popupFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Popup Close Button */
+  .popup-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--popup-accent);
+    z-index: 2100;
+  }
+  
+  /* Popup Content Layout */
+  .popup-content {
+    /* Center the content in the screen */
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertically center */
+    align-items: center;     /* horizontally center */
+    padding: 3rem 2rem;      /* bigger padding */
+    text-align: center;
+  }
+  
+  /* Title (Bigger) */
+  .popup-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--popup-primary);
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Phone Number Container (Bigger) */
+  .popup-phone-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 0.6rem 1rem;
+    border: 3px solid  #ff6f61 ;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: var(--popup-primary);
+    font-weight: 700;
+    animation: pulsePhone 2s infinite;
+}
+
+@keyframes pulsePhone {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+  
+  /* Inline Icon for Phone Number */
+  .phone-icon-inline {
+    color: var(--popup-primary);
+    height: 1.2em;
+    width: 1.2em;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  /* The actual phone number link */
+  .popup-number-link {
+    color: var(--popup-primary);
+    text-decoration: none;
+  }
+  
+  /* Subtext (Bigger) */
+  .popup-text {
+    margin-bottom: 1rem;
+    color:#ffffffd8;
+    font-size: 1.2rem;
+  }
+  
+  /* Offer Text (Bigger) */
+  .popup-offer {
+    color: #cf001f;;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Circular Call Icon (Bigger) */
+  .popup-call-circle {
+    display: inline-flex;
+    width: 90px;
+    height: 90px;
+    background: #ff6f61;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    margin-bottom: 1rem;
+  }
+  .popup-call-circle:hover {
+    transform: scale(1.1);
+  }
+  
+  /* "Click to Call Now" text (Bigger) */
+  .popup-action-text {
+    color: var(--popup-text-dark);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Hide popup on larger screens (mobile only) if desired */
+  @media (min-width: 769px) {
+    .popup,
+    .popup-overlay {
+      display: none;
+    }
+  }
+  
