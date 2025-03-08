@@ -582,23 +582,26 @@ header {
 }
 
 .popup-title {
-  font-size: 2.4rem;
+  font-size: 2em;
   margin-bottom: 0.75rem;
-  font-weight: 600;
+  /* font-weight: 600; */
   color:rgba(0, 0, 0, 0.699);
 }
 
 /* Popup phone number as a tel link */
 .popup-phone-number {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 600;
-  color: var(--accent);
   border: 1px solid var(--accent);
   border-radius: 20px;
   padding: 10px;
   margin-bottom: 0.75rem;
   text-decoration: none;
   animation: pulsePhone 2s infinite;
+}
+
+.popup-phone-number a{
+  color: var(--accent);
 }
 
 @keyframes pulsePhone {
@@ -618,8 +621,11 @@ header {
   color: #4B5563;
 }
 
+.first-popup-action-text,
 .popup-action-text {
   margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 300;
   color: #000;
 }
 
