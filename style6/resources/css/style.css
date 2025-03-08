@@ -522,7 +522,7 @@
   /* Title (Bigger) */
   .popup-title {
     font-size: 2rem;
-    font-weight: 700;
+    /* font-weight: 700; */
     color: var(--popup-primary);
     margin-bottom: 1.5rem;
   }
@@ -579,9 +579,9 @@
   
   /* Offer Text (Bigger) */
   .popup-offer {
-    color: #cf001f;;
+    color: var(--popup-text-dark);
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.7rem;
     margin-bottom: 1.5rem;
   }
   
@@ -604,7 +604,8 @@
   /* "Click to Call Now" text (Bigger) */
   .popup-action-text {
     color: var(--popup-text-dark);
-    font-size: 1.2rem;
+    font-weight: 700;
+    font-size: 1.7rem;
     margin-bottom: 2rem;
   }
   

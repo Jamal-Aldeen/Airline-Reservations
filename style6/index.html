@@ -20,12 +20,7 @@
       }
     </script>
   </head>
-  <body>
-    <!-- Preloader -->
-    <div id="preloader">
-      <div class="loader"></div>
-    </div>
-    
+  <body>    
     <!-- Parallax Background -->
     <div class="parallax-bg"></div>
     
@@ -220,8 +215,7 @@
             ></path>
           </svg>
         </a>
-        <img src="./resources/images/ringing-phone.gif" style="height: 50px ;width: 50px;">
-        <p class="popup-action-text">Click to Call Now</p>
+        <p class="popup-action-text">Click to Call</p>
       </div>
     </div>
     
@@ -241,11 +235,11 @@
       sections.forEach(section => observer.observe(section));
       
       // Remove preloader after page load
-      window.addEventListener('load', () => {
-        const preloader = document.getElementById('preloader');
-        preloader.style.opacity = '0';
-        setTimeout(() => { preloader.style.display = 'none'; }, 500);
-      });
+      // window.addEventListener('load', () => {
+      //   const preloader = document.getElementById('preloader');
+      //   preloader.style.opacity = '0';
+      //   setTimeout(() => { preloader.style.display = 'none'; }, 500);
+      // });
     </script>
   </body>
 </html>
