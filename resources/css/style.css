@@ -537,13 +537,26 @@
     justify-content: center;
     gap: 0.8rem;
     padding: 0.6rem 1rem;
-    border: 3px solid  #cf001f ;
+    border: 3px solid  #ff6f61 ;
     border-radius: 8px;
     margin-bottom: 1rem;
     font-size: 1.8rem;
     color: var(--popup-primary);
     font-weight: 700;
+    animation: pulsePhone 2s infinite;
+}
+
+@keyframes pulsePhone {
+  0% {
+    transform: scale(1);
   }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
   
   /* Inline Icon for Phone Number */
   .phone-icon-inline {
@@ -580,7 +593,7 @@
     display: inline-flex;
     width: 90px;
     height: 90px;
-    background: var(--popup-accent);
+    background: #ff6f61;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
