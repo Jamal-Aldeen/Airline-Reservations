@@ -645,8 +645,6 @@ header {
   transform: scale(1.1);
 }
 
-/* Remove popup-images CSS since photo gallery is removed */
-
 /* Hide popup on larger screens (display only on mobile) */
 @media (min-width: 769px) {
   .popup,

@@ -416,7 +416,7 @@
   }
   
 /* Disclaimer Styles */
-.disclaimer {
+/* .disclaimer {
     position: fixed;
     bottom: 100px;
     left: 20px;
@@ -425,36 +425,41 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 10;
     animation: slideUp 0.5s ease-out;
-  }
+  } */
+/* Disclaimer Section Styling */
+.disclaimer-section {
+  background-color: #f9f9f9;
+  padding: 40px 20px;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+.disclaimer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.disclaimer-content h3 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.disclaimer-content p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.disclaimer-content strong {
+  color: #e04f67;
+}
   
-  .disclaimer-content {
-    position: relative;
-  }
-  
-  .disclaimer h3 {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    color: var(--primary-color);
-  }
-  
-  .disclaimer p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 10px;
-  }
-  
-  .disclaimer a {
-    color: var(--primary-color);
-    text-decoration: underline;
-  }
-  
-  .disclaimer a:hover {
-    color: var(--accent-color);
-  }
-  
-  .disclaimer-close {
+  /* .disclaimer-close {
     position: absolute;
     top: -10px;
     right: -10px;
@@ -471,7 +476,7 @@
   
   .disclaimer-close:hover {
     background: var(--primary-color);
-  }
+  } */
   
   @keyframes slideUp {
     from {
@@ -537,52 +542,18 @@
 
   /* Responsive Styles */
   @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: var(--white);
-        padding: 10px 0;
-      }
-    
-      .nav-links.active {
-        display: flex;
-      }
-    
-      .toll-free {
-        margin-top: 10px;
-      }
-    
-      .hamburger {
-        display: block;
-        cursor: pointer;
-      }
-    
-      .hamburger .line {
-        width: 25px;
-        height: 3px;
-        background: var(--dark-color);
-        margin: 5px 0;
-      }
-    
-    header {
-      padding: 15px;
+    .nav-links {
+      display: none; /* Hide nav links on mobile */
     }
-    
-    header .brand {
-      font-size: 1.5rem;
+  
+    .brand {
+      font-size: 20px; /* Adjust brand size for mobile */
     }
-    
-    header .toll-free {
-      text-align: center;
-      margin-top: 10px;
+  
+    .toll-free .call-button span {
+      font-size: 14px; /* Adjust toll-free text size for mobile */
     }
-    
+
     .hero {
         padding: 40px 20px;
     }
@@ -608,12 +579,9 @@
         padding: 15px 30px;
     }
     
-    .popup,
-    .popup-overlay {
-      display: none;
-    }
+
   }
-  
+
   /* Additional adjustments for very small screens */
   @media (max-width: 480px) {
     html {
@@ -719,6 +687,36 @@
       transform: scale(1);
     }
   }
+
+  /* Popup Overlay */
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1999; /* Lower than the sticky CTA */
+    animation: overlayFadeIn 0.5s forwards;
+  }
+
+  /* Popup Container */
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 2000; /* Higher than the overlay but lower than the sticky CTA */
+    overflow: hidden;
+    animation: popupIn 0.5s forwards;
+  }
+
+  .popup,
+  .popup-overlay {
+    display: none;
+  }
   
   .popup-close {
     position: absolute;
@@ -805,13 +803,13 @@
     /* color: white; */
   }
   
-  /* Hide popup on larger screens */
-  @media (min-width: 769px) {
-    .popup,
-    .popup-overlay {
-      display: none;
-    }
+ /* Show popup only on screens smaller than 769px */
+@media (max-width: 768px) {
+  .popup,
+  .popup-overlay {
+    display: block;
   }
+}
   
   /* Sticky CTA Section */
   .sticky-cta {
@@ -821,30 +819,5 @@
   
   .sticky-cta span {
     font-size: 26px;
-  }
-  
-  /* Popup Overlay */
-  .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1999; /* Lower than the sticky CTA */
-    animation: overlayFadeIn 0.5s forwards;
-  }
-  
-  /* Popup Container */
-  .popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
-    z-index: 2000; /* Higher than the overlay but lower than the sticky CTA */
-    overflow: hidden;
-    animation: popupIn 0.5s forwards;
   }
   
