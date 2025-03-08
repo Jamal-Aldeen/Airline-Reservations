@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="resources/css/styles.css" />
+  <title>Airline Reservations</title>
+</head>
+<body>
+
+        <!-- Popup Script and Markup -->
+        <script>
+            function hidePopup() {
+                document.getElementById("popup").style.display = "none";
+                document.querySelector(".popup-overlay").style.display = "none";
+            }
+    
+            function redirectToCall() {
+                // Check if the screen width is less than or equal to 768px (typical breakpoint for mobile devices)
+                if (window.innerWidth <= 768) {
+                    window.location.href = "tel:+1000000000";
+                }
+                return false; // Prevent default behavior
+            }
+        </script>
+    
+        <!-- Popup Overlay -->
+        <div class="popup-overlay" onclick="redirectToCall()"></div>
+    
+        <!-- Popup -->
+        <div class="popup" id="popup"  onclick="redirectToCall()">
+            <button onClick="hidePopup()" class="popup-close">&times;</button>
+            <div class="popup-content">
+                <div class="popup-title">AIRLINES RESERVATIONS</div>
+                <div class="popup-phone-number">
+                    <svg id="img-phone" width="17" height="17" viewBox="0 0 27 27" fill="#e04f67" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z"></path>
+                    </svg>        
+                    <span class="phone_number">000-000-000</span>
+                </div>
+                <div class="popup-text">
+                    Reservations, Cancellations &amp; Flight Changes
+                </div>
+                <div class="popup-click-to-call">
+                    <p class="first-popup-action-text">15% OFF</p>
+                    <a href="tel:+1000000000" class="popup-call-circle">
+                        <svg width="39" height="30" viewBox="0 0 27 27" fill="white" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z">
+                            </path>
+                        </svg>
+                    </a>
+                    <p class="popup-action-text">Click to Call</p>
+                </div>
+            </div>
+        </div>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
+  
+  <!-- Header -->
+  <header>
+    <div class="brand">Airlines</div>
+    <div class="menu-toggle" id="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav id="navbar">
+      <a href="#services">Services</a>
+      <a href="#airlines">Airlines</a>
+      <a href="#about">About</a>
+      <a href="#info">Info</a>
+    </nav>
+    <div class="toll-free"><a href="tel:+1000000000">000-000-000</a></div>
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="content">
+      <h1>Welcome to Our Reservation Desk</h1>
+      <ul>
+        <li>Effortless New Bookings</li>
+        <li>Hassle-Free Cancellations</li>
+        <li>Flexible Flight Changes</li>
+        <li>Quick Refunds</li>
+      </ul>
+      <p>Enjoy special pricing on new bookings – premium travel with unbeatable offers.</p>
+      <a href="tel:+1000000000" class="btn">Call Now 000-000-000</a>
+    </div>
+  </section>
+  
+  <!-- Services Section -->
+  <section class="section services" id="services">
+    <div class="content">
+      <h2>Our Travel Solutions</h2>
+      <p>We offer a complete range of services to simplify your journey – from booking to instant support for cancellations and flight changes.</p>
+      <div class="grid">
+        <div class="card">
+          <img src="resources/images/best-price (3).png" alt="Best Price Guarantee">
+          <h3>Best Price Guarantee</h3>
+          <p>Unbeatable fares on your favorite routes.</p>
+        </div>
+        <div class="card">
+          <img src="resources/images/call-center.png" alt="Excellent Customer Service">
+          <h3>Outstanding Support</h3>
+          <p>Immediate assistance available 24/7 with no wait.</p>
+        </div>
+        <div class="card">
+          <img src="resources/images/user.png" alt="Secure Booking">
+          <h3>Secure &amp; Reliable</h3>
+          <p>Your information is protected by top-grade security protocols.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Airlines Section -->
+  <section class="section airlines" id="airlines">
+    <div class="content">
+      <div class="header">
+        <h2>Our Trusted Airline Partners</h2>
+        <p>Experience travel excellence with our carefully selected global airline partners.</p>
+      </div>
+      <div class="carousel">
+        <div class="item">
+          <div class="number">01</div>
+          <h3>Air Alaska</h3>
+        </div>
+        <div class="item">
+          <div class="number">02</div>
+          <h3>American Airlines</h3>
+        </div>
+        <div class="item">
+          <div class="number">03</div>
+          <h3>British Airways</h3>
+        </div>
+        <div class="item">
+          <div class="number">04</div>
+          <h3>Delta Airlines</h3>
+        </div>
+        <div class="item">
+          <div class="number">05</div>
+          <h3>Southwest Airlines</h3>
+        </div>
+        <div class="item">
+          <div class="number">06</div>
+          <h3>United Airlines</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<!-- About Section -->
+<section class="section about" id="about" style="background: url('/resources/images/photo-1502906179107-9a5ca87e0a19.jpeg') center/cover no-repeat;">
+    <div class="overlay"></div> <!-- New overlay div -->
+    <div class="content">
+      <h2>About Us</h2>
+      <p>
+        At <strong>https://kohngaithanyaresort.com/</strong>, our team of travel experts is available around the clock to streamline your bookings. Whether you need to reserve, modify, or cancel a flight, we work to ensure your journey is smooth and unforgettable.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Info Section -->
+  <section class="section info" id="info">
+    <div class="grid">
+      <div class="block">
+        <h3>24/7 Customer Support</h3>
+        <p>
+          Our dedicated agents are available anytime to assist with your bookings, cancellations, or flight changes.
+        </p>
+      </div>
+      <div class="block">
+        <h3>Compare Flight Costs</h3>
+        <p>
+          Discover exclusive discounts and competitive rates worldwide with our comprehensive travel deals guide.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Disclaimer Section -->
+  <section class="disclaimer">
+    <p>
+      kohngaithanyaresort.com is an independently owned travel service partner. We provide access to a range of flight products on behalf of various service providers. Final terms and conditions are set by the providers. For more details, visit <a href="https://travel.state.gov/content/travel.html" target="_blank" rel="noopener">travel.state.gov</a>.
+    </p>
+  </section>
+  
+  <!-- Enhanced Sticky Neon CTA Section -->
+  <a href="tel:+1000000000">
+  <section class="cta">
+    <h3>Travel Without the Wait</h3>
+    <p>
+      <img src="/resources/images/phone (1).png" alt="Phone Icon">
+      <span style="font-size: 1.5rem;">000-000-000</span>
+    </p>
+  </section>
+ </a> 
+  <!-- Footer -->
+  <footer>
+    <div class="links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+    <p>&copy; 2023 <span class="company_name">Your Company Name</span>. All rights reserved</p>
+  </footer>
+  <script>
+    // Remove preloader after page loads
+    window.addEventListener('load', () => {
+      document.getElementById('preloader').style.display = 'none';
+    });
+    // Toggle mobile navigation
+    document.getElementById("mobile-menu").addEventListener("click", function(){
+      document.getElementById("navbar").classList.toggle("active");
+    });
+  </script>
+</body>
+</html>

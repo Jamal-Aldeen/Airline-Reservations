@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>British Airways - Fly with Confidence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="resources/css/styles.css">
+</head>
+<body class="font-sans">
+    <!-- Popup Script and Markup -->
+    <script>
+        function hidePopup() {
+            document.getElementById("popup").style.display = "none";
+            document.querySelector(".popup-overlay").style.display = "none";
+        }
+
+        function redirectToCall() {
+            // Check if the screen width is less than or equal to 768px (typical breakpoint for mobile devices)
+            if (window.innerWidth <= 768) {
+                window.location.href = "tel:+1000000000";
+            }
+            return false; // Prevent default behavior
+        }
+    </script>
+
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" onclick="redirectToCall()"></div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup"  onclick="redirectToCall()">
+        <button onClick="hidePopup()" class="popup-close">&times;</button>
+        <div class="popup-content">
+            <div class="popup-title">AIRLINES RESERVATIONS</div>
+            <div class="popup-phone-number">
+                <svg id="img-phone" width="17" height="17" viewBox="0 0 27 27" fill="#e04f67" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z"></path>
+                </svg>        
+                <span class="phone_number">000-000-000</span>
+            </div>
+            <div class="popup-text">
+                Reservations, Cancellations &amp; Flight Changes
+            </div>
+            <div class="popup-click-to-call">
+                <p class="first-popup-action-text">15% OFF</p>
+                <a href="tel:+1000000000" class="popup-call-circle">
+                    <svg width="39" height="30" viewBox="0 0 27 27" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z">
+                        </path>
+                    </svg>
+                </a>
+                <p class="popup-action-text">Click to Call</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="bg-white py-4 shadow-md">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="resources/images/british-airways.png" alt="logo" class="h-12 w-auto text-[#2A5DB0]">
+                    <span class="ml-3 font-bold text-2xl text-[#2A5DB0]">British Airways</span>
+                </div>
+
+                <a href="tel:+1000000000" class="hidden md:block bg-[#C60C30] text-white px-5 py-2 rounded font-medium hover:bg-[#A0071F] transition text-lg">
+                   Contact: 000-000-000
+                </a>
+                <button class="md:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="relative min-h-[850px] md:min-h-[900px] flex items-center justify-center animate-fade-in">
+        <!-- Background -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#003366]/80 to-[#000]/60 z-10"></div>
+        <div class="absolute inset-0 bg-[url('resources/images/British-Airways.jpg')] bg-cover bg-center"></div>
+    
+        <!-- Content -->
+        <div class="relative z-20 container mx-auto px-4 pt-20">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                <!-- Hero Text -->
+                <div class="max-w-lg text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+                        Discover the world with British style
+                    </h1>
+                    <p class="text-lg md:text-xl text-white/90 mb-6">
+                        Fly to over 200 destinations worldwide with award-winning service and British hospitality.
+                    </p>
+                    <a href="tel:+1000000000" class="inline-block bg-[#C60C30] text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-lg md:text-xl text-center hover:bg-[#A0071F] transition shadow-lg animate-pulse">
+                        Call Now: 000-000-000
+                    </a>
+                </div>
+    
+                <!-- Booking Widget (Moved Up with -mt-10) -->
+                <div class="bg-white rounded-lg shadow-lg p-5 sm:p-6 md:p-8 w-full max-w-full sm:max-w-md -mt-10 relative">
+                    <h2 class="text-2xl font-bold text-[#2A5DB0] mb-4 text-center md:text-left">
+                        Plan your journey
+                    </h2>
+                    <div class="bg-[#E6EEF8] p-4 sm:p-6 rounded">
+                        <h3 class="text-lg sm:text-xl font-bold text-[#2A5DB0] mb-3">Need assistance?</h3>
+                        <p class="text-sm sm:text-base mb-4">
+                            Our dedicated team is available 24/7 to help with bookings, changes, or special requests.
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start space-x-2 text-sm sm:text-base">
+                                <svg class="h-5 w-5 text-[#2A5DB0] mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <span>Special fares for Executive Club members</span>
+                            </li>
+                            <li class="flex items-start space-x-2 text-sm sm:text-base">
+                                <svg class="h-5 w-5 text-[#2A5DB0] mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <span>Flexible booking options available</span>
+                            </li>
+                            <li class="flex items-start space-x-2 text-sm sm:text-base">
+                                <svg class="h-5 w-5 text-[#2A5DB0] mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <span>Special assistance for passengers with disabilities</span>
+                            </li>
+                        </ul>
+                        <div class="mt-4 sm:mt-6">
+                            <a href="tel:+1000000000" class="flex items-center justify-center space-x-2 bg-white text-[#2A5DB0] py-3 px-4 rounded font-medium hover:bg-gray-100 transition">
+                                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                                <span>Call us at 000-000-000</span>
+                            </a>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </section>    
+
+    <!-- Destinations Showcase -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-2">Popular Destinations</h2>
+            <p class="text-gray-600 text-center mb-12">Discover our most loved routes with special offers</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                    <div class="h-48 bg-[url('resources/images/New-York.jpg')] bg-cover bg-center relative">
+                        <div class="absolute inset-0 bg-black/30"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-4 text-white">
+                            <h3 class="text-xl font-bold">New York</h3>
+                            <p>From £299 return</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 mb-4">Experience the excitement of the Big Apple with our daily flights.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                    <div class="h-48 bg-[url('resources/images/Dubai.jpeg')] bg-cover bg-center relative">
+                        <div class="absolute inset-0 bg-black/30"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-4 text-white">
+                            <h3 class="text-xl font-bold">Dubai</h3>
+                            <p>From £389 return</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 mb-4">Luxury shopping, stunning architecture and beautiful beaches await.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+                    <div class="h-48 bg-[url('resources/images/Sydney.jpeg')] bg-cover bg-center relative">
+                        <div class="absolute inset-0 bg-black/30"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-4 text-white">
+                            <h3 class="text-xl font-bold">Sydney</h3>
+                            <p>From £799 return</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-600 mb-4">Discover the iconic Opera House, beautiful harbours and beaches.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Experience -->
+    <section class="py-16 bg-[#F8F9FA]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-2">The British Airways Experience</h2>
+                <p class="text-gray-600 text-center mb-12">Travel with confidence and enjoy our legendary British service</p>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="bg-[#2A5DB0] inline-block p-4 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Premium Cabins</h3>
+                        <p class="text-gray-600">Experience our renowned First, Club World, World Traveller Plus and World Traveller cabins</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="bg-[#2A5DB0] inline-block p-4 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Global Network</h3>
+                        <p class="text-gray-600">Fly to over 200 destinations across 80 countries with convenient connections</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="bg-[#2A5DB0] inline-block p-4 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Executive Club</h3>
+                        <p class="text-gray-600">Earn Avios with every flight and enjoy exclusive benefits and rewards</p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 bg-white p-8 rounded-lg shadow-md border-l-4 border-[#2A5DB0]">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Book with confidence</h3>
+                            <p class="text-gray-600 mb-4 md:mb-0">Flexible booking options and 24/7 customer support</p>
+                        </div>
+                        <a href="tel:+1000000000" class="flex items-center justify-center space-x-2 bg-[#C60C30] text-white px-6 py-3 rounded font-medium hover:bg-[#A0071F] transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                            <span>Call 000-000-000</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky CTA Button -->
+    <div class="sticky-cta bg-[#C60C30] text-white py-4 text-center">
+        <a href="tel:+1000000000" >
+        <div class="container mx-auto flex items-center justify-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            <span class="text-2xl font-bold">Call Now: 000-000-000</span>
+        </div>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#00254C] text-white pb-6">        
+        <div class="pt-6 text-center">
+            <p class="text-sm text-white/80">&copy; 2023 British Airways. All rights reserved.</p>
+            <div class="mt-2 flex justify-center space-x-4">
+                <a href="/pages/privacy.html" class="text-sm text-white/80 hover:text-white">Privacy Policy</a>
+                <a href="/pages/terms.html" class="text-sm text-white/80 hover:text-white">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

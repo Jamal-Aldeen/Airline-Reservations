@@ -1,0 +1,577 @@
+:root {
+    --primary: #1a365d;
+    --secondary: #2d5a88;
+    --accent: #e31837;
+    --accent-hover: #c41430;
+    --text: #2d3748;
+    --text-light: #718096;
+    --bg: #f8fafc;
+    --white: #ffffff;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  
+  /* Global Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  
+  
+  /* --------------------- Page Styles --------------------- */
+  
+  /* Header Styles */
+  header {
+    background: var(--gradient);
+    padding: 1.25rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px; 
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+  
+  .logo img {
+    height: 45px;
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 768px) {
+    .header-container a {
+      font-size: 14px; /* Smaller font size for mobile */
+    }
+  
+    .logo {
+      font-size: 1.2rem; /* Adjust logo text size */
+    }
+  
+    .logo img {
+      height: 35px; /* Adjust logo image size */
+    }
+  }
+  /* Updated Button Styles with Extra Animations */
+  .contact-button,
+  .cta-button {
+    background: var(--accent);
+    color: var(--white);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    background-size: 200% 200%;
+    animation: gradientShift 5s ease infinite, pulseGlow 1.5s infinite;
+  }
+  
+  .contact-button:hover,
+  .cta-button:hover {
+    background: var(--accent-hover);
+    transform: scale(1.08);
+    animation: pulseGlow 1.5s infinite;
+  }
+  
+  @keyframes pulseGlow {
+    0% {
+      box-shadow: 0 0 0px rgba(227, 24, 55, 0.6);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(227, 24, 55, 0.9);
+    }
+    100% {
+      box-shadow: 0 0 0px rgba(227, 24, 55, 0.6);
+    }
+  }
+  
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Hero Section */
+  .hero {
+    margin-top: 80px;
+    padding: 6rem 1.25rem;
+    background-image: url('https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: var(--white);
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .hero-content {
+    position: relative;
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .hero h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  .hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+  }
+  
+  /* Features Section */
+  .features {
+    padding: 5rem 1.25rem;
+    background: var(--white);
+  }
+  
+  .features-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .feature-card {
+    background: var(--bg);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-icon {
+    background: var(--gradient);
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-icon svg {
+    width: 30px;
+    height: 30px;
+    color: var(--white);
+  }
+  
+  .feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+  }
+  
+  .feature-card p {
+    color: var(--text-light);
+  }
+  
+  /* Destinations Section */
+  .destinations {
+    padding: 5rem 1.25rem;
+    background: var(--gradient);
+    color: var(--white);
+  }
+  
+  .destinations-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .destinations h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .destinations p {
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+  }
+  
+  .destination-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  
+  .destination-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+  
+  .destination-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .destination-card h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .destination-card p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* CTA Section */
+  .cta {
+    padding: 5rem 1.25rem;
+    background: var(--white);
+  }
+  
+  .cta-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .cta-box {
+    background: var(--gradient);
+    padding: 4rem 2rem;
+    border-radius: 30px;
+    color: var(--white);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cta-box h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta-box p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+  
+  /* Footer */
+  footer {
+    background: var(--primary);
+    color: var(--white);
+    padding: 1rem 1.25rem 1rem;
+    padding-bottom: 150px; /* Add extra padding to footer to accommodate the button */
+  }
+  
+    .footer-grid {
+      grid-template-columns: 1fr; /* Stack footer columns vertically */
+      gap: 1.5rem; /* Reduce gap between columns */
+    }
+  
+    .footer-column h3 {
+      font-size: 1.25rem; /* Smaller heading size */
+    }
+  
+    .footer-column ul li {
+      margin-bottom: 0.75rem; /* Reduce margin between list items */
+    }
+  
+    .copyright {
+      /* padding-top: 1.5rem; Adjust padding for copyright section */
+      font-size: 0.9rem; /* Smaller font size for copyright text */
+      text-align: center;
+      opacity: 0.8;
+    }
+      
+  @media (max-width: 768px) {
+    footer {
+      padding: 2rem 1rem; /* Adjust padding for smaller screens */
+      padding-bottom: 200px; /* Add extra padding to footer to accommodate the button */
+    }
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+    }
+    
+    .features-grid,
+    .destination-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .cta-box {
+      padding: 2rem 1rem;
+    }
+    
+    .cta-box h2 {
+      font-size: 2.5rem;
+    }
+  }
+  
+/* Floating Contact Button - Full Width */
+.floating-contact {
+    position: fixed;
+    bottom: 5rem; /* Adjust distance from the bottom */
+    left: 1rem; /* Start from the left edge */
+    right: 1rem; /* End at the right edge */
+    width: calc(100% - 2rem); /* Take up almost full width (with 1rem margin on both sides) */
+    background: var(--accent); /* Use your accent color */
+    color: var(--white); /* Use your white color */
+    padding: 1rem; /* Add padding */
+    border-radius: 50px; /* Rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; /* Space between icon and text */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make text bold */
+    font-size: 1.8rem; /* Larger text size */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Add shadow */
+    z-index: 1001; /* Ensure it's above the footer and popup */
+    transition: all 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .floating-contact:hover {
+    background: var(--accent-hover); /* Change color on hover */
+    transform: scale(1.02); /* Slight scale effect */
+  }
+  
+  .floating-contact svg {
+    width: 30px; /* Adjust icon size */
+    height: 30px;
+  }
+  
+  /* Ensure the floating button doesn't cover the footer */
+  @media (min-width: 769px) {
+    .floating-contact {
+      bottom: 2rem; /* Adjust for larger screens */
+    }
+  }
+  
+  /* Make the floating button appear above the popup on smaller screens */
+  @media (max-width: 768px) {
+    .floating-contact {
+      z-index: 2001; /* Higher than the popup's z-index */
+    }
+  }
+
+  /* --------------------- End Page Styles --------------------- */
+
+
+/* Animation for Call Button */
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  .animate-pulse {
+    animation: pulse 1.5s infinite;
+  }
+  
+  /* Fade-in Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .animate-fade-in {
+    animation: fadeIn 1s ease-in-out;
+  }
+  /* Popup Overlay */
+  
+  @keyframes overlayFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Popup Container */
+  
+  @keyframes popupIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #e51937; /* Accent color */
+    z-index: 2100;
+  }
+  
+  .popup-content {
+    padding: 2rem;
+    margin: 50px 0px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center; 
+  }
+  
+  .popup-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    /* font-weight: 600; */
+    color: #003a70; /* Primary color */
+  }
+  
+  .popup-phone-number {
+    display: flex; /* Use flexbox to align items in a single line */
+    align-items: center; /* Vertically center the icon and text */
+    gap: 8px; /* Add space between the icon and text */
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #e51937; /* Accent color */
+    border: 1px solid #e51937;
+    border-radius: 12px;
+    margin: 0.5rem 0 1rem;
+    padding: 0.5rem 1rem;
+    animation: pulsePhone 2s infinite;
+  }
+  
+  @keyframes pulsePhone {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .popup-text,
+  .popup-action-text {
+    margin: 0.75rem 0;
+    color: #333; /* Neutral text color */
+  }
+  
+  .popup-call-circle {
+    margin: 1rem auto;
+    width: 100px;
+    height: 100px;
+    background: #e51937; /* Accent color */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .popup-call-circle:hover {
+    transform: scale(1.1);
+  }
+  
+  .popup-click-to-call {
+    font-size: 2rem;
+    font-weight: 600;
+    /* color: white; */
+  }
+  
+  /* Hide popup on larger screens */
+  @media (min-width: 769px) {
+    .popup,
+    .popup-overlay {
+      display: none;
+    }
+  }
+  
+  /* Popup Overlay */
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1999; /* Lower than the sticky CTA */
+    animation: overlayFadeIn 0.5s forwards;
+  }
+  
+  /* Popup Container */
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 2000; /* Higher than the overlay but lower than the sticky CTA */
+    overflow: hidden;
+    animation: popupIn 0.5s forwards;
+  }

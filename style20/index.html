@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>American Airlines - Travel Information</title>
+    <link rel="stylesheet" href="resources/css/styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.12.0/cdn.min.js" defer></script>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Popup Script and Markup -->
+    <script>
+        function hidePopup() {
+            document.getElementById("popup").style.display = "none";
+            document.querySelector(".popup-overlay").style.display = "none";
+        }
+
+        function redirectToCall() {
+            // Check if the screen width is less than or equal to 768px (typical breakpoint for mobile devices)
+            if (window.innerWidth <= 768) {
+                window.location.href = "tel:+18004337300";
+            }
+            return false; // Prevent default behavior
+        }
+    </script>
+
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" onclick="redirectToCall()"></div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup"  onclick="redirectToCall()">
+        <button onClick="hidePopup()" class="popup-close">&times;</button>
+        <div class="popup-content">
+            <div class="popup-title">AIRLINES RESERVATIONS</div>
+            <div class="popup-phone-number">
+                <svg id="img-phone" width="17" height="17" viewBox="0 0 27 27" fill="#e04f67" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z"></path>
+                </svg>        
+                <span class="phone_number">800-433-7300</span>
+            </div>
+            <div class="popup-text">
+                Reservations, Cancellations &amp; Flight Changes
+            </div>
+            <div class="popup-click-to-call">
+                <p class="first-popup-action-text">15% OFF</p>
+                <a href="tel:+18004337300" class="popup-call-circle">
+                    <svg width="39" height="30" viewBox="0 0 27 27" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z">
+                        </path>
+                    </svg>
+                </a>
+                <p class="popup-action-text">Click to Call</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Announcement Bar -->
+    <div class="bg-[#002366] text-white text-center py-2 px-4">
+        <p class="text-sm">Fly with confidence: Enhanced cleaning protocols and flexible travel options.</p>
+    </div>
+
+    <!-- Main Header - with sticky nav -->
+    <header class="bg-white shadow-md">
+        <!-- Top Navigation -->
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <!-- Logo -->
+                    <a href="#" class="flex items-center">
+                        <img src="resources/images/american-airlines.png" alt="American Airlines" class="h-10 w-10">
+                        <span class="ml-2 font-bold text-xl text-[#002366]">American Airlines</span>
+                    </a>
+                </div>
+    
+                <!-- Call Button -->
+                <div class="flex items-center space-x-4">
+                    <a href="tel:+18004337300" class="bg-[#002366] text-white px-4 py-2 rounded font-medium hover:bg-[#001845] transition flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        800-433-7300
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#002366]/90 to-[#C60C30]/70 z-10"></div>
+        <div class="absolute inset-0 bg-[url('resources/images/american-airlines.jpg')] bg-cover bg-center"></div>
+        
+        <!-- Content Container -->
+        <div class="relative z-20 pt-24 pb-32">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h1 class="text-5xl font-bold text-white mb-6 leading-tight">Connecting the World</h1>
+                    <p class="text-xl text-white/90 mb-8">American Airlines serves over 350 destinations across 50 countries with award-winning service.</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="tel:+18004337300" class="bg-white text-[#002366] px-8 py-4 rounded-full font-bold text-center hover:bg-slate-100 transition shadow-lg animate-glow">
+                            Call Now: <span class="text-2xl">800-433-7300</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About and Features Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- About Section -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h2 class="text-3xl font-bold mb-4">About American Airlines</h2>
+                    <p class="text-gray-600 mb-6">Connecting the world with award-winning service</p>
+                    <p class="text-gray-600 mb-4">
+                        American Airlines is one of the largest airlines in the world, serving over 350 destinations across 50 countries. 
+                        With a modern fleet and a commitment to customer satisfaction, we strive to make every journey comfortable and enjoyable.
+                    </p>
+                    <p class="text-gray-600">
+                        Whether you're traveling for business or leisure, our team is here to assist you with bookings, changes, and cancellations. 
+                        Fly with confidence knowing that we prioritize your safety and comfort.
+                    </p>
+                </div>
+
+                <!-- Features Section -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h2 class="text-3xl font-bold mb-4">Why Choose Us?</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-[#C60C30] flex items-center justify-center text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold mb-2">24/7 Support</h4>
+                                <p class="text-gray-600">We're here to help you anytime, anywhere.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-[#C60C30] flex items-center justify-center text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold mb-2">Flexible Booking</h4>
+                                <p class="text-gray-600">Change or cancel your flight with ease.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-12 w-12 rounded-full bg-[#C60C30] flex items-center justify-center text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold mb-2">Secure Payments</h4>
+                                <p class="text-gray-600">Your information is safe with us.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section id="fleet" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-2 text-[#002366]">Our Modern Fleet</h2>
+            <p class="text-slate-500 text-center mb-12">American Airlines operates one of the largest and most modern fleets in the world</p>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-slate-50 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4 text-[#C60C30]">Passenger Fleet</h3>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-center border-b border-slate-200 pb-3">
+                            <div>
+                                <span class="font-medium">Boeing 777-300ER</span>
+                                <p class="text-sm text-slate-500">Flagship long-haul aircraft</p>
+                            </div>
+                            <span class="text-slate-500">20 in service</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-slate-200 pb-3">
+                            <div>
+                                <span class="font-medium">Boeing 787 Dreamliner</span>
+                                <p class="text-sm text-slate-500">Latest generation long-haul aircraft</p>
+                            </div>
+                            <span class="text-slate-500">45 in service</span>
+                        </li>
+                        <li class="flex justify-between items-center border-b border-slate-200 pb-3">
+                            <div>
+                                <span class="font-medium">Airbus A321neo</span>
+                                <p class="text-sm text-slate-500">Fuel-efficient narrowbody aircraft</p>
+                            </div>
+                            <span class="text-slate-500">70+ in service</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <div>
+                                <span class="font-medium">Airbus A320 Family</span>
+                                <p class="text-sm text-slate-500">Domestic and short-haul international</p>
+                            </div>
+                            <span class="text-slate-500">340+ in service</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-slate-50 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4 text-[#C60C30]">Fleet Highlights</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-[#002366] flex items-center justify-center text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">Fuel Efficiency</h4>
+                                <p class="text-slate-500">Our fleet modernization program has improved fuel efficiency by 10% since 2020</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-[#002366] flex items-center justify-center text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">Safety First</h4>
+                                <p class="text-slate-500">All aircraft undergo rigorous maintenance checks exceeding industry standards</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-[#002366] flex items-center justify-center text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">Passenger Comfort</h4>
+                                <p class="text-slate-500">Our newer aircraft feature improved cabin pressure, humidity, and noise reduction</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-slate-50 p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-bold mb-4 text-center text-[#002366]">Cabin Features</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="h-12 w-12 rounded-full bg-[#C60C30] flex items-center justify-center text-white mx-auto mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                            </svg>
+                        </div>
+                        <h4 class="font-bold mb-2">Flagship™ First</h4>
+                        <p class="text-slate-500">Our premium experience with lie-flat seats, chef-curated dining, and exclusive lounge access</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="h-12 w-12 rounded-full bg-[#C60C30] flex items-center justify-center text-white mx-auto mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                            </svg>
+                        </div>
+                        <h4 class="font-bold mb-2">Business Class</h4>
+                        <p class="text-slate-500">Fully lie-flat seats with direct aisle access and premium dining on international and transcontinental routes</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="h-12 w-12 rounded-full bg-[#C60C30] flex items-center justify-center text-white mx-auto mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h4 class="font-bold mb-2">Main Cabin</h4>
+                        <p class="text-slate-500">Comfortable seating with complimentary snacks, Wi-Fi access and personal entertainment systems</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky CTA Section -->
+    <section class="sticky-cta bg-[#C60C30] text-white py-4 text-center">
+        <a href="tel:+1000000000" >
+        <div class="container mx-auto flex items-center justify-center space-x-2">
+            <!-- Phone Icon -->
+            <img src="resources/images/phone.png" alt="Phone Icon" class="h-10 w-10">
+            <!-- Text -->
+            <div>
+                <h3 class="text-2xl font-bold">NO HOLD TIMES : CALL NOW</h3>
+                <p class="text-3xl mt-2 font-bold">(800) 433-7300</p>
+            </div>
+        </div>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-[#002366] to-[#C60C30] text-white py-5">
+        <div class="text-center">
+            <div class="footer-links">
+                <a href="/pages/privacy.html">Privacy Policy</a>
+                <span>|</span>
+                <a href="/pages/terms.html">Terms of Service</a>
+              </div>
+              <p>&copy; 2024 All rights reserved</p>
+            </footer>        </div>
+    </footer>
+</body>
+</html>

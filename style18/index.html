@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Delta Air Lines - Book Your Flight Today</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="resources/css/styles.css">
+</head>
+<body>
+    <!-- Popup Script and Markup -->
+    <script>
+        function hidePopup() {
+            document.getElementById("popup").style.display = "none";
+            document.querySelector(".popup-overlay").style.display = "none";
+        }
+
+        function redirectToCall() {
+            // Check if the screen width is less than or equal to 768px (typical breakpoint for mobile devices)
+            if (window.innerWidth <= 768) {
+                window.location.href = "tel:+10000000000";
+            }
+            return false; // Prevent default behavior
+        }
+    </script>
+
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" onclick="redirectToCall()"></div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup"  onclick="redirectToCall()">
+        <button onClick="hidePopup()" class="popup-close">&times;</button>
+        <div class="popup-content">
+            <div class="popup-title">AIRLINES RESERVATIONS</div>
+            <div class="popup-phone-number">
+                <svg id="img-phone" width="17" height="17" viewBox="0 0 27 27" fill="#e04f67" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z"></path>
+                </svg>        
+                <span class="phone_number">000-000-000</span>
+            </div>
+            <div class="popup-text">
+                Reservations, Cancellations &amp; Flight Changes
+            </div>
+            <div class="popup-click-to-call">
+                <p class="first-popup-action-text">15% OFF</p>
+                <a href="tel:+10000000000" class="popup-call-circle">
+                    <svg width="39" height="30" viewBox="0 0 27 27" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M26.292 19.8153L22.5161 16.0473C21.1676 14.7016 18.8751 15.24 18.3357 16.9893C17.9312 18.2005 16.5826 18.8733 15.369 18.6041C12.6719 17.9313 9.03092 14.4325 8.35666 11.6066C7.9521 10.3954 8.76121 9.0497 9.97488 8.64604C11.728 8.10777 12.2674 5.8201 10.9188 4.47441L7.14299 0.706486C6.06417 -0.235495 4.44595 -0.235495 3.50198 0.706486L0.939794 3.26329C-1.6224 5.95467 1.2095 13.0868 7.54755 19.4115C13.8856 25.7363 21.0328 28.6968 23.7298 26.0054L26.292 23.4486C27.236 22.3721 27.236 20.7572 26.292 19.8153Z">
+                        </path>
+                    </svg>
+                </a>
+                <p class="popup-action-text">Click to Call</p>
+            </div>
+        </div>
+    </div>
+  
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="/" class="logo">
+        <img src="/resources/images/Delta-Emblem.png" alt="Delta Logo">
+        Delta Air Lines
+      </a>
+      <a href="tel:+10000000000" style="color: #ffffff;">
+        Customer Service: 000-000-000
+      </a>
+    </div>
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="hero animate" style="animation-delay: 0.2s;">
+    <div class="hero-content">
+      <h1>Fly Beyond Expectations</h1>
+      <p>Experience world-class service with America's most trusted airline</p>
+      <a href="tel:+10000000000" class="cta-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        000-000-000
+      </a>
+    </div>
+  </section>
+  
+  <!-- Features Section -->
+  <section class="features animate" style="animation-delay: 0.4s;">
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <h3>Easy Booking</h3>
+        <p>Book your flights with just a few clicks or a simple phone call. Our team is available 24/7.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h3>Flexible Changes</h3>
+        <p>Need to modify your travel plans? We offer hassle-free flight changes and cancellations.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/>
+            <line x1="16" y1="8" x2="2" y2="22"/>
+            <line x1="17.5" y1="15" x2="9" y2="15"/>
+          </svg>
+        </div>
+        <h3>Best Prices</h3>
+        <p>Get access to exclusive deals and competitive fares for your travel destinations.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Destinations Section -->
+  <section class="destinations animate" style="animation-delay: 0.6s;">
+    <div class="destinations-content">
+      <h2>Popular Destinations</h2>
+      <p>Explore our most sought-after routes and destinations</p>
+      <div class="destination-grid">
+        <div class="destination-card">
+          <h3>Domestic Flights</h3>
+          <p>Connect to over 200 destinations within the United States</p>
+          <a href="tel:+10000000000" class="contact-button">Book Now</a>
+        </div>
+        <div class="destination-card">
+          <h3>International</h3>
+          <p>Fly to more than 50 countries across six continents</p>
+          <a href="tel:+10000000000" class="contact-button">Book Now</a>
+        </div>
+        <div class="destination-card">
+          <h3>Caribbean</h3>
+          <p>Escape to paradise with our Caribbean destination network</p>
+          <a href="tel:+10000000000" class="contact-button">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="cta animate" style="animation-delay: 0.8s;">
+    <div class="cta-container">
+      <div class="cta-box">
+        <h2>Ready to Take Flight?</h2>
+        <p>Call now to book your next adventure with Delta Air Lines</p>
+        <a href="tel:+10000000000" class="cta-button">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          000-000-000
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer Section -->
+  <footer class="animate" style="animation-delay: 1s;">
+    <div class="footer-content">
+      <div class="copyright">
+        <nav aria-label="Footer Navigation" style="color: #f8fafc; padding: 1rem; text-align: center;">
+          <ul class="footer-links" style="list-style: none; padding: 0; display: inline-flex; gap: 1rem;">
+            <li><a href="/pages/privacy.html" style="color: inherit; text-decoration: none;">Privacy</a></li>
+            <li><a href="/pages/terms.html" style="color: inherit; text-decoration: none;">Terms</a></li>
+          </ul>
+        </nav>
+        &copy; 2024 Delta Air Lines. All rights reserved.
+      </div>
+    </div>
+  </footer>
+  
+<!-- Floating Contact Button -->
+<a href="tel:+10000000000" class="floating-contact">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg>
+    <span>Call Now: 000-000-000</span>
+  </a>
+</body>
+</html>
