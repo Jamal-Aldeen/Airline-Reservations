@@ -76,7 +76,30 @@ body {
   text-decoration: none;
 }
 
-/* Hero Section with 3D Background Animation */
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 1rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  /* Phone Number Styling for Smaller Screens */
+  .phone-number {
+    display: flex; /* Ensure it's visible */
+    font-size: 0.7rem; /* Smaller font size */
+    color: #fff; /* Change color for better visibility */
+    padding: 0.5rem 1rem; /* Add padding for better touch targets */
+    border-radius: 5px; /* Rounded corners */
+    transition: background 0.3s ease;
+  }
+  .phone-number:hover {
+    background: rgba(0, 0, 0, 0.7); /* Darken background on hover */
+  }
+}
+
 .hero {
   position: relative;
   min-height: 100vh;
@@ -84,19 +107,30 @@ body {
   align-items: center;
   justify-content: center;
   padding: 6rem 2rem 2rem;
-  background: var(--gradient);
+  background-image: url('./../images/airlines.jpg');
+  background-size: cover; /* Ensures the image covers the entire area */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
   overflow: hidden;
 }
 
 .hero::before {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  opacity: 0.1;
-  z-index: 1;
+  top: 0; /* Start from the top */
+  left: 0; /* Start from the left */
+  width: 100%; /* Cover the entire width */
+  height: 100%; /* Cover the entire height */
+  background: rgba(108, 92, 231, 0.7); /* Semi-transparent black overlay */
+  z-index: 1; /* Above the background image but below the content */
+}
+
+
+.hero-content {
+  position: relative;
+  z-index: 2; /* Ensures content is above the overlay */
+  color: white; /* Adjust text color for better visibility */
+  text-align: center;
 }
 
 @keyframes rotate {
@@ -106,17 +140,6 @@ body {
   to {
     transform: rotate(360deg);
   }
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
 }
 
 .hero-text h1 {
@@ -404,7 +427,7 @@ body {
     height: 50px;
 }
 
-.hero {
+/* .hero {
   position: relative;
   min-height: 100vh;
   display: flex;
@@ -413,7 +436,7 @@ body {
   padding: 6rem 2rem 2rem;
   background: var(--gradient);
   overflow: hidden;
-}
+} */
 
 .hero-content {
   position: relative;
@@ -437,7 +460,7 @@ body {
   color: white;
 }
 
-.hero::before {
+/* .hero::before {
 content: "";
 position: absolute;
 top: -50%;
@@ -446,7 +469,7 @@ width: 200%;
 height: 200%;
 opacity: 0.1;
 z-index: 1;
-}
+} */
   
 @keyframes rotate {
     from {
