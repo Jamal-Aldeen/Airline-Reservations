@@ -105,6 +105,13 @@ header {
     padding: 6px 12px; /* Adjust button padding */
     font-size: 1rem; /* Adjust font size */
   }
+  .icon-row{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+  }
 }
 
 
@@ -225,8 +232,8 @@ WAIT TIME
 .icon-row img {
   border-radius: 6px;
   background-color: #ffffff ;
-  width: 95px;
-  height: 95px;
+  width: 85px;
+  height: 85px;
   object-fit: contain;
 }
 
