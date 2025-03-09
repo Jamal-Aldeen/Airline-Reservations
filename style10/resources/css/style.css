@@ -82,7 +82,7 @@
   
   .brand {
     font-size: 1.7rem;
-    /* font-weight: bold; */
+    font-weight: bold;
     color: var(--primary-color);
   }
   
