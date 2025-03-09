@@ -59,7 +59,7 @@ body {
 .phone-button {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50px;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 0.5rem;
   color: white;
   text-decoration: none;
   font-weight: 1000;
@@ -85,7 +85,8 @@ body {
   }
 
   .phone-button {
-    font-size: 1.5rem; /* Reduce font size for the phone button */
+    font-size: 0.5rem; /* Reduce font size for the phone button */
+    gap: 0.25rem; /* Reduce space between the phone button and the text */
   }
 
   .header-content {
