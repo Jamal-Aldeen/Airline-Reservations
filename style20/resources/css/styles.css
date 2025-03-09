@@ -14,7 +14,7 @@
         .animate-glow {
             animation: glow 1.5s infinite;
         }
-
+ 
         /* Pulse Animation */
         @keyframes pulse {
             0% { transform: scale(1); }
